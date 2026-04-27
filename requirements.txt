@@ -1,0 +1,12 @@
+fastapi==0.110.0
+uvicorn==0.29.0
+tensorflow==2.16.1
+pandas==2.2.0
+numpy==1.26.4
+scikit-learn==1.4.0
+python-multipart==0.0.9
+langchain==0.2.16
+langchain-openai==0.1.23
+langchain-core==0.2.38
+langgraph==0.2.4
+python-dotenv==1.0.1
