@@ -9,10 +9,14 @@ from sklearn.preprocessing import MinMaxScaler
 import io
 import os
 
+from agent import battery_agent, BatteryState
+from fastapi import WebSocket, WebSocketDisconnect
+from websocket_consumer import read_stream_and_predict
+
 from dotenv import load_dotenv
 load_dotenv()
 
-from agent import battery_agent, BatteryState
+
 
 app = FastAPI(title="EV Battery SOH Predictor")
 
@@ -151,3 +155,11 @@ async def analyze_with_agent(file: UploadFile = File(...)):
         "ai_analysis"       : ai_analysis,
         "ai_recommendation" : ai_recommendation
     }
+
+@app.websocket("/ws/live-stream")
+async def websocket_live_stream(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        await read_stream_and_predict(websocket, model)
+    except WebSocketDisconnect:
+        print("Client disconnected from live stream")

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EV Battery SOH — Live Monitor</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg        : #060a10;
+      --card      : #0d1520;
+      --border    : #1a2d45;
+      --blue      : #00d4ff;
+      --green     : #00ff88;
+      --red       : #ff4466;
+      --yellow    : #ffcc00;
+      --text      : #e8f4ff;
+      --muted     : #5a7a9a;
+      --dim       : #2a4a6a;
+    }
+
+    body {
+      font-family      : 'Space Grotesk', sans-serif;
+      background       : var(--bg);
+      color            : var(--text);
+      min-height       : 100vh;
+      overflow-x       : hidden;
+    }
+
+    body::before {
+      content    : '';
+      position   : fixed;
+      inset      : 0;
+      background :
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events : none;
+      z-index        : 0;
+    }
+
+    .container {
+      max-width : 1200px;
+      margin    : 0 auto;
+      padding   : 32px 24px;
+      position  : relative;
+      z-index   : 1;
+    }
+
+    /* Header */
+    .header {
+      display         : flex;
+      align-items     : center;
+      justify-content : space-between;
+      margin-bottom   : 32px;
+      flex-wrap       : wrap;
+      gap             : 16px;
+    }
+
+    .header-left h1 {
+      font-size   : 24px;
+      font-weight : 700;
+      background  : linear-gradient(135deg, #fff, var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-left p {
+      color     : var(--muted);
+      font-size : 13px;
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      display     : flex;
+      align-items : center;
+      gap         : 8px;
+      padding     : 8px 16px;
+      border-radius: 100px;
+      font-size   : 13px;
+      font-weight : 500;
+      border      : 1px solid;
+      transition  : all 0.3s;
+    }
+
+    .status-badge.disconnected {
+      background   : rgba(255,68,102,0.08);
+      border-color : rgba(255,68,102,0.3);
+      color        : var(--red);
+    }
+
+    .status-badge.connected {
+      background   : rgba(0,255,136,0.08);
+      border-color : rgba(0,255,136,0.3);
+      color        : var(--green);
+    }
+
+    .status-badge.waiting {
+      background   : rgba(255,204,0,0.08);
+      border-color : rgba(255,204,0,0.3);
+      color        : var(--yellow);
+    }
+
+    .status-dot {
+      width         : 8px;
+      height        : 8px;
+      border-radius : 50%;
+      background    : currentColor;
+    }
+
+    .status-dot.pulse {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* Controls */
+    .controls {
+      display         : flex;
+      gap             : 12px;
+      margin-bottom   : 28px;
+      flex-wrap       : wrap;
+    }
+
+    .btn {
+      padding       : 10px 24px;
+      border-radius : 8px;
+      border        : none;
+      font-family   : 'Space Grotesk', sans-serif;
+      font-size     : 14px;
+      font-weight   : 600;
+      cursor        : pointer;
+      transition    : all 0.2s;
+    }
+
+    .btn-connect {
+      background : linear-gradient(135deg, #003366, #0066cc);
+      color      : white;
+    }
+
+    .btn-connect:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,102,204,0.4); }
+
+    .btn-disconnect {
+      background : rgba(255,68,102,0.1);
+      color      : var(--red);
+      border     : 1px solid rgba(255,68,102,0.3);
+    }
+
+    .btn-disconnect:hover { background: rgba(255,68,102,0.2); }
+
+    .btn-clear {
+      background : rgba(255,255,255,0.05);
+      color      : var(--muted);
+      border     : 1px solid var(--border);
+    }
+
+    .btn-clear:hover { background: rgba(255,255,255,0.08); }
+
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+    /* Stats Grid */
+    .stats-grid {
+      display               : grid;
+      grid-template-columns : repeat(auto-fit, minmax(180px, 1fr));
+      gap                   : 16px;
+      margin-bottom         : 24px;
+    }
+
+    .stat-card {
+      background    : var(--card);
+      border        : 1px solid var(--border);
+      border-radius : 12px;
+      padding       : 18px 20px;
+      position      : relative;
+      overflow      : hidden;
+    }
+
+    .stat-card::before {
+      content    : '';
+      position   : absolute;
+      top        : 0; left: 0; right: 0;
+      height     : 2px;
+      background : var(--accent, var(--blue));
+    }
+
+    .stat-label {
+      font-size      : 11px;
+      color          : var(--muted);
+      text-transform : uppercase;
+      letter-spacing : 0.07em;
+      margin-bottom  : 8px;
+    }
+
+    .stat-value {
+      font-size   : 26px;
+      font-weight : 700;
+      font-family : 'JetBrains Mono', monospace;
+      color       : var(--accent, var(--blue));
+      line-height : 1;
+    }
+
+    .stat-sub {
+      font-size  : 11px;
+      color      : var(--dim);
+      margin-top : 4px;
+    }
+
+    /* Chart */
+    .chart-card {
+      background    : var(--card);
+      border        : 1px solid var(--border);
+      border-radius : 16px;
+      padding       : 24px;
+      margin-bottom : 20px;
+    }
+
+    .chart-header {
+      display         : flex;
+      align-items     : center;
+      justify-content : space-between;
+      margin-bottom   : 20px;
+    }
+
+    .chart-header h3 {
+      font-size   : 15px;
+      font-weight : 600;
+      display     : flex;
+      align-items : center;
+      gap         : 8px;
+    }
+
+    .chart-header h3::before {
+      content       : '';
+      display       : block;
+      width         : 3px;
+      height        : 16px;
+      background    : var(--blue);
+      border-radius : 2px;
+    }
+
+    .chart-legend {
+      display     : flex;
+      gap         : 16px;
+      font-size   : 12px;
+      color       : var(--muted);
+    }
+
+    .legend-dot {
+      width         : 10px;
+      height        : 10px;
+      border-radius : 50%;
+      display       : inline-block;
+      margin-right  : 5px;
+    }
+
+    .chart-wrapper { position: relative; height: 320px; }
+
+    /* Live Log */
+    .log-card {
+      background    : var(--card);
+      border        : 1px solid var(--border);
+      border-radius : 16px;
+      padding       : 20px;
+    }
+
+    .log-card h3 {
+      font-size     : 14px;
+      color         : var(--muted);
+      margin-bottom : 12px;
+      display       : flex;
+      align-items   : center;
+      gap           : 8px;
+    }
+
+    .log-body {
+      height      : 160px;
+      overflow-y  : auto;
+      font-family : 'JetBrains Mono', monospace;
+      font-size   : 12px;
+      color       : var(--muted);
+      line-height : 1.8;
+    }
+
+    .log-body::-webkit-scrollbar { width: 4px; }
+    .log-body::-webkit-scrollbar-track { background: transparent; }
+    .log-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .log-entry { padding: 2px 0; border-bottom: 1px solid rgba(26,45,69,0.4); }
+    .log-entry .ts { color: var(--dim); margin-right: 8px; }
+    .log-entry .val { color: var(--blue); }
+    .log-entry .pred { color: var(--green); }
+    .log-entry .wait { color: var(--yellow); }
+
+    .footer {
+      text-align  : center;
+      color       : var(--dim);
+      font-size   : 12px;
+      margin-top  : 32px;
+      padding-top : 20px;
+      border-top  : 1px solid var(--border);
+    }
+
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--blue); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>EV Battery SOH — Live Monitor</h1>
+      <p>Real-time State of Health prediction via TCN model + Redis Stream</p>
+    </div>
+    <div class="status-badge disconnected" id="statusBadge">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Disconnected</span>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="btn btn-connect"    id="btnConnect"    onclick="connectWS()">Connect Live Stream</button>
+    <button class="btn btn-disconnect" id="btnDisconnect" onclick="disconnectWS()" disabled>Disconnect</button>
+    <button class="btn btn-clear"      id="btnClear"      onclick="clearData()">Clear Chart</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card" style="--accent: var(--blue)">
+      <div class="stat-label">Current Cycle</div>
+      <div class="stat-value" id="statCycle">--</div>
+      <div class="stat-sub">Discharge cycle</div>
+    </div>
+    <div class="stat-card" style="--accent: var(--blue)">
+      <div class="stat-label">Actual Capacity</div>
+      <div class="stat-value" id="statCapacity">-- Ah</div>
+      <div class="stat-sub">Measured value</div>
+    </div>
+    <div class="stat-card" style="--accent: var(--green)">
+      <div class="stat-label">TCN Prediction</div>
+      <div class="stat-value" id="statPrediction">-- Ah</div>
+      <div class="stat-sub">AI predicted value</div>
+    </div>
+    <div class="stat-card" style="--accent: var(--yellow)">
+      <div class="stat-label">Buffer Status</div>
+      <div class="stat-value" id="statBuffer">0 / 50</div>
+      <div class="stat-sub">Cycles in window</div>
+    </div>
+    <div class="stat-card" style="--accent: var(--green)">
+      <div class="stat-label">SOH Estimate</div>
+      <div class="stat-value" id="statSOH">--%</div>
+      <div class="stat-sub">State of health</div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-card">
+    <div class="chart-header">
+      <h3>Live Capacity Degradation</h3>
+      <div class="chart-legend">
+        <span><span class="legend-dot" style="background:#00d4ff"></span>Actual</span>
+        <span><span class="legend-dot" style="background:#00ff88"></span>TCN Prediction</span>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <canvas id="liveChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Log -->
+  <div class="log-card">
+    <h3>
+      <span class="status-dot pulse" style="color:var(--blue);background:var(--blue);width:7px;height:7px;border-radius:50%;display:inline-block"></span>
+      Live Data Log
+    </h3>
+    <div class="log-body" id="logBody">
+      <div class="log-entry"><span class="ts">[--:--:--]</span> Waiting for connection...</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Built by <a href="https://github.com/HassanSidd0946" target="_blank">Hassan Siddique</a>
+    &nbsp;·&nbsp; TCN + LangGraph + FastAPI + Redis Streams
+    &nbsp;·&nbsp; <a href="https://github.com/HassanSidd0946" target="_blank">GitHub</a>
+  </div>
+
+</div>
+
+<script>
+  const WS_URL = "ws://localhost:8000/ws/live-stream";
+
+  let ws          = null;
+  let chartInst   = null;
+  let firstCap    = null;
+  let dataPoints  = 0;
+
+  // Chart setup
+  function initChart() {
+    if (chartInst) chartInst.destroy();
+
+    const ctx = document.getElementById('liveChart').getContext('2d');
+    chartInst = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels  : [],
+        datasets: [
+          {
+            label          : 'Actual Capacity',
+            data           : [],
+            borderColor    : '#00d4ff',
+            backgroundColor: 'rgba(0,212,255,0.06)',
+            borderWidth    : 2,
+            pointRadius    : 3,
+            pointHoverRadius: 5,
+            tension        : 0.3,
+            fill           : true,
+          },
+          {
+            label          : 'TCN Prediction',
+            data           : [],
+            borderColor    : '#00ff88',
+            backgroundColor: 'rgba(0,255,136,0.06)',
+            borderWidth    : 2,
+            pointRadius    : 3,
+            pointHoverRadius: 5,
+            tension        : 0.3,
+            fill           : true,
+            borderDash     : [5, 3],
+          }
+        ]
+      },
+      options: {
+        responsive         : true,
+        maintainAspectRatio: false,
+        animation          : { duration: 300 },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            backgroundColor: '#0d1520',
+            borderColor    : '#1a2d45',
+            borderWidth    : 1,
+            titleColor     : '#e8f4ff',
+            bodyColor      : '#5a7a9a',
+            callbacks: {
+              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toFixed(4)} Ah`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks       : { color: '#2a4a6a', maxTicksLimit: 12, font: { size: 11 } },
+            grid        : { color: 'rgba(26,45,69,0.5)' },
+            title       : { display: true, text: 'Cycle', color: '#5a7a9a', font: { size: 11 } }
+          },
+          y: {
+            ticks       : { color: '#2a4a6a', font: { size: 11 } },
+            grid        : { color: 'rgba(26,45,69,0.5)' },
+            title       : { display: true, text: 'Capacity (Ah)', color: '#5a7a9a', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  }
+
+  // WebSocket connect
+  function connectWS() {
+    if (ws) ws.close();
+    ws = new WebSocket(WS_URL);
+
+    setStatus('waiting', 'Connecting...');
+
+    ws.onopen = () => {
+      setStatus('connected', 'Live');
+      document.getElementById('btnConnect').disabled    = true;
+      document.getElementById('btnDisconnect').disabled = false;
+      addLog('Connected to live stream', 'wait');
+    };
+
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (data.type === 'connected') {
+        addLog(data.message, 'wait');
+        return;
+      }
+
+      if (data.type === 'heartbeat') return;
+
+      if (data.type === 'cycle_data') {
+        updateStats(data);
+        updateChart(data);
+        logCycle(data);
+        dataPoints++;
+      }
+
+      if (data.type === 'error') {
+        addLog('Error: ' + data.message, 'wait');
+      }
+    };
+
+    ws.onclose = () => {
+      setStatus('disconnected', 'Disconnected');
+      document.getElementById('btnConnect').disabled    = false;
+      document.getElementById('btnDisconnect').disabled = true;
+      addLog('Stream disconnected', 'wait');
+    };
+
+    ws.onerror = () => {
+      addLog('WebSocket error — is server running?', 'wait');
+    };
+  }
+
+  function disconnectWS() {
+    if (ws) ws.close();
+  }
+
+  function clearData() {
+    firstCap   = null;
+    dataPoints = 0;
+    initChart();
+    document.getElementById('logBody').innerHTML =
+      '<div class="log-entry"><span class="ts">[--:--:--]</span> Chart cleared.</div>';
+    document.getElementById('statCycle').textContent      = '--';
+    document.getElementById('statCapacity').textContent   = '-- Ah';
+    document.getElementById('statPrediction').textContent = '-- Ah';
+    document.getElementById('statBuffer').textContent     = '0 / 50';
+    document.getElementById('statSOH').textContent        = '--%';
+  }
+
+  // Update stat cards
+  function updateStats(data) {
+    document.getElementById('statCycle').textContent    = data.cycle;
+    document.getElementById('statCapacity').textContent = data.capacity.toFixed(4) + ' Ah';
+    document.getElementById('statBuffer').textContent   = Math.min(data.buffer_size, 50) + ' / 50';
+
+    if (data.prediction !== null) {
+      document.getElementById('statPrediction').textContent = data.prediction.toFixed(4) + ' Ah';
+
+      if (!firstCap) firstCap = data.prediction;
+      const soh = ((data.prediction / firstCap) * 100).toFixed(1);
+      document.getElementById('statSOH').textContent = soh + '%';
+
+      // Color SOH card
+      const sohCard = document.getElementById('statSOH').closest('.stat-card');
+      if (soh >= 85)      sohCard.style.setProperty('--accent', 'var(--green)');
+      else if (soh >= 70) sohCard.style.setProperty('--accent', 'var(--yellow)');
+      else                sohCard.style.setProperty('--accent', 'var(--red)');
+    }
+  }
+
+  // Update chart
+  function updateChart(data) {
+    const labels = chartInst.data.labels;
+    const actual = chartInst.data.datasets[0].data;
+    const pred   = chartInst.data.datasets[1].data;
+
+    labels.push('C' + data.cycle);
+    actual.push(data.capacity);
+    pred.push(data.prediction);
+
+    // Keep last 100 points on chart
+    if (labels.length > 100) {
+      labels.shift();
+      actual.shift();
+      pred.shift();
+    }
+
+    chartInst.update('none');
+  }
+
+  // Log entry
+  function logCycle(data) {
+    const ts  = new Date().toLocaleTimeString();
+    const msg = data.prediction !== null
+      ? `Cycle <span class="val">${data.cycle}</span> | Capacity: <span class="val">${data.capacity} Ah</span> | Prediction: <span class="pred">${data.prediction} Ah</span>`
+      : `Cycle <span class="val">${data.cycle}</span> | Capacity: <span class="val">${data.capacity} Ah</span> | <span class="wait">Buffering... (${data.buffer_size}/50)</span>`;
+
+    addLog(msg);
+  }
+
+  function addLog(msg, cls = '') {
+    const log  = document.getElementById('logBody');
+    const ts   = new Date().toLocaleTimeString();
+    const div  = document.createElement('div');
+    div.className   = 'log-entry ' + cls;
+    div.innerHTML   = `<span class="ts">[${ts}]</span> ${msg}`;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function setStatus(state, text) {
+    const badge = document.getElementById('statusBadge');
+    const dot   = document.getElementById('statusDot');
+    const label = document.getElementById('statusText');
+
+    badge.className = 'status-badge ' + state;
+    dot.className   = 'status-dot' + (state === 'connected' ? ' pulse' : '');
+    label.textContent = text;
+  }
+
+  // Init
+  initChart();
+</script>
+</body>
+</html>
