@@ -1,0 +1,1480 @@
+termianl 1:
+(venv) PS C:\kafka> cd C:\kafka
+>> .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+[2026-05-02 14:15:48,392] INFO Reading configuration from: .\config\zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,399] WARN \tmp\zookeeper is relative. Prepend .\ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,413] INFO clientPortAddress is 0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,413] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,414] INFO observerMasterPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,414] INFO metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,421] INFO autopurge.snapRetainCount set to 3 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2026-05-02 14:15:48,422] INFO autopurge.purgeInterval set to 0 (org.apache.zookeeper.server.DatadirCleanupManager)
+[2026-05-02 14:15:48,422] INFO Purge task is not scheduled. (org.apache.zookeeper.server.DatadirCleanupManager)
+[2026-05-02 14:15:48,422] WARN Either no config or no quorum defined in config, running in standalone mode (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+[2026-05-02 14:15:48,425] INFO Log4j 1.2 jmx support not found; jmx disabled. (org.apache.zookeeper.jmx.ManagedUtil)
+[2026-05-02 14:15:48,428] INFO Reading configuration from: .\config\zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,431] WARN \tmp\zookeeper is relative. Prepend .\ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,431] INFO clientPortAddress is 0.0.0.0:2181 (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,432] INFO secureClientPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,432] INFO observerMasterPort is not set (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,433] INFO metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2026-05-02 14:15:48,433] INFO Starting server (org.apache.zookeeper.server.ZooKeeperServerMain)
+[2026-05-02 14:15:48,471] INFO ServerMetrics initialized with provider org.apache.zookeeper.metrics.impl.DefaultMetricsProvider@51dcb805 (org.apache.zookeeper.server.ServerMetrics)
+[2026-05-02 14:15:48,481] INFO ACL digest algorithm is: SHA1 (org.apache.zookeeper.server.auth.DigestAuthenticationProvider)
+[2026-05-02 14:15:48,482] INFO zookeeper.DigestAuthenticationProvider.enabled = true (org.apache.zookeeper.server.auth.DigestAuthenticationProvider)
+[2026-05-02 14:15:48,488] INFO zookeeper.snapshot.trust.empty : false (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2026-05-02 14:15:48,523] INFO  (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,523] INFO   ______                  _                                           (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,523] INFO  |___  /                 | |                                          (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,523] INFO     / /    ___     ___   | | __   ___    ___   _ __     ___   _ __    (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,523] INFO    / /    / _ \   / _ \  | |/ /  / _ \  / _ \ | '_ \   / _ \ | '__| (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,523] INFO   / /__  | (_) | | (_) | |   <  |  __/ |  __/ | |_) | |  __/ | |     (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,527] INFO  /_____|  \___/   \___/  |_|\_\  \___|  \___| | .__/   \___| |_| (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,527] INFO                                               | |                      (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,529] INFO                                               |_|                      (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,529] INFO  (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:zookeeper.version=3.8.3-6ad6d364c7c0bcf0de452d54ebefa3058098ab56, built on 2023-10-05 10:34 UTC (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:host.name=DESKTOP-4AV8ENH (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.version=11.0.31 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.vendor=Eclipse Adoptium (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.home=C:\Program Files\Eclipse Adoptium\jdk-11.0.31.11-hotspot (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.class.path=C:\kafka\libs\activation-1.1.1.jar;C:\kafka\libs\aopalliance-repackaged-2.6.1.jar;C:\kafka\libs\argparse4j-0.7.0.jar;C:\kafka\libs\audience-annotations-0.12.0.jar;C:\kafka\libs\caffeine-2.9.3.jar;C:\kafka\libs\checker-qual-3.19.0.jar;C:\kafka\libs\commons-beanutils-1.9.4.jar;C:\kafka\libs\commons-cli-1.4.jar;C:\kafka\libs\commons-collections-3.2.2.jar;C:\kafka\libs\commons-digester-2.1.jar;C:\kafka\libs\commons-io-2.11.0.jar;C:\kafka\libs\commons-lang3-3.8.1.jar;C:\kafka\libs\commons-logging-1.2.jar;C:\kafka\libs\commons-validator-1.7.jar;C:\kafka\libs\connect-api-3.7.0.jar;C:\kafka\libs\connect-basic-auth-extension-3.7.0.jar;C:\kafka\libs\connect-file-3.7.0.jar;C:\kafka\libs\connect-json-3.7.0.jar;C:\kafka\libs\connect-mirror-3.7.0.jar;C:\kafka\libs\connect-mirror-client-3.7.0.jar;C:\kafka\libs\connect-runtime-3.7.0.jar;C:\kafka\libs\connect-transforms-3.7.0.jar;C:\kafka\libs\error_prone_annotations-2.10.0.jar;C:\kafka\libs\hk2-api-2.6.1.jar;C:\kafka\libs\hk2-locator-2.6.1.jar;C:\kafka\libs\hk2-utils-2.6.1.jar;C:\kafka\libs\jackson-annotations-2.16.0.jar;C:\kafka\libs\jackson-core-2.16.0.jar;C:\kafka\libs\jackson-databind-2.16.0.jar;C:\kafka\libs\jackson-dataformat-csv-2.16.0.jar;C:\kafka\libs\jackson-datatype-jdk8-2.16.0.jar;C:\kafka\libs\jackson-jaxrs-base-2.16.0.jar;C:\kafka\libs\jackson-jaxrs-json-provider-2.16.0.jar;C:\kafka\libs\jackson-module-jaxb-annotations-2.16.0.jar;C:\kafka\libs\jackson-module-scala_2.13-2.16.0.jar;C:\kafka\libs\jakarta.activation-api-1.2.2.jar;C:\kafka\libs\jakarta.annotation-api-1.3.5.jar;C:\kafka\libs\jakarta.inject-2.6.1.jar;C:\kafka\libs\jakarta.validation-api-2.0.2.jar;C:\kafka\libs\jakarta.ws.rs-api-2.1.6.jar;C:\kafka\libs\jakarta.xml.bind-api-2.3.3.jar;C:\kafka\libs\javassist-3.29.2-GA.jar;C:\kafka\libs\javax.activation-api-1.2.0.jar;C:\kafka\libs\javax.annotation-api-1.3.2.jar;C:\kafka\libs\javax.servlet-api-3.1.0.jar;C:\kafka\libs\javax.ws.rs-api-2.1.1.jar;C:\kafka\libs\jaxb-api-2.3.1.jar;C:\kafka\libs\jersey-client-2.39.1.jar;C:\kafka\libs\jersey-common-2.39.1.jar;C:\kafka\libs\jersey-container-servlet-2.39.1.jar;C:\kafka\libs\jersey-container-servlet-core-2.39.1.jar;C:\kafka\libs\jersey-hk2-2.39.1.jar;C:\kafka\libs\jersey-server-2.39.1.jar;C:\kafka\libs\jetty-client-9.4.53.v20231009.jar;C:\kafka\libs\jetty-continuation-9.4.53.v20231009.jar;C:\kafka\libs\jetty-http-9.4.53.v20231009.jar;C:\kafka\libs\jetty-io-9.4.53.v20231009.jar;C:\kafka\libs\jetty-security-9.4.53.v20231009.jar;C:\kafka\libs\jetty-server-9.4.53.v20231009.jar;C:\kafka\libs\jetty-servlet-9.4.53.v20231009.jar;C:\kafka\libs\jetty-servlets-9.4.53.v20231009.jar;C:\kafka\libs\jetty-util-9.4.53.v20231009.jar;C:\kafka\libs\jetty-util-ajax-9.4.53.v20231009.jar;C:\kafka\libs\jline-3.22.0.jar;C:\kafka\libs\jopt-simple-5.0.4.jar;C:\kafka\libs\jose4j-0.9.4.jar;C:\kafka\libs\jsr305-3.0.2.jar;C:\kafka\libs\kafka-clients-3.7.0.jar;C:\kafka\libs\kafka-group-coordinator-3.7.0.jar;C:\kafka\libs\kafka-log4j-appender-3.7.0.jar;C:\kafka\libs\kafka-metadata-3.7.0.jar;C:\kafka\libs\kafka-raft-3.7.0.jar;C:\kafka\libs\kafka-server-3.7.0.jar;C:\kafka\libs\kafka-server-common-3.7.0.jar;C:\kafka\libs\kafka-shell-3.7.0.jar;C:\kafka\libs\kafka-storage-3.7.0.jar;C:\kafka\libs\kafka-storage-api-3.7.0.jar;C:\kafka\libs\kafka-streams-3.7.0.jar;C:\kafka\libs\kafka-streams-examples-3.7.0.jar;C:\kafka\libs\kafka-streams-scala_2.13-3.7.0.jar;C:\kafka\libs\kafka-streams-test-utils-3.7.0.jar;C:\kafka\libs\kafka-tools-3.7.0.jar;C:\kafka\libs\kafka-tools-api-3.7.0.jar;C:\kafka\libs\kafka_2.13-3.7.0.jar;C:\kafka\libs\lz4-java-1.8.0.jar;C:\kafka\libs\maven-artifact-3.8.8.jar;C:\kafka\libs\metrics-core-2.2.0.jar;C:\kafka\libs\metrics-core-4.1.12.1.jar;C:\kafka\libs\netty-buffer-4.1.100.Final.jar;C:\kafka\libs\netty-codec-4.1.100.Final.jar;C:\kafka\libs\netty-common-4.1.100.Final.jar;C:\kafka\libs\netty-handler-4.1.100.Final.jar;C:\kafka\libs\netty-resolver-4.1.100.Final.jar;C:\kafka\libs\netty-transport-4.1.100.Final.jar;C:\kafka\libs\netty-transport-classes-epoll-4.1.100.Final.jar;C:\kafka\libs\netty-transport-native-epoll-4.1.100.Final.jar;C:\kafka\libs\netty-transport-native-unix-common-4.1.100.Final.jar;C:\kafka\libs\opentelemetry-proto-1.0.0-alpha.jar;C:\kafka\libs\osgi-resource-locator-1.0.3.jar;C:\kafka\libs\paranamer-2.8.jar;C:\kafka\libs\pcollections-4.0.1.jar;C:\kafka\libs\plexus-utils-3.3.1.jar;C:\kafka\libs\protobuf-java-3.23.4.jar;C:\kafka\libs\reflections-0.10.2.jar;C:\kafka\libs\reload4j-1.2.25.jar;C:\kafka\libs\rocksdbjni-7.9.2.jar;C:\kafka\libs\scala-collection-compat_2.13-2.10.0.jar;C:\kafka\libs\scala-java8-compat_2.13-1.0.2.jar;C:\kafka\libs\scala-library-2.13.12.jar;C:\kafka\libs\scala-logging_2.13-3.9.4.jar;C:\kafka\libs\scala-reflect-2.13.12.jar;C:\kafka\libs\slf4j-api-1.7.36.jar;C:\kafka\libs\slf4j-reload4j-1.7.36.jar;C:\kafka\libs\snappy-java-1.1.10.5.jar;C:\kafka\libs\swagger-annotations-2.2.8.jar;C:\kafka\libs\trogdor-3.7.0.jar;C:\kafka\libs\zookeeper-3.8.3.jar;C:\kafka\libs\zookeeper-jute-3.8.3.jar;C:\kafka\libs\zstd-jni-1.5.5-6.jar (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.library.path=C:\Program Files\Eclipse Adoptium\jdk-11.0.31.11-hotspot\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\COURSES\EV Battery\venv\Scripts;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Users\hassa\AppData\Local\Programs\Microsoft VS Code;C:\Program Files\Eclipse Adoptium\jdk-11.0.31.11-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\MinGW\bin;C:\Program Files\Python312;C:\Users\hassa\AppData\Roaming\Python\Python312\Scripts;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\GitHub CLI\;D:\COURSES\MCP\V6. How to Build Local MCP Servers\Expense Tracker MCP Server\.venv/Scripts;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Users\hassa\AppData\Local\Programs\Microsoft VS Code;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\MinGW\bin;C:\Program Files\Python312;C:\Users\hassa\AppData\Roaming\Python\Python312\Scripts;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;D:\COURSES\Hospital Appointment Booking Voice Agent\venv\Scripts;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\hassa\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\MinGW\bin;C:\Program Files\Python312;C:\Users\hassa\AppData\Roaming\Python\Python312\Scripts;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\hassa\AppData\Local\Microsoft\WindowsApps;C:\Users\hassa\.dotnet\tools;C:\Users\hassa\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hassa\AppData\Local\Programs\Ollama;C:\Users\hassa\AppData\Roaming\npm;C:\Users\hassa\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin;c:\Users\hassa\.vscode\extensions\ms-python.debugpy-2025.18.0-win32-x64\bundled\scripts\noConfigScripts;C:\ngrok;c:\Users\hassa\.vscode\extensions\ms-python.debugpy-2025.18.0-win32-x64\bundled\scripts\noConfigScripts;C:\Program Files\nodejs;C:\Program Files\nodejs;C:\Program Files\nodejs;C:\Users\hassa\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;c:\Users\hassa\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\scripts\noConfigScripts;. (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.io.tmpdir=C:\Users\hassa\AppData\Local\Temp\ (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:java.compiler=<NA> (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.name=Windows 11 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.arch=amd64 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.version=10.0 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:user.name=hassa (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:user.home=C:\Users\hassa (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:user.dir=C:\kafka (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.memory.free=487MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.memory.max=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO Server environment:os.memory.total=512MB (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,564] INFO zookeeper.enableEagerACLCheck = false (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,574] INFO zookeeper.digest.enabled = true (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,575] INFO zookeeper.closeSessionTxn.enabled = true (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,575] INFO zookeeper.flushDelay = 0 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,575] INFO zookeeper.maxWriteQueuePollTime = 0 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,575] INFO zookeeper.maxBatchSize=1000 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,575] INFO zookeeper.intBufferStartingSizeBytes = 1024 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,581] INFO Weighed connection throttling is disabled (org.apache.zookeeper.server.BlueThrottle)
+[2026-05-02 14:15:48,616] INFO minSessionTimeout set to 6000 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,616] INFO maxSessionTimeout set to 60000 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,621] INFO getData response cache size is initialized with value 400. (org.apache.zookeeper.server.ResponseCache)
+[2026-05-02 14:15:48,621] INFO getChildren response cache size is initialized with value 400. (org.apache.zookeeper.server.ResponseCache)
+[2026-05-02 14:15:48,623] INFO zookeeper.pathStats.slotCapacity = 60 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,624] INFO zookeeper.pathStats.slotDuration = 15 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,624] INFO zookeeper.pathStats.maxDepth = 6 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,624] INFO zookeeper.pathStats.initialDelay = 5 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,624] INFO zookeeper.pathStats.delay = 5 (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,624] INFO zookeeper.pathStats.enabled = false (org.apache.zookeeper.server.util.RequestPathMetricsCollector)
+[2026-05-02 14:15:48,628] INFO The max bytes for all large requests are set to 104857600 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,628] INFO The large request threshold is set to -1 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,634] INFO zookeeper.enforce.auth.enabled = false (org.apache.zookeeper.server.AuthenticationHelper)
+[2026-05-02 14:15:48,634] INFO zookeeper.enforce.auth.schemes = [] (org.apache.zookeeper.server.AuthenticationHelper)
+[2026-05-02 14:15:48,634] INFO Created server with tickTime 3000 ms minSessionTimeout 6000 ms maxSessionTimeout 60000 ms clientPortListenBacklog -1 datadir \tmp\zookeeper\version-2 snapdir \tmp\zookeeper\version-2 (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,655] INFO Using org.apache.zookeeper.server.NIOServerCnxnFactory as server connection factory (org.apache.zookeeper.server.ServerCnxnFactory)
+[2026-05-02 14:15:48,658] WARN maxCnxns is not configured, using default value 0. (org.apache.zookeeper.server.ServerCnxnFactory)
+[2026-05-02 14:15:48,661] INFO Configuring NIO connection handler with 10s sessionless connection timeout, 2 selector thread(s), 16 worker threads, and 64 kB direct buffers. (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2026-05-02 14:15:48,698] INFO binding to port 0.0.0.0/0.0.0.0:2181 (org.apache.zookeeper.server.NIOServerCnxnFactory)
+[2026-05-02 14:15:48,751] INFO Using org.apache.zookeeper.server.watch.WatchManager as watch manager (org.apache.zookeeper.server.watch.WatchManagerFactory)
+[2026-05-02 14:15:48,751] INFO Using org.apache.zookeeper.server.watch.WatchManager as watch manager (org.apache.zookeeper.server.watch.WatchManagerFactory)
+[2026-05-02 14:15:48,754] INFO zookeeper.snapshotSizeFactor = 0.33 (org.apache.zookeeper.server.ZKDatabase)
+[2026-05-02 14:15:48,755] INFO zookeeper.commitLogCount=500 (org.apache.zookeeper.server.ZKDatabase)
+[2026-05-02 14:15:48,770] INFO zookeeper.snapshot.compression.method = CHECKED (org.apache.zookeeper.server.persistence.SnapStream)
+[2026-05-02 14:15:48,771] INFO Snapshotting: 0x0 to \tmp\zookeeper\version-2\snapshot.0 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2026-05-02 14:15:48,784] INFO Snapshot loaded in 29 ms, highest zxid is 0x0, digest is 1371985504 (org.apache.zookeeper.server.ZKDatabase)
+[2026-05-02 14:15:48,787] INFO Snapshotting: 0x0 to \tmp\zookeeper\version-2\snapshot.0 (org.apache.zookeeper.server.persistence.FileTxnSnapLog)
+[2026-05-02 14:15:48,793] INFO Snapshot taken in 5 ms (org.apache.zookeeper.server.ZooKeeperServer)
+[2026-05-02 14:15:48,829] INFO PrepRequestProcessor (sid:0) started, reconfigEnabled=false (org.apache.zookeeper.server.PrepRequestProcessor)
+[2026-05-02 14:15:48,831] INFO zookeeper.request_throttler.shutdownTimeout = 10000 ms (org.apache.zookeeper.server.RequestThrottler)
+[2026-05-02 14:15:48,878] INFO Using checkIntervalMs=60000 maxPerMinute=10000 maxNeverUsedIntervalMs=0 (org.apache.zookeeper.server.ContainerManager)
+[2026-05-02 14:15:48,881] INFO ZooKeeper audit is disabled. (org.apache.zookeeper.audit.ZKAuditProvider)
+[2026-05-02 14:15:55,865] INFO Creating new log file: log.1 (org.apache.zookeeper.server.persistence.FileTxnLog)
+Terminate batch job (Y/N)? y
+(venv) PS C:\kafka> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+terminal 2:
+with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:16:04,551] INFO [LogLoader partition=ev_battery_telemetry-0, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:16:04,553] INFO Created log for partition ev_battery_telemetry-0 in C:\tmp\kafka-logs\ev_battery_telemetry-0 with properties {} (kafka.log.LogManager)
+[2026-05-02 14:16:04,553] INFO [Partition ev_battery_telemetry-0 broker=0] No checkpointed highwatermark is found for partition ev_battery_telemetry-0 (kafka.cluster.Partition)
+[2026-05-02 14:16:04,553] INFO [Partition ev_battery_telemetry-0 broker=0] Log loaded for partition ev_battery_telemetry-0 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:16:04,581] INFO [LogLoader partition=ev_battery_telemetry-1, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:16:04,582] INFO Created log for partition ev_battery_telemetry-1 in C:\tmp\kafka-logs\ev_battery_telemetry-1 with properties {} (kafka.log.LogManager)
+[2026-05-02 14:16:04,582] INFO [Partition ev_battery_telemetry-1 broker=0] No checkpointed highwatermark is found for partition ev_battery_telemetry-1 (kafka.cluster.Partition)
+[2026-05-02 14:16:04,583] INFO [Partition ev_battery_telemetry-1 broker=0] Log loaded for partition ev_battery_telemetry-1 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,108] INFO Creating topic __consumer_offsets with configuration {compression.type=producer, cleanup.policy=compact, segment.bytes=104857600} and initial partition assignment HashMap(0 -> ArrayBuffer(0), 1 -> ArrayBuffer(0), 2 -> ArrayBuffer(0), 3 -> ArrayBuffer(0), 4 -> ArrayBuffer(0), 5 -> ArrayBuffer(0), 6 -> ArrayBuffer(0), 7 -> ArrayBuffer(0), 8 -> ArrayBuffer(0), 9 -> ArrayBuffer(0), 10 -> ArrayBuffer(0), 11 -> ArrayBuffer(0), 12 -> ArrayBuffer(0), 13 -> ArrayBuffer(0), 14 -> ArrayBuffer(0), 15 -> ArrayBuffer(0), 16 -> ArrayBuffer(0), 17 -> ArrayBuffer(0), 18 -> ArrayBuffer(0), 19 -> ArrayBuffer(0), 20 -> ArrayBuffer(0), 21 -> ArrayBuffer(0), 22 -> ArrayBuffer(0), 23 -> ArrayBuffer(0), 24 -> ArrayBuffer(0), 25 -> ArrayBuffer(0), 26 -> ArrayBuffer(0), 27 -> ArrayBuffer(0), 28 -> ArrayBuffer(0), 29 -> ArrayBuffer(0), 30 -> ArrayBuffer(0), 31 -> ArrayBuffer(0), 32 -> ArrayBuffer(0), 33 -> ArrayBuffer(0), 34 -> ArrayBuffer(0), 35 -> ArrayBuffer(0), 36 -> ArrayBuffer(0), 37 -> ArrayBuffer(0), 38 -> ArrayBuffer(0), 39 -> ArrayBuffer(0), 40 -> ArrayBuffer(0), 41 -> ArrayBuffer(0), 42 -> ArrayBuffer(0), 43 -> ArrayBuffer(0), 44 -> ArrayBuffer(0), 45 -> ArrayBuffer(0), 46 -> ArrayBuffer(0), 47 -> ArrayBuffer(0), 48 -> ArrayBuffer(0), 49 -> ArrayBuffer(0)) (kafka.zk.AdminZkClient)
+[2026-05-02 14:20:32,420] INFO [ReplicaFetcherManager on broker 0] Removed fetcher for partitions HashSet(__consumer_offsets-22, __consumer_offsets-30, __consumer_offsets-25, __consumer_offsets-35, __consumer_offsets-37, __consumer_offsets-38, __consumer_offsets-13, __consumer_offsets-8, __consumer_offsets-21, __consumer_offsets-4, __consumer_offsets-27, __consumer_offsets-7, __consumer_offsets-9, __consumer_offsets-46, __consumer_offsets-41, __consumer_offsets-33, __consumer_offsets-23, __consumer_offsets-49, __consumer_offsets-47, __consumer_offsets-16, __consumer_offsets-28, __consumer_offsets-31, __consumer_offsets-36, __consumer_offsets-42, __consumer_offsets-3, __consumer_offsets-18, __consumer_offsets-15, __consumer_offsets-24, __consumer_offsets-17, __consumer_offsets-48, __consumer_offsets-19, __consumer_offsets-11, __consumer_offsets-2, __consumer_offsets-43, __consumer_offsets-6, __consumer_offsets-14, __consumer_offsets-20, __consumer_offsets-0, __consumer_offsets-44, __consumer_offsets-39, __consumer_offsets-12, __consumer_offsets-45, __consumer_offsets-1, __consumer_offsets-5, __consumer_offsets-26, __consumer_offsets-29, __consumer_offsets-34, __consumer_offsets-10, __consumer_offsets-32, __consumer_offsets-40) (kafka.server.ReplicaFetcherManager)
+[2026-05-02 14:20:32,461] INFO [LogLoader partition=__consumer_offsets-3, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,465] INFO Created log for partition __consumer_offsets-3 in C:\tmp\kafka-logs\__consumer_offsets-3 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,467] INFO [Partition __consumer_offsets-3 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-3 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,468] INFO [Partition __consumer_offsets-3 broker=0] Log loaded for partition __consumer_offsets-3 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,512] INFO [LogLoader partition=__consumer_offsets-18, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,514] INFO Created log for partition __consumer_offsets-18 in C:\tmp\kafka-logs\__consumer_offsets-18 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,514] INFO [Partition __consumer_offsets-18 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-18 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,516] INFO [Partition __consumer_offsets-18 broker=0] Log loaded for partition __consumer_offsets-18 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,553] INFO [LogLoader partition=__consumer_offsets-41, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,554] INFO Created log for partition __consumer_offsets-41 in C:\tmp\kafka-logs\__consumer_offsets-41 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,555] INFO [Partition __consumer_offsets-41 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-41 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,555] INFO [Partition __consumer_offsets-41 broker=0] Log loaded for partition __consumer_offsets-41 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,589] INFO [LogLoader partition=__consumer_offsets-10, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,591] INFO Created log for partition __consumer_offsets-10 in C:\tmp\kafka-logs\__consumer_offsets-10 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,591] INFO [Partition __consumer_offsets-10 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-10 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,591] INFO [Partition __consumer_offsets-10 broker=0] Log loaded for partition __consumer_offsets-10 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,625] INFO [LogLoader partition=__consumer_offsets-33, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,626] INFO Created log for partition __consumer_offsets-33 in C:\tmp\kafka-logs\__consumer_offsets-33 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,626] INFO [Partition __consumer_offsets-33 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-33 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,627] INFO [Partition __consumer_offsets-33 broker=0] Log loaded for partition __consumer_offsets-33 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,655] INFO [LogLoader partition=__consumer_offsets-48, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,656] INFO Created log for partition __consumer_offsets-48 in C:\tmp\kafka-logs\__consumer_offsets-48 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,657] INFO [Partition __consumer_offsets-48 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-48 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,657] INFO [Partition __consumer_offsets-48 broker=0] Log loaded for partition __consumer_offsets-48 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,691] INFO [LogLoader partition=__consumer_offsets-19, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,693] INFO Created log for partition __consumer_offsets-19 in C:\tmp\kafka-logs\__consumer_offsets-19 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,693] INFO [Partition __consumer_offsets-19 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-19 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,693] INFO [Partition __consumer_offsets-19 broker=0] Log loaded for partition __consumer_offsets-19 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,724] INFO [LogLoader partition=__consumer_offsets-34, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,726] INFO Created log for partition __consumer_offsets-34 in C:\tmp\kafka-logs\__consumer_offsets-34 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,726] INFO [Partition __consumer_offsets-34 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-34 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,727] INFO [Partition __consumer_offsets-34 broker=0] Log loaded for partition __consumer_offsets-34 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,764] INFO [LogLoader partition=__consumer_offsets-4, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,766] INFO Created log for partition __consumer_offsets-4 in C:\tmp\kafka-logs\__consumer_offsets-4 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,766] INFO [Partition __consumer_offsets-4 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-4 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,766] INFO [Partition __consumer_offsets-4 broker=0] Log loaded for partition __consumer_offsets-4 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,805] INFO [LogLoader partition=__consumer_offsets-11, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,807] INFO Created log for partition __consumer_offsets-11 in C:\tmp\kafka-logs\__consumer_offsets-11 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,807] INFO [Partition __consumer_offsets-11 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-11 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,807] INFO [Partition __consumer_offsets-11 broker=0] Log loaded for partition __consumer_offsets-11 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,844] INFO [LogLoader partition=__consumer_offsets-26, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,846] INFO Created log for partition __consumer_offsets-26 in C:\tmp\kafka-logs\__consumer_offsets-26 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,846] INFO [Partition __consumer_offsets-26 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-26 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,847] INFO [Partition __consumer_offsets-26 broker=0] Log loaded for partition __consumer_offsets-26 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,891] INFO [LogLoader partition=__consumer_offsets-49, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,893] INFO Created log for partition __consumer_offsets-49 in C:\tmp\kafka-logs\__consumer_offsets-49 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,894] INFO [Partition __consumer_offsets-49 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-49 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,894] INFO [Partition __consumer_offsets-49 broker=0] Log loaded for partition __consumer_offsets-49 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,938] INFO [LogLoader partition=__consumer_offsets-39, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,941] INFO Created log for partition __consumer_offsets-39 in C:\tmp\kafka-logs\__consumer_offsets-39 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,942] INFO [Partition __consumer_offsets-39 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-39 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,942] INFO [Partition __consumer_offsets-39 broker=0] Log loaded for partition __consumer_offsets-39 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,977] INFO [LogLoader partition=__consumer_offsets-9, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:32,978] INFO Created log for partition __consumer_offsets-9 in C:\tmp\kafka-logs\__consumer_offsets-9 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:32,979] INFO [Partition __consumer_offsets-9 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-9 (kafka.cluster.Partition)
+[2026-05-02 14:20:32,979] INFO [Partition __consumer_offsets-9 broker=0] Log loaded for partition __consumer_offsets-9 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,007] INFO [LogLoader partition=__consumer_offsets-24, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,008] INFO Created log for partition __consumer_offsets-24 in C:\tmp\kafka-logs\__consumer_offsets-24 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,009] INFO [Partition __consumer_offsets-24 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-24 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,009] INFO [Partition __consumer_offsets-24 broker=0] Log loaded for partition __consumer_offsets-24 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,035] INFO [LogLoader partition=__consumer_offsets-31, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,036] INFO Created log for partition __consumer_offsets-31 in C:\tmp\kafka-logs\__consumer_offsets-31 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,037] INFO [Partition __consumer_offsets-31 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-31 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,037] INFO [Partition __consumer_offsets-31 broker=0] Log loaded for partition __consumer_offsets-31 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,063] INFO [LogLoader partition=__consumer_offsets-46, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,064] INFO Created log for partition __consumer_offsets-46 in C:\tmp\kafka-logs\__consumer_offsets-46 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,065] INFO [Partition __consumer_offsets-46 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-46 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,065] INFO [Partition __consumer_offsets-46 broker=0] Log loaded for partition __consumer_offsets-46 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,120] INFO [LogLoader partition=__consumer_offsets-1, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,122] INFO Created log for partition __consumer_offsets-1 in C:\tmp\kafka-logs\__consumer_offsets-1 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,122] INFO [Partition __consumer_offsets-1 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-1 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,123] INFO [Partition __consumer_offsets-1 broker=0] Log loaded for partition __consumer_offsets-1 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,183] INFO [LogLoader partition=__consumer_offsets-16, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,184] INFO Created log for partition __consumer_offsets-16 in C:\tmp\kafka-logs\__consumer_offsets-16 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,184] INFO [Partition __consumer_offsets-16 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-16 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,184] INFO [Partition __consumer_offsets-16 broker=0] Log loaded for partition __consumer_offsets-16 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,207] INFO [LogLoader partition=__consumer_offsets-2, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,207] INFO Created log for partition __consumer_offsets-2 in C:\tmp\kafka-logs\__consumer_offsets-2 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,207] INFO [Partition __consumer_offsets-2 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-2 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,208] INFO [Partition __consumer_offsets-2 broker=0] Log loaded for partition __consumer_offsets-2 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,231] INFO [LogLoader partition=__consumer_offsets-25, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,232] INFO Created log for partition __consumer_offsets-25 in C:\tmp\kafka-logs\__consumer_offsets-25 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,232] INFO [Partition __consumer_offsets-25 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-25 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,232] INFO [Partition __consumer_offsets-25 broker=0] Log loaded for partition __consumer_offsets-25 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,251] INFO [LogLoader partition=__consumer_offsets-40, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,252] INFO Created log for partition __consumer_offsets-40 in C:\tmp\kafka-logs\__consumer_offsets-40 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,252] INFO [Partition __consumer_offsets-40 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-40 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,252] INFO [Partition __consumer_offsets-40 broker=0] Log loaded for partition __consumer_offsets-40 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,275] INFO [LogLoader partition=__consumer_offsets-47, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,276] INFO Created log for partition __consumer_offsets-47 in C:\tmp\kafka-logs\__consumer_offsets-47 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,276] INFO [Partition __consumer_offsets-47 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-47 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,277] INFO [Partition __consumer_offsets-47 broker=0] Log loaded for partition __consumer_offsets-47 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,298] INFO [LogLoader partition=__consumer_offsets-17, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,298] INFO Created log for partition __consumer_offsets-17 in C:\tmp\kafka-logs\__consumer_offsets-17 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,299] INFO [Partition __consumer_offsets-17 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-17 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,299] INFO [Partition __consumer_offsets-17 broker=0] Log loaded for partition __consumer_offsets-17 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,320] INFO [LogLoader partition=__consumer_offsets-32, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,321] INFO Created log for partition __consumer_offsets-32 in C:\tmp\kafka-logs\__consumer_offsets-32 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,321] INFO [Partition __consumer_offsets-32 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-32 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,321] INFO [Partition __consumer_offsets-32 broker=0] Log loaded for partition __consumer_offsets-32 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,342] INFO [LogLoader partition=__consumer_offsets-37, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,343] INFO Created log for partition __consumer_offsets-37 in C:\tmp\kafka-logs\__consumer_offsets-37 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,343] INFO [Partition __consumer_offsets-37 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-37 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,343] INFO [Partition __consumer_offsets-37 broker=0] Log loaded for partition __consumer_offsets-37 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,367] INFO [LogLoader partition=__consumer_offsets-7, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,368] INFO Created log for partition __consumer_offsets-7 in C:\tmp\kafka-logs\__consumer_offsets-7 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,368] INFO [Partition __consumer_offsets-7 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-7 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,368] INFO [Partition __consumer_offsets-7 broker=0] Log loaded for partition __consumer_offsets-7 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,394] INFO [LogLoader partition=__consumer_offsets-22, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,394] INFO Created log for partition __consumer_offsets-22 in C:\tmp\kafka-logs\__consumer_offsets-22 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,395] INFO [Partition __consumer_offsets-22 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-22 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,395] INFO [Partition __consumer_offsets-22 broker=0] Log loaded for partition __consumer_offsets-22 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,420] INFO [LogLoader partition=__consumer_offsets-29, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,421] INFO Created log for partition __consumer_offsets-29 in C:\tmp\kafka-logs\__consumer_offsets-29 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,421] INFO [Partition __consumer_offsets-29 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-29 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,421] INFO [Partition __consumer_offsets-29 broker=0] Log loaded for partition __consumer_offsets-29 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,448] INFO [LogLoader partition=__consumer_offsets-44, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,449] INFO Created log for partition __consumer_offsets-44 in C:\tmp\kafka-logs\__consumer_offsets-44 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,449] INFO [Partition __consumer_offsets-44 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-44 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,449] INFO [Partition __consumer_offsets-44 broker=0] Log loaded for partition __consumer_offsets-44 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,475] INFO [LogLoader partition=__consumer_offsets-14, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,476] INFO Created log for partition __consumer_offsets-14 in C:\tmp\kafka-logs\__consumer_offsets-14 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,477] INFO [Partition __consumer_offsets-14 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-14 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,477] INFO [Partition __consumer_offsets-14 broker=0] Log loaded for partition __consumer_offsets-14 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,504] INFO [LogLoader partition=__consumer_offsets-23, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,505] INFO Created log for partition __consumer_offsets-23 in C:\tmp\kafka-logs\__consumer_offsets-23 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,505] INFO [Partition __consumer_offsets-23 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-23 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,505] INFO [Partition __consumer_offsets-23 broker=0] Log loaded for partition __consumer_offsets-23 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,531] INFO [LogLoader partition=__consumer_offsets-38, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,532] INFO Created log for partition __consumer_offsets-38 in C:\tmp\kafka-logs\__consumer_offsets-38 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,533] INFO [Partition __consumer_offsets-38 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-38 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,533] INFO [Partition __consumer_offsets-38 broker=0] Log loaded for partition __consumer_offsets-38 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,564] INFO [LogLoader partition=__consumer_offsets-8, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,565] INFO Created log for partition __consumer_offsets-8 in C:\tmp\kafka-logs\__consumer_offsets-8 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,565] INFO [Partition __consumer_offsets-8 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-8 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,566] INFO [Partition __consumer_offsets-8 broker=0] Log loaded for partition __consumer_offsets-8 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,597] INFO [LogLoader partition=__consumer_offsets-45, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,599] INFO Created log for partition __consumer_offsets-45 in C:\tmp\kafka-logs\__consumer_offsets-45 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,599] INFO [Partition __consumer_offsets-45 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-45 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,600] INFO [Partition __consumer_offsets-45 broker=0] Log loaded for partition __consumer_offsets-45 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,632] INFO [LogLoader partition=__consumer_offsets-15, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,633] INFO Created log for partition __consumer_offsets-15 in C:\tmp\kafka-logs\__consumer_offsets-15 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,634] INFO [Partition __consumer_offsets-15 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-15 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,634] INFO [Partition __consumer_offsets-15 broker=0] Log loaded for partition __consumer_offsets-15 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,660] INFO [LogLoader partition=__consumer_offsets-30, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,661] INFO Created log for partition __consumer_offsets-30 in C:\tmp\kafka-logs\__consumer_offsets-30 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,661] INFO [Partition __consumer_offsets-30 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-30 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,661] INFO [Partition __consumer_offsets-30 broker=0] Log loaded for partition __consumer_offsets-30 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,687] INFO [LogLoader partition=__consumer_offsets-0, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,688] INFO Created log for partition __consumer_offsets-0 in C:\tmp\kafka-logs\__consumer_offsets-0 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,689] INFO [Partition __consumer_offsets-0 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,689] INFO [Partition __consumer_offsets-0 broker=0] Log loaded for partition __consumer_offsets-0 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,715] INFO [LogLoader partition=__consumer_offsets-35, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,716] INFO Created log for partition __consumer_offsets-35 in C:\tmp\kafka-logs\__consumer_offsets-35 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,717] INFO [Partition __consumer_offsets-35 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-35 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,717] INFO [Partition __consumer_offsets-35 broker=0] Log loaded for partition __consumer_offsets-35 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,741] INFO [LogLoader partition=__consumer_offsets-5, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,742] INFO Created log for partition __consumer_offsets-5 in C:\tmp\kafka-logs\__consumer_offsets-5 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,742] INFO [Partition __consumer_offsets-5 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-5 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,743] INFO [Partition __consumer_offsets-5 broker=0] Log loaded for partition __consumer_offsets-5 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,774] INFO [LogLoader partition=__consumer_offsets-20, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,776] INFO Created log for partition __consumer_offsets-20 in C:\tmp\kafka-logs\__consumer_offsets-20 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,776] INFO [Partition __consumer_offsets-20 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-20 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,776] INFO [Partition __consumer_offsets-20 broker=0] Log loaded for partition __consumer_offsets-20 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,804] INFO [LogLoader partition=__consumer_offsets-27, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,806] INFO Created log for partition __consumer_offsets-27 in C:\tmp\kafka-logs\__consumer_offsets-27 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,806] INFO [Partition __consumer_offsets-27 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-27 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,806] INFO [Partition __consumer_offsets-27 broker=0] Log loaded for partition __consumer_offsets-27 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,836] INFO [LogLoader partition=__consumer_offsets-42, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,838] INFO Created log for partition __consumer_offsets-42 in C:\tmp\kafka-logs\__consumer_offsets-42 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,838] INFO [Partition __consumer_offsets-42 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-42 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,838] INFO [Partition __consumer_offsets-42 broker=0] Log loaded for partition __consumer_offsets-42 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,866] INFO [LogLoader partition=__consumer_offsets-12, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,867] INFO Created log for partition __consumer_offsets-12 in C:\tmp\kafka-logs\__consumer_offsets-12 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,868] INFO [Partition __consumer_offsets-12 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-12 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,868] INFO [Partition __consumer_offsets-12 broker=0] Log loaded for partition __consumer_offsets-12 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,898] INFO [LogLoader partition=__consumer_offsets-21, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,899] INFO Created log for partition __consumer_offsets-21 in C:\tmp\kafka-logs\__consumer_offsets-21 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,899] INFO [Partition __consumer_offsets-21 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-21 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,899] INFO [Partition __consumer_offsets-21 broker=0] Log loaded for partition __consumer_offsets-21 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,929] INFO [LogLoader partition=__consumer_offsets-36, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,930] INFO Created log for partition __consumer_offsets-36 in C:\tmp\kafka-logs\__consumer_offsets-36 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,931] INFO [Partition __consumer_offsets-36 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-36 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,931] INFO [Partition __consumer_offsets-36 broker=0] Log loaded for partition __consumer_offsets-36 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,959] INFO [LogLoader partition=__consumer_offsets-6, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,960] INFO Created log for partition __consumer_offsets-6 in C:\tmp\kafka-logs\__consumer_offsets-6 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,960] INFO [Partition __consumer_offsets-6 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-6 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,960] INFO [Partition __consumer_offsets-6 broker=0] Log loaded for partition __consumer_offsets-6 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,989] INFO [LogLoader partition=__consumer_offsets-43, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:33,991] INFO Created log for partition __consumer_offsets-43 in C:\tmp\kafka-logs\__consumer_offsets-43 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:33,991] INFO [Partition __consumer_offsets-43 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-43 (kafka.cluster.Partition)
+[2026-05-02 14:20:33,992] INFO [Partition __consumer_offsets-43 broker=0] Log loaded for partition __consumer_offsets-43 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:34,015] INFO [LogLoader partition=__consumer_offsets-13, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:34,016] INFO Created log for partition __consumer_offsets-13 in C:\tmp\kafka-logs\__consumer_offsets-13 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:34,016] INFO [Partition __consumer_offsets-13 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-13 (kafka.cluster.Partition)
+[2026-05-02 14:20:34,017] INFO [Partition __consumer_offsets-13 broker=0] Log loaded for partition __consumer_offsets-13 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:34,040] INFO [LogLoader partition=__consumer_offsets-28, dir=C:\tmp\kafka-logs] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+[2026-05-02 14:20:34,041] INFO Created log for partition __consumer_offsets-28 in C:\tmp\kafka-logs\__consumer_offsets-28 with properties {cleanup.policy=compact, compression.type="producer", segment.bytes=104857600} (kafka.log.LogManager)
+[2026-05-02 14:20:34,042] INFO [Partition __consumer_offsets-28 broker=0] No checkpointed highwatermark is found for partition __consumer_offsets-28 (kafka.cluster.Partition)
+[2026-05-02 14:20:34,042] INFO [Partition __consumer_offsets-28 broker=0] Log loaded for partition __consumer_offsets-28 with initial high watermark 0 (kafka.cluster.Partition)
+[2026-05-02 14:20:34,050] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 3 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,053] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-3 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,055] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 18 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,055] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-18 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,055] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 41 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,056] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-41 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,056] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 10 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,056] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-10 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,056] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 33 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,056] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-33 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,056] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 48 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,057] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-48 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,057] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 19 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,057] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-19 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,057] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 34 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,057] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-34 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,058] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 4 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,058] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-4 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,058] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 11 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,058] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-11 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,059] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 26 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,059] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-26 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,059] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 49 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,059] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-49 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,060] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 39 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,060] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-39 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,060] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 9 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,060] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-9 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,060] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 24 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,060] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-24 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,061] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 31 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,061] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-31 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,061] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 46 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,061] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-46 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,061] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 1 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,062] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-1 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,062] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 16 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,062] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-16 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,062] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 2 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,062] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-2 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,063] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 25 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,063] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-25 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,064] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 40 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,064] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-40 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,064] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 47 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,064] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-47 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,065] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 17 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,065] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-17 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,065] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 32 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,065] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-32 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,065] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 37 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,066] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-37 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,066] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 7 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,066] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-7 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,067] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 22 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,067] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-22 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,067] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 29 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,067] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-29 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,067] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 44 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,068] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-44 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,068] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 14 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,068] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-14 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,069] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 23 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,069] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-23 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,069] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 38 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,069] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-38 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,070] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 8 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,070] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-3 in 14 milliseconds for epoch 0, of which 3 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,070] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-8 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,071] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 45 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,072] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-45 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,072] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 15 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,072] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-15 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,072] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 30 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,072] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-30 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,072] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 0 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,073] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-0 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,074] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 35 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,072] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-18 in 16 milliseconds for epoch 0, of which 16 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,075] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-35 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,076] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 5 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,076] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-41 in 20 milliseconds for epoch 0, of which 19 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,076] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-5 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,076] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-10 in 20 milliseconds for epoch 0, of which 20 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,076] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 20 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,077] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-20 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,077] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-33 in 21 milliseconds for epoch 0, of which 21 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,077] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 27 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,078] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-27 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,078] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-48 in 21 milliseconds for epoch 0, of which 21 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,078] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 42 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,078] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-42 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,079] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-19 in 22 milliseconds for epoch 0, of which 21 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,079] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 12 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,079] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-34 in 22 milliseconds for epoch 0, of which 22 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,080] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-12 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,080] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-4 in 22 milliseconds for epoch 0, of which 22 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,081] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 21 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,081] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-21 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,081] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-11 in 22 milliseconds for epoch 0, of which 22 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,081] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 36 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,082] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-26 in 23 milliseconds for epoch 0, of which 23 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,082] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-36 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,082] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 6 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,083] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-49 in 23 milliseconds for epoch 0, of which 22 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,083] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-6 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,083] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 43 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,083] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-39 in 23 milliseconds for epoch 0, of which 23 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,083] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-43 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,084] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-9 in 24 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,084] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 13 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,085] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-24 in 24 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,085] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-13 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,085] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-31 in 24 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,086] INFO [GroupCoordinator 0]: Elected as the group coordinator for partition 28 in epoch 0 (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:34,086] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-46 in 25 milliseconds for epoch 0, of which 25 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,086] INFO [GroupMetadataManager brokerId=0] Scheduling loading of offsets and group metadata from __consumer_offsets-28 for epoch 0 (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,087] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-1 in 25 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,087] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-16 in 25 milliseconds for epoch 0, of which 25 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,088] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-2 in 25 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,088] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-25 in 24 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,089] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-40 in 25 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,089] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-47 in 24 milliseconds for epoch 0, of which 24 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,090] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-17 in 25 milliseconds for epoch 0, of which 25 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,091] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-32 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,092] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-37 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,092] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-7 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,093] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-22 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,094] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-29 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,094] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-44 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,095] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-14 in 26 milliseconds for epoch 0, of which 26 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,164] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-23 in 95 milliseconds for epoch 0, of which 95 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,204] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-38 in 134 milliseconds for epoch 0, of which 134 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,211] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-8 in 140 milliseconds for epoch 0, of which 140 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,212] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-45 in 140 milliseconds for epoch 0, of which 140 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,213] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-15 in 141 milliseconds for epoch 0, of which 141 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,213] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-30 in 141 milliseconds for epoch 0, of which 141 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,214] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-0 in 140 milliseconds for epoch 0, of which 140 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,215] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-35 in 140 milliseconds for epoch 0, of which 140 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,215] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-5 in 139 milliseconds for epoch 0, of which 139 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,216] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-20 in 139 milliseconds for epoch 0, of which 139 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,217] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-27 in 139 milliseconds for epoch 0, of which 139 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,218] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-42 in 139 milliseconds for epoch 0, of which 138 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,218] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-12 in 137 milliseconds for epoch 0, of which 137 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,219] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-21 in 138 milliseconds for epoch 0, of which 138 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,219] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-36 in 137 milliseconds for epoch 0, of which 137 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,220] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-6 in 137 milliseconds for epoch 0, of which 137 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,220] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-43 in 136 milliseconds for epoch 0, of which 136 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,221] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-13 in 135 milliseconds for epoch 0, of which 134 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:34,221] INFO [GroupMetadataManager brokerId=0] Finished loading offsets and group metadata from __consumer_offsets-28 in 134 milliseconds for epoch 0, of which 134 milliseconds was spent in the scheduler. (kafka.coordinator.group.GroupMetadataManager)
+[2026-05-02 14:20:35,117] INFO [GroupCoordinator 0]: Dynamic member with unknown member id joins group ev_soh_consumer_group in Empty state. Created a new member id rdkafka-9e95e4ba-e032-4f8e-8e50-f5d918b31f55 and request the member to rejoin with this id. (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:35,134] INFO [GroupCoordinator 0]: Preparing to rebalance group ev_soh_consumer_group in state PreparingRebalance with old generation 0 (__consumer_offsets-15) (reason: Adding new member rdkafka-9e95e4ba-e032-4f8e-8e50-f5d918b31f55 with group instance id None; client reason: not provided) (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:35,159] INFO [GroupCoordinator 0]: Stabilized group ev_soh_consumer_group generation 1 (__consumer_offsets-15) with 1 members (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:20:35,174] INFO [GroupCoordinator 0]: Assignment received from leader rdkafka-9e95e4ba-e032-4f8e-8e50-f5d918b31f55 for group ev_soh_consumer_group for generation 1. The group has 1 members, 0 of which are static. (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:24,127] INFO [GroupCoordinator 0]: Preparing to rebalance group ev_soh_consumer_group in state PreparingRebalance with old generation 1 (__consumer_offsets-15) (reason: Removing member rdkafka-9e95e4ba-e032-4f8e-8e50-f5d918b31f55 on LeaveGroup; client reason: not provided) (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:24,133] INFO [GroupCoordinator 0]: Group ev_soh_consumer_group with generation 2 is now empty (__consumer_offsets-15) (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:24,160] INFO [GroupCoordinator 0]: Member MemberMetadata(memberId=rdkafka-9e95e4ba-e032-4f8e-8e50-f5d918b31f55, groupInstanceId=None, clientId=rdkafka, clientHost=/fe80:0:0:0:e729:2172:6dc4:fee0%4, sessionTimeoutMs=30000, rebalanceTimeoutMs=300000, supportedProtocols=List(range, roundrobin)) has left group ev_soh_consumer_group through explicit `LeaveGroup`; client reason: not provided (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:29,214] WARN Session 0x100495736660000 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+java.io.IOException: An existing connection was forcibly closed by the remote host
+        at java.base/sun.nio.ch.SocketDispatcher.read0(Native Method)
+        at java.base/sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:43)
+        at java.base/sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:276)
+        at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:233)
+        at java.base/sun.nio.ch.IOUtil.read(IOUtil.java:223)
+        at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:356)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doIO(ClientCnxnSocketNIO.java:74)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:350)
+        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+[2026-05-02 14:22:30,884] INFO Opening socket connection to server localhost/127.0.0.1:2181. (org.apache.zookeeper.ClientCnxn)
+[2026-05-02 14:22:30,885] WARN Session 0x100495736660000 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+java.net.ConnectException: Connection refused: no further information
+        at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+        at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+[2026-05-02 14:22:32,517] INFO Opening socket connection to server localhost/127.0.0.1:2181. (org.apache.zookeeper.ClientCnxn)
+[2026-05-02 14:22:32,517] WARN Session 0x100495736660000 for server localhost/127.0.0.1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+java.net.ConnectException: Connection refused: no further information
+        at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+        at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+[2026-05-02 14:22:34,282] INFO Opening socket connection to server localhost/0:0:0:0:0:0:0:1:2181. (org.apache.zookeeper.ClientCnxn)
+[2026-05-02 14:22:34,282] WARN Session 0x100495736660000 for server localhost/0:0:0:0:0:0:0:1:2181, Closing socket connection. Attempting reconnect except it is a SessionExpiredException. (org.apache.zookeeper.ClientCnxn)
+java.net.ConnectException: Connection refused: no further information
+        at java.base/sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+        at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:777)
+        at org.apache.zookeeper.ClientCnxnSocketNIO.doTransport(ClientCnxnSocketNIO.java:344)
+        at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1289)
+[2026-05-02 14:22:35,496] INFO [KafkaServer id=0] shutting down (kafka.server.KafkaServer)
+[2026-05-02 14:22:35,504] INFO [KafkaServer id=0] Starting controlled shutdown (kafka.server.KafkaServer)
+[2026-05-02 14:22:35,544] INFO [KafkaServer id=0] Controlled shutdown request returned successfully after 11ms (kafka.server.KafkaServer)
+[2026-05-02 14:22:35,548] INFO [/config/changes-event-process-thread]: Shutting down (kafka.common.ZkNodeChangeNotificationListener$ChangeEventProcessThread)
+[2026-05-02 14:22:35,549] INFO [/config/changes-event-process-thread]: Stopped (kafka.common.ZkNodeChangeNotificationListener$ChangeEventProcessThread)
+[2026-05-02 14:22:35,549] INFO [/config/changes-event-process-thread]: Shutdown completed (kafka.common.ZkNodeChangeNotificationListener$ChangeEventProcessThread)
+[2026-05-02 14:22:35,552] INFO [SocketServer listenerType=ZK_BROKER, nodeId=0] Stopping socket server request processors (kafka.network.SocketServer)
+[2026-05-02 14:22:35,568] INFO [SocketServer listenerType=ZK_BROKER, nodeId=0] Stopped socket server request processors (kafka.network.SocketServer)
+[2026-05-02 14:22:35,570] INFO [data-plane Kafka Request Handler on Broker 0], shutting down (kafka.server.KafkaRequestHandlerPool)
+[2026-05-02 14:22:35,577] INFO [data-plane Kafka Request Handler on Broker 0], shut down completely (kafka.server.KafkaRequestHandlerPool)
+[2026-05-02 14:22:35,586] INFO [ExpirationReaper-0-AlterAcls]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,587] INFO [ExpirationReaper-0-AlterAcls]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,587] INFO [ExpirationReaper-0-AlterAcls]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,588] INFO [KafkaApi-0] Shutdown complete. (kafka.server.KafkaApis)
+[2026-05-02 14:22:35,590] INFO [ExpirationReaper-0-topic]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,591] INFO [ExpirationReaper-0-topic]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,591] INFO [ExpirationReaper-0-topic]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,593] INFO [TransactionCoordinator id=0] Shutting down. (kafka.coordinator.transaction.TransactionCoordinator)
+[2026-05-02 14:22:35,597] INFO [Transaction State Manager 0]: Shutdown complete (kafka.coordinator.transaction.TransactionStateManager)
+[2026-05-02 14:22:35,598] INFO [TxnMarkerSenderThread-0]: Shutting down (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+[2026-05-02 14:22:35,600] INFO [TxnMarkerSenderThread-0]: Stopped (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+[2026-05-02 14:22:35,600] INFO [TxnMarkerSenderThread-0]: Shutdown completed (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+[2026-05-02 14:22:35,603] INFO [TransactionCoordinator id=0] Shutdown complete. (kafka.coordinator.transaction.TransactionCoordinator)
+[2026-05-02 14:22:35,605] INFO [GroupCoordinator 0]: Shutting down. (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:35,606] INFO [ExpirationReaper-0-Heartbeat]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,607] INFO [ExpirationReaper-0-Heartbeat]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,607] INFO [ExpirationReaper-0-Heartbeat]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,608] INFO [ExpirationReaper-0-Rebalance]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,609] INFO [ExpirationReaper-0-Rebalance]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,609] INFO [ExpirationReaper-0-Rebalance]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,610] INFO [GroupCoordinator 0]: Shutdown complete. (kafka.coordinator.group.GroupCoordinator)
+[2026-05-02 14:22:35,612] INFO [ReplicaManager broker=0] Shutting down (kafka.server.ReplicaManager)
+[2026-05-02 14:22:35,614] INFO [LogDirFailureHandler]: Shutting down (kafka.server.ReplicaManager$LogDirFailureHandler)
+[2026-05-02 14:22:35,615] INFO [LogDirFailureHandler]: Shutdown completed (kafka.server.ReplicaManager$LogDirFailureHandler)
+[2026-05-02 14:22:35,615] INFO [LogDirFailureHandler]: Stopped (kafka.server.ReplicaManager$LogDirFailureHandler)
+[2026-05-02 14:22:35,616] INFO [ReplicaFetcherManager on broker 0] shutting down (kafka.server.ReplicaFetcherManager)
+[2026-05-02 14:22:35,619] INFO [ReplicaFetcherManager on broker 0] shutdown completed (kafka.server.ReplicaFetcherManager)
+[2026-05-02 14:22:35,620] INFO [ReplicaAlterLogDirsManager on broker 0] shutting down (kafka.server.ReplicaAlterLogDirsManager)
+[2026-05-02 14:22:35,621] INFO [ReplicaAlterLogDirsManager on broker 0] shutdown completed (kafka.server.ReplicaAlterLogDirsManager)
+[2026-05-02 14:22:35,621] INFO [ExpirationReaper-0-Fetch]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,622] INFO [ExpirationReaper-0-Fetch]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,622] INFO [ExpirationReaper-0-Fetch]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,622] INFO [ExpirationReaper-0-RemoteFetch]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,624] INFO [ExpirationReaper-0-RemoteFetch]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,624] INFO [ExpirationReaper-0-RemoteFetch]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,625] INFO [ExpirationReaper-0-Produce]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,626] INFO [ExpirationReaper-0-Produce]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,626] INFO [ExpirationReaper-0-Produce]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,627] INFO [ExpirationReaper-0-DeleteRecords]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,628] INFO [ExpirationReaper-0-DeleteRecords]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,628] INFO [ExpirationReaper-0-DeleteRecords]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,629] INFO [ExpirationReaper-0-ElectLeader]: Shutting down (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,630] INFO [ExpirationReaper-0-ElectLeader]: Stopped (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,630] INFO [ExpirationReaper-0-ElectLeader]: Shutdown completed (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+[2026-05-02 14:22:35,642] INFO [AddPartitionsToTxnSenderThread-0]: Shutting down (kafka.server.AddPartitionsToTxnManager)
+[2026-05-02 14:22:35,643] INFO [AddPartitionsToTxnSenderThread-0]: Stopped (kafka.server.AddPartitionsToTxnManager)
+[2026-05-02 14:22:35,643] INFO [AddPartitionsToTxnSenderThread-0]: Shutdown completed (kafka.server.AddPartitionsToTxnManager)
+[2026-05-02 14:22:35,645] INFO [ReplicaManager broker=0] Shut down completely (kafka.server.ReplicaManager)
+[2026-05-02 14:22:35,646] INFO [zk-broker-0-to-controller-alter-partition-channel-manager]: Shutting down (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,647] INFO [zk-broker-0-to-controller-alter-partition-channel-manager]: Stopped (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,647] INFO [zk-broker-0-to-controller-alter-partition-channel-manager]: Shutdown completed (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,653] INFO Node to controller channel manager for alter-partition shutdown (kafka.server.NodeToControllerChannelManagerImpl)
+[2026-05-02 14:22:35,654] INFO [zk-broker-0-to-controller-forwarding-channel-manager]: Shutting down (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,655] INFO [zk-broker-0-to-controller-forwarding-channel-manager]: Stopped (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,655] INFO [zk-broker-0-to-controller-forwarding-channel-manager]: Shutdown completed (kafka.server.NodeToControllerRequestThread)
+[2026-05-02 14:22:35,657] INFO Node to controller channel manager for forwarding shutdown (kafka.server.NodeToControllerChannelManagerImpl)
+[2026-05-02 14:22:35,658] INFO Shutting down. (kafka.log.LogManager)
+[2026-05-02 14:22:35,662] INFO [kafka-log-cleaner-thread-0]: Shutting down (kafka.log.LogCleaner$CleanerThread)
+[2026-05-02 14:22:35,663] INFO [kafka-log-cleaner-thread-0]: Stopped (kafka.log.LogCleaner$CleanerThread)
+[2026-05-02 14:22:35,663] INFO [kafka-log-cleaner-thread-0]: Shutdown completed (kafka.log.LogCleaner$CleanerThread)
+[2026-05-02 14:22:35,803] INFO [ProducerStateManager partition=ev_battery_telemetry-0] Wrote producer snapshot at offset 2361 with 0 producer ids in 4 ms. (org.apache.kafka.storage.internals.log.ProducerStateManager)
+[2026-05-02 14:22:35,943] INFO [ProducerStateManager partition=ev_battery_telemetry-2] Wrote producer snapshot at offset 3074 with 0 producer ids in 3 ms. (org.apache.kafka.storage.internals.log.ProducerStateManager)
+[2026-05-02 14:22:35,967] INFO [ProducerStateManager partition=ev_battery_telemetry-1] Wrote producer snapshot at offset 2121 with 0 producer ids in 3 ms. (org.apache.kafka.storage.internals.log.ProducerStateManager)
+[2026-05-02 14:22:35,999] INFO [ProducerStateManager partition=__consumer_offsets-15] Wrote producer snapshot at offset 112 with 0 producer ids in 3 ms. (org.apache.kafka.storage.internals.log.ProducerStateManager)
+[2026-05-02 14:22:36,051] INFO Shutdown complete. (kafka.log.LogManager)
+[2026-05-02 14:22:36,062] INFO [feature-zk-node-event-process-thread]: Shutting down (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread)
+[2026-05-02 14:22:36,062] INFO [feature-zk-node-event-process-thread]: Shutdown completed (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread)
+[2026-05-02 14:22:36,062] INFO [feature-zk-node-event-process-thread]: Stopped (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread)
+[2026-05-02 14:22:36,064] INFO [ZooKeeperClient Kafka server] Closing. (kafka.zookeeper.ZooKeeperClient)
+[2026-05-02 14:22:36,395] INFO Opening socket connection to server localhost/127.0.0.1:2181. (org.apache.zookeeper.ClientCnxn)
+[2026-05-02 14:22:36,496] INFO Session: 0x100495736660000 closed (org.apache.zookeeper.ZooKeeper)
+[2026-05-02 14:22:36,496] INFO EventThread shut down for session: 0x100495736660000 (org.apache.zookeeper.ClientCnxn)
+[2026-05-02 14:22:36,496] INFO [ZooKeeperClient Kafka server] Closed. (kafka.zookeeper.ZooKeeperClient)
+[2026-05-02 14:22:36,506] INFO [ThrottledChannelReaper-Fetch]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,510] INFO [ThrottledChannelReaper-Fetch]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,510] INFO [ThrottledChannelReaper-Fetch]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,512] INFO [ThrottledChannelReaper-Produce]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,513] INFO [ThrottledChannelReaper-Produce]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,513] INFO [ThrottledChannelReaper-Produce]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,514] INFO [ThrottledChannelReaper-Request]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,515] INFO [ThrottledChannelReaper-Request]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,515] INFO [ThrottledChannelReaper-Request]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,516] INFO [ThrottledChannelReaper-ControllerMutation]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,517] INFO [ThrottledChannelReaper-ControllerMutation]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,517] INFO [ThrottledChannelReaper-ControllerMutation]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+[2026-05-02 14:22:36,522] INFO [SocketServer listenerType=ZK_BROKER, nodeId=0] Shutting down socket server (kafka.network.SocketServer)
+[2026-05-02 14:22:36,558] INFO [SocketServer listenerType=ZK_BROKER, nodeId=0] Shutdown completed (kafka.network.SocketServer)
+[2026-05-02 14:22:36,558] INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics)
+[2026-05-02 14:22:36,558] INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics)
+[2026-05-02 14:22:36,558] INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics)
+[2026-05-02 14:22:36,562] INFO Broker and topic stats closed (kafka.server.BrokerTopicStats)
+[2026-05-02 14:22:36,563] INFO App info kafka.server for 0 unregistered (org.apache.kafka.common.utils.AppInfoParser)
+[2026-05-02 14:22:36,564] INFO [KafkaServer id=0] shut down completed (kafka.server.KafkaServer)
+Terminate batch job (Y/N)? y
+(venv) PS C:\kafka> 
+
+
+
+
+
+
+
+
+
+
+
+terminal 3:
+(venv) PS D:\COURSES\EV Battery> cd C:\kafka
+>> .\bin\windows\kafka-topics.bat --create --topic ev_battery_telemetry --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic ev_battery_telemetry.
+(venv) PS C:\kafka> 
+
+
+
+
+
+
+
+
+terminal 4:
+(venv) PS D:\COURSES\EV Battery> cd "D:\COURSES\EV Battery"
+>> python kafka_streamer.py
+============================================================
+  EV Battery Telemetry — Kafka Producer
+============================================================
+  Dataset loaded: 7,368 rows across 34 batteries
+  Kafka producer connected to: localhost:9092
+  Publishing to topic        : ev_battery_telemetry
+  Delay between messages     : 0.05s
+  Estimated throughput       : 20 msg/s
+
+  Starting infinite stream — Ctrl+C to stop
+
+============================================================
+D:\COURSES\EV Battery\kafka_streamer.py:190: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "timestamp"           : datetime.utcnow().isoformat(),
+  [14:16:19] Loop    1 | Row   196/7368 | Sent:      100 | Failed:    0 | ~10 msg/s
+  [14:16:29] Loop    1 | Row   393/7368 | Sent:      300 | Failed:    0 | ~15 msg/s
+  [14:16:39] Loop    1 | Row   590/7368 | Sent:      500 | Failed:    0 | ~17 msg/s
+  [14:16:49] Loop    1 | Row   786/7368 | Sent:      700 | Failed:    0 | ~17 msg/s
+  [14:16:59] Loop    1 | Row   981/7368 | Sent:      900 | Failed:    0 | ~18 msg/s
+  [14:17:09] Loop    1 | Row  1178/7368 | Sent:    1,100 | Failed:    0 | ~18 msg/s
+  [14:17:19] Loop    1 | Row  1372/7368 | Sent:    1,300 | Failed:    0 | ~19 msg/s
+  [14:17:29] Loop    1 | Row  1568/7368 | Sent:    1,500 | Failed:    0 | ~19 msg/s
+  [14:17:39] Loop    1 | Row  1762/7368 | Sent:    1,700 | Failed:    0 | ~19 msg/s
+  [14:17:49] Loop    1 | Row  1959/7368 | Sent:    1,900 | Failed:    0 | ~19 msg/s
+  [14:17:59] Loop    1 | Row  2156/7368 | Sent:    2,100 | Failed:    0 | ~19 msg/s
+  [14:18:09] Loop    1 | Row  2353/7368 | Sent:    2,300 | Failed:    0 | ~19 msg/s
+  [14:18:19] Loop    1 | Row  2550/7368 | Sent:    2,500 | Failed:    0 | ~19 msg/s
+  [14:18:29] Loop    1 | Row  2747/7368 | Sent:    2,700 | Failed:    0 | ~19 msg/s
+  [14:18:39] Loop    1 | Row  2941/7368 | Sent:    2,900 | Failed:    0 | ~19 msg/s
+  [14:18:49] Loop    1 | Row  3138/7368 | Sent:    3,100 | Failed:    0 | ~19 msg/s
+  [14:18:59] Loop    1 | Row  3334/7368 | Sent:    3,300 | Failed:    0 | ~19 msg/s
+  [14:19:09] Loop    1 | Row  3531/7368 | Sent:    3,500 | Failed:    0 | ~19 msg/s
+  [14:19:19] Loop    1 | Row  3728/7368 | Sent:    3,700 | Failed:    0 | ~19 msg/s
+  [14:19:29] Loop    1 | Row  3923/7368 | Sent:    3,900 | Failed:    0 | ~19 msg/s
+  [14:19:39] Loop    1 | Row  4120/7368 | Sent:    4,100 | Failed:    0 | ~19 msg/s
+  [14:19:49] Loop    1 | Row  4317/7368 | Sent:    4,300 | Failed:    0 | ~20 msg/s
+  [14:19:59] Loop    1 | Row  4512/7368 | Sent:    4,500 | Failed:    0 | ~20 msg/s
+  [14:20:09] Loop    1 | Row  4706/7368 | Sent:    4,700 | Failed:    0 | ~20 msg/s
+  [14:20:19] Loop    1 | Row  4900/7368 | Sent:    4,900 | Failed:    0 | ~20 msg/s
+  [14:20:29] Loop    1 | Row  5095/7368 | Sent:    5,000 | Failed:    0 | ~19 msg/s
+  [14:20:39] Loop    1 | Row  5291/7368 | Sent:    5,200 | Failed:    0 | ~19 msg/s
+  [14:20:49] Loop    1 | Row  5488/7368 | Sent:    5,400 | Failed:    0 | ~19 msg/s
+  [14:20:59] Loop    1 | Row  5686/7368 | Sent:    5,600 | Failed:    0 | ~19 msg/s
+  [14:21:09] Loop    1 | Row  5883/7368 | Sent:    5,800 | Failed:    0 | ~19 msg/s
+  [14:21:20] Loop    1 | Row  6080/7368 | Sent:    6,000 | Failed:    0 | ~19 msg/s
+  [14:21:30] Loop    1 | Row  6277/7368 | Sent:    6,200 | Failed:    0 | ~19 msg/s
+  [14:21:40] Loop    1 | Row  6474/7368 | Sent:    6,400 | Failed:    0 | ~19 msg/s
+  [14:21:50] Loop    1 | Row  6669/7368 | Sent:    6,600 | Failed:    0 | ~19 msg/s
+  [14:22:00] Loop    1 | Row  6865/7368 | Sent:    6,800 | Failed:    0 | ~19 msg/s
+  [14:22:10] Loop    1 | Row  7060/7368 | Sent:    7,000 | Failed:    0 | ~19 msg/s
+  [14:22:20] Loop    1 | Row  7254/7368 | Sent:    7,200 | Failed:    0 | ~19 msg/s
+
+  Loop 1 complete — 7,368 records published. Starting loop 2...
+
+  [14:22:30] Loop    2 | Row    82/7368 | Sent:    7,368 | Failed:    0 | ~19 msg/s
+%6|1777713755.563|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Disconnected: connection closed by peer: POLLHUP (after 386133ms in state UP)
+%3|1777713757.607|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Connect to ipv6#[fe80::c5c4:7191:f080:bcb9%56]:9092 failed: Unknown error (after 2034ms in state CONNECT)
+%3|1777713757.858|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Unknown error (after 2030ms in state CONNECT)
+%3|1777713759.640|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Connect to ipv6#[fe80::e729:2172:6dc4:fee0%4]:9092 failed: Unknown error (after 2032ms in state CONNECT)
+%3|1777713759.957|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Unknown error (after 2028ms in state CONNECT)
+  [14:22:40] Loop    2 | Row   279/7368 | Sent:    7,556 | Failed:    0 | ~19 msg/s
+%3|1777713762.063|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Connect to ipv6#[fe80::e729:2172:6dc4:fee0%4]:9092 failed: Unknown error (after 2038ms in state CONNECT, 1 identical error(s) suppressed)
+%3|1777713762.891|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Unknown error (after 2023ms in state CONNECT)
+%3|1777713764.101|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Connect to ipv4#192.168.144.1:9092 failed: Unknown error (after 2037ms in state CONNECT)
+
+
+  Shutting down gracefully...
+  Total messages sent   : 7,556
+  Total messages failed : 0
+  Dataset loops         : 2
+
+  Loop 2 complete — 7,368 records published. Starting loop 3...
+
+
+  Flushing remaining messages...
+%3|1777713764.983|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Unknown error (after 2028ms in state CONNECT)
+%3|1777713767.950|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Unknown error (after 2027ms in state CONNECT, 1 identical error(s) suppressed)
+%3|1777713768.715|FAIL|rdkafka#producer-1| [thrd:DESKTOP-4AV8ENH:9092/0]: DESKTOP-4AV8ENH:9092/0: Connect to ipv6#[fe80::e729:2172:6dc4:fee0%4]:9092 failed: Unknown error (after 2015ms in state CONNECT)
+%3|1777713772.996|FAIL|rdkafka#producer-1| [thrd:localhost:9092/bootstrap]: localhost:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Unknown error (after 2039ms in state CONNECT)
+  Producer shutdown complete.
+  Grand total sent: 7,556
+%4|1777713774.527|TERMINATE|rdkafka#producer-1| [thrd:app]: Producer terminating with 169 messages (39144 bytes) still in queue or transit: use flush() to wait for outstanding message delivery
+(venv) PS D:\COURSES\EV Battery> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+terminal 5:
+(venv) PS D:\COURSES\EV Battery> cd "D:\COURSES\EV Battery"
+>> python kafka_consumer_direct.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1777713626.811782   17364 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1777713630.827415   17364 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+============================================================
+  EV Battery SOH — Direct Kafka Consumer + TCN Inference
+============================================================
+  Loading model: best_tcn_v2.keras
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+  Model loaded successfully
+  Kafka broker : localhost:9092
+  Topic        : ev_battery_telemetry
+  Window size  : 50 cycles
+============================================================
+
+  Subscribed to topic: ev_battery_telemetry
+  Waiting for messages... (Ctrl+C to stop)
+
+  Battery   5 | Cycle  208 | Actual: 0.9838 Ah | Predicted: 0.9999 Ah | SOH:   98.2% | HEALTHY
+  Battery   5 | Cycle  209 | Actual: 0.9838 Ah | Predicted: 0.9983 Ah | SOH:   98.1% | HEALTHY
+  Battery   5 | Cycle  210 | Actual: 0.9838 Ah | Predicted: 0.9982 Ah | SOH:   98.1% | HEALTHY
+  Battery   5 | Cycle  211 | Actual: 0.9838 Ah | Predicted: 0.9980 Ah | SOH:   98.0% | HEALTHY
+  Battery   5 | Cycle  212 | Actual: 0.9838 Ah | Predicted: 0.9971 Ah | SOH:   98.0% | HEALTHY
+  Battery   5 | Cycle  213 | Actual: 0.9797 Ah | Predicted: 0.9955 Ah | SOH:   97.8% | HEALTHY
+  Battery   5 | Cycle  214 | Actual: 0.9797 Ah | Predicted: 0.9944 Ah | SOH:   97.7% | HEALTHY
+  Battery   5 | Cycle  215 | Actual: 0.9780 Ah | Predicted: 0.9938 Ah | SOH:   97.6% | HEALTHY
+  Battery   5 | Cycle  216 | Actual: 0.9780 Ah | Predicted: 0.9934 Ah | SOH:   97.6% | HEALTHY
+  Battery   5 | Cycle  217 | Actual: 0.9780 Ah | Predicted: 0.9923 Ah | SOH:   97.5% | HEALTHY
+  Battery   5 | Cycle  218 | Actual: 0.9780 Ah | Predicted: 0.9911 Ah | SOH:   97.4% | HEALTHY
+  Battery   5 | Cycle  219 | Actual: 0.9760 Ah | Predicted: 0.9903 Ah | SOH:   97.3% | HEALTHY
+  Battery   5 | Cycle  220 | Actual: 0.9760 Ah | Predicted: 0.9905 Ah | SOH:   97.3% | HEALTHY
+  Battery   5 | Cycle  221 | Actual: 0.9760 Ah | Predicted: 0.9896 Ah | SOH:   97.2% | HEALTHY
+  Battery   5 | Cycle  222 | Actual: 0.9760 Ah | Predicted: 0.9887 Ah | SOH:   97.1% | HEALTHY
+  Battery   5 | Cycle  223 | Actual: 0.9718 Ah | Predicted: 0.9886 Ah | SOH:   97.1% | HEALTHY
+  Battery   5 | Cycle  224 | Actual: 0.9718 Ah | Predicted: 0.9885 Ah | SOH:   97.1% | HEALTHY
+  Battery   5 | Cycle  225 | Actual: 0.9718 Ah | Predicted: 0.9880 Ah | SOH:   97.1% | HEALTHY
+  Battery   5 | Cycle  226 | Actual: 0.9718 Ah | Predicted: 0.9843 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  227 | Actual: 0.9700 Ah | Predicted: 0.9840 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  228 | Actual: 0.9700 Ah | Predicted: 0.9842 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  229 | Actual: 0.9700 Ah | Predicted: 0.9844 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  230 | Actual: 0.9700 Ah | Predicted: 0.9843 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  231 | Actual: 0.9680 Ah | Predicted: 0.9834 Ah | SOH:   96.6% | HEALTHY
+  Battery   5 | Cycle  232 | Actual: 0.9680 Ah | Predicted: 0.9841 Ah | SOH:   96.7% | HEALTHY
+  Battery   5 | Cycle  233 | Actual: 0.9680 Ah | Predicted: 0.9802 Ah | SOH:   96.3% | HEALTHY
+  Battery   5 | Cycle  234 | Actual: 0.9680 Ah | Predicted: 0.9793 Ah | SOH:   96.2% | HEALTHY
+  Battery   5 | Cycle  235 | Actual: 0.9661 Ah | Predicted: 0.9771 Ah | SOH:   96.0% | HEALTHY
+  Battery   5 | Cycle  236 | Actual: 0.9661 Ah | Predicted: 0.9772 Ah | SOH:   96.0% | HEALTHY
+  Battery   5 | Cycle  237 | Actual: 0.9661 Ah | Predicted: 0.9766 Ah | SOH:   95.9% | HEALTHY
+  Battery   5 | Cycle  238 | Actual: 0.9661 Ah | Predicted: 0.9765 Ah | SOH:   95.9% | HEALTHY
+  Battery   5 | Cycle  239 | Actual: 0.9640 Ah | Predicted: 0.9749 Ah | SOH:   95.8% | HEALTHY
+  Battery   5 | Cycle  240 | Actual: 0.9640 Ah | Predicted: 0.9745 Ah | SOH:   95.7% | HEALTHY
+  Battery   5 | Cycle  241 | Actual: 0.9640 Ah | Predicted: 0.9742 Ah | SOH:   95.7% | HEALTHY
+  Battery   5 | Cycle  242 | Actual: 0.9640 Ah | Predicted: 0.9739 Ah | SOH:   95.7% | HEALTHY
+  Battery   5 | Cycle  243 | Actual: 0.9599 Ah | Predicted: 0.9719 Ah | SOH:   95.5% | HEALTHY
+  Battery   5 | Cycle  244 | Actual: 0.9599 Ah | Predicted: 0.9716 Ah | SOH:   95.5% | HEALTHY
+  Battery   5 | Cycle  245 | Actual: 0.9599 Ah | Predicted: 0.9714 Ah | SOH:   95.4% | HEALTHY
+  Battery   5 | Cycle  246 | Actual: 0.9599 Ah | Predicted: 0.9721 Ah | SOH:   95.5% | HEALTHY
+  Battery   5 | Cycle  247 | Actual: 0.9580 Ah | Predicted: 0.9712 Ah | SOH:   95.4% | HEALTHY
+  Battery   5 | Cycle  248 | Actual: 0.9580 Ah | Predicted: 0.9713 Ah | SOH:   95.4% | HEALTHY
+  Battery   5 | Cycle  249 | Actual: 0.9580 Ah | Predicted: 0.9703 Ah | SOH:   95.3% | HEALTHY
+  Battery   5 | Cycle  250 | Actual: 0.9580 Ah | Predicted: 0.9692 Ah | SOH:   95.2% | HEALTHY
+  Battery   5 | Cycle  251 | Actual: 0.9561 Ah | Predicted: 0.9678 Ah | SOH:   95.1% | HEALTHY
+  Battery   5 | Cycle  252 | Actual: 0.9561 Ah | Predicted: 0.9680 Ah | SOH:   95.1% | HEALTHY
+  Battery   5 | Cycle  253 | Actual: 0.9561 Ah | Predicted: 0.9676 Ah | SOH:   95.1% | HEALTHY
+  Battery   5 | Cycle  254 | Actual: 0.9561 Ah | Predicted: 0.9662 Ah | SOH:   94.9% | HEALTHY
+  Battery   5 | Cycle  255 | Actual: 0.9518 Ah | Predicted: 0.9635 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  256 | Actual: 0.9518 Ah | Predicted: 0.9641 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  257 | Actual: 0.9518 Ah | Predicted: 0.9642 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  258 | Actual: 0.9518 Ah | Predicted: 0.9638 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  259 | Actual: 0.9500 Ah | Predicted: 0.9627 Ah | SOH:   94.6% | HEALTHY
+  Battery   5 | Cycle  260 | Actual: 0.9500 Ah | Predicted: 0.9628 Ah | SOH:   94.6% | HEALTHY
+  Battery   5 | Cycle  261 | Actual: 0.9500 Ah | Predicted: 0.9623 Ah | SOH:   94.5% | HEALTHY
+  Battery   5 | Cycle  262 | Actual: 0.9500 Ah | Predicted: 0.9613 Ah | SOH:   94.4% | HEALTHY
+  Battery   5 | Cycle  263 | Actual: 0.9497 Ah | Predicted: 0.9603 Ah | SOH:   94.3% | HEALTHY
+  Battery   5 | Cycle  264 | Actual: 0.9497 Ah | Predicted: 0.9597 Ah | SOH:   94.3% | HEALTHY
+  Battery   5 | Cycle  265 | Actual: 0.9538 Ah | Predicted: 0.9591 Ah | SOH:   94.2% | HEALTHY
+  Battery   5 | Cycle  266 | Actual: 0.9538 Ah | Predicted: 0.9592 Ah | SOH:   94.2% | HEALTHY
+  Battery   5 | Cycle  267 | Actual: 0.9538 Ah | Predicted: 0.9591 Ah | SOH:   94.2% | HEALTHY
+  Battery   5 | Cycle  268 | Actual: 0.9538 Ah | Predicted: 0.9661 Ah | SOH:   94.9% | HEALTHY
+  Battery   5 | Cycle  269 | Actual: 0.9457 Ah | Predicted: 0.9645 Ah | SOH:   94.8% | HEALTHY
+  Battery   5 | Cycle  270 | Actual: 0.9457 Ah | Predicted: 0.9641 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  271 | Actual: 0.9457 Ah | Predicted: 0.9642 Ah | SOH:   94.7% | HEALTHY
+  Battery   5 | Cycle  272 | Actual: 0.9457 Ah | Predicted: 0.9597 Ah | SOH:   94.3% | HEALTHY
+  Battery   5 | Cycle  273 | Actual: 0.9419 Ah | Predicted: 0.9555 Ah | SOH:   93.9% | HEALTHY
+  Battery   5 | Cycle  274 | Actual: 0.9419 Ah | Predicted: 0.9556 Ah | SOH:   93.9% | HEALTHY
+  Battery   5 | Cycle  275 | Actual: 0.9419 Ah | Predicted: 0.9561 Ah | SOH:   93.9% | HEALTHY
+  Battery   5 | Cycle  276 | Actual: 0.9419 Ah | Predicted: 0.9540 Ah | SOH:   93.7% | HEALTHY
+  Battery   5 | Cycle  277 | Actual: 0.9399 Ah | Predicted: 0.9510 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  278 | Actual: 0.9399 Ah | Predicted: 0.9507 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  279 | Actual: 0.9399 Ah | Predicted: 0.9513 Ah | SOH:   93.5% | HEALTHY
+  Battery   5 | Cycle  280 | Actual: 0.9399 Ah | Predicted: 0.9494 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  281 | Actual: 0.9398 Ah | Predicted: 0.9496 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  282 | Actual: 0.9398 Ah | Predicted: 0.9493 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  283 | Actual: 0.9398 Ah | Predicted: 0.9495 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  284 | Actual: 0.9398 Ah | Predicted: 0.9487 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  285 | Actual: 0.9379 Ah | Predicted: 0.9460 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  286 | Actual: 0.9379 Ah | Predicted: 0.9458 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  287 | Actual: 0.9379 Ah | Predicted: 0.9464 Ah | SOH:   93.0% | HEALTHY
+  Battery   5 | Cycle  288 | Actual: 0.9379 Ah | Predicted: 0.9444 Ah | SOH:   92.8% | HEALTHY
+  Battery   5 | Cycle  289 | Actual: 0.9357 Ah | Predicted: 0.9411 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  290 | Actual: 0.9357 Ah | Predicted: 0.9408 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  291 | Actual: 0.9357 Ah | Predicted: 0.9406 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  292 | Actual: 0.9357 Ah | Predicted: 0.9397 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  293 | Actual: 0.9315 Ah | Predicted: 0.9419 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  294 | Actual: 0.9315 Ah | Predicted: 0.9420 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  295 | Actual: 0.9315 Ah | Predicted: 0.9421 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  296 | Actual: 0.9315 Ah | Predicted: 0.9415 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  297 | Actual: 0.9274 Ah | Predicted: 0.9412 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  298 | Actual: 0.9274 Ah | Predicted: 0.9414 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  299 | Actual: 0.9274 Ah | Predicted: 0.9393 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  300 | Actual: 0.9274 Ah | Predicted: 0.9390 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  301 | Actual: 0.9276 Ah | Predicted: 0.9386 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  302 | Actual: 0.9276 Ah | Predicted: 0.9382 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  303 | Actual: 0.9276 Ah | Predicted: 0.9381 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  304 | Actual: 0.9276 Ah | Predicted: 0.9384 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  305 | Actual: 0.9253 Ah | Predicted: 0.9376 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  306 | Actual: 0.9253 Ah | Predicted: 0.9375 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  307 | Actual: 0.9253 Ah | Predicted: 0.9376 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  308 | Actual: 0.9253 Ah | Predicted: 0.9377 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  309 | Actual: 0.9233 Ah | Predicted: 0.9372 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  310 | Actual: 0.9233 Ah | Predicted: 0.9376 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  311 | Actual: 0.9233 Ah | Predicted: 0.9343 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  312 | Actual: 0.9577 Ah | Predicted: 0.9354 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  313 | Actual: 0.9577 Ah | Predicted: 0.9354 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  314 | Actual: 0.9577 Ah | Predicted: 0.9355 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  315 | Actual: 0.9415 Ah | Predicted: 0.9325 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  316 | Actual: 0.9415 Ah | Predicted: 0.9328 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  317 | Actual: 0.9415 Ah | Predicted: 0.9329 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  318 | Actual: 0.9415 Ah | Predicted: 0.9338 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  319 | Actual: 0.9353 Ah | Predicted: 0.9340 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  320 | Actual: 0.9353 Ah | Predicted: 0.9342 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  321 | Actual: 0.9353 Ah | Predicted: 0.9344 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  322 | Actual: 0.9353 Ah | Predicted: 0.9351 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  323 | Actual: 0.9292 Ah | Predicted: 0.9366 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  324 | Actual: 0.9292 Ah | Predicted: 0.9363 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  325 | Actual: 0.9292 Ah | Predicted: 0.9353 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  326 | Actual: 0.9292 Ah | Predicted: 0.9358 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  327 | Actual: 0.9270 Ah | Predicted: 0.9368 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  328 | Actual: 0.9270 Ah | Predicted: 0.9369 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  329 | Actual: 0.9270 Ah | Predicted: 0.9361 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  330 | Actual: 0.9270 Ah | Predicted: 0.9361 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  331 | Actual: 0.9231 Ah | Predicted: 0.9357 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  332 | Actual: 0.9231 Ah | Predicted: 0.9358 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  333 | Actual: 0.9231 Ah | Predicted: 0.9349 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  334 | Actual: 0.9231 Ah | Predicted: 0.9335 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  335 | Actual: 0.9210 Ah | Predicted: 0.9330 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  336 | Actual: 0.9210 Ah | Predicted: 0.9322 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  337 | Actual: 0.9210 Ah | Predicted: 0.9313 Ah | SOH:   91.5% | HEALTHY
+  Battery   5 | Cycle  338 | Actual: 0.9210 Ah | Predicted: 0.9301 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  339 | Actual: 0.9189 Ah | Predicted: 0.9300 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  340 | Actual: 0.9189 Ah | Predicted: 0.9296 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  341 | Actual: 0.9189 Ah | Predicted: 0.9290 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  342 | Actual: 0.9189 Ah | Predicted: 0.9289 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  343 | Actual: 0.9169 Ah | Predicted: 0.9292 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  344 | Actual: 0.9169 Ah | Predicted: 0.9286 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  345 | Actual: 0.9169 Ah | Predicted: 0.9311 Ah | SOH:   91.5% | HEALTHY
+  Battery   5 | Cycle  346 | Actual: 0.9169 Ah | Predicted: 0.9302 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  347 | Actual: 0.9126 Ah | Predicted: 0.9261 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  348 | Actual: 0.9126 Ah | Predicted: 0.9264 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  349 | Actual: 0.9126 Ah | Predicted: 0.9270 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  350 | Actual: 0.9126 Ah | Predicted: 0.9269 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  351 | Actual: 0.9106 Ah | Predicted: 0.9243 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  352 | Actual: 0.9106 Ah | Predicted: 0.9236 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  353 | Actual: 0.9106 Ah | Predicted: 0.9244 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  354 | Actual: 0.9106 Ah | Predicted: 0.9242 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  355 | Actual: 0.9084 Ah | Predicted: 0.9214 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  356 | Actual: 0.9084 Ah | Predicted: 0.9213 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  357 | Actual: 0.9084 Ah | Predicted: 0.9213 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  358 | Actual: 0.9084 Ah | Predicted: 0.9195 Ah | SOH:   90.3% | HEALTHY
+  Battery   5 | Cycle  359 | Actual: 0.9063 Ah | Predicted: 0.9173 Ah | SOH:   90.1% | HEALTHY
+  Battery   5 | Cycle  360 | Actual: 0.9063 Ah | Predicted: 0.9181 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  361 | Actual: 0.9063 Ah | Predicted: 0.9168 Ah | SOH:   90.4% | HEALTHY
+  Battery   5 | Cycle  362 | Actual: 0.9063 Ah | Predicted: 0.9162 Ah | SOH:   90.3% | HEALTHY
+  Battery   5 | Cycle  363 | Actual: 0.9106 Ah | Predicted: 0.9149 Ah | SOH:   90.2% | HEALTHY
+  Battery   5 | Cycle  364 | Actual: 0.9106 Ah | Predicted: 0.9137 Ah | SOH:   90.4% | HEALTHY
+  Battery   5 | Cycle  365 | Actual: 0.9106 Ah | Predicted: 0.9147 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  366 | Actual: 0.9147 Ah | Predicted: 0.9151 Ah | SOH:   90.6% | HEALTHY
+  Battery   5 | Cycle  367 | Actual: 0.9147 Ah | Predicted: 0.9141 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  368 | Actual: 0.9147 Ah | Predicted: 0.9127 Ah | SOH:   90.5% | HEALTHY
+  Battery   5 | Cycle  369 | Actual: 0.9147 Ah | Predicted: 0.9152 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  370 | Actual: 0.9086 Ah | Predicted: 0.9159 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  371 | Actual: 0.9086 Ah | Predicted: 0.9162 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  372 | Actual: 0.9086 Ah | Predicted: 0.9141 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  373 | Actual: 0.9086 Ah | Predicted: 0.9138 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  374 | Actual: 0.9041 Ah | Predicted: 0.9125 Ah | SOH:   90.6% | HEALTHY
+  Battery   5 | Cycle  375 | Actual: 0.9041 Ah | Predicted: 0.9134 Ah | SOH:   90.7% | HEALTHY
+
+  --- Stats | Messages: 217 | Rate: 7.2 msg/s | Active batteries: 1 | Predictions: 168 ---
+
+  Battery   5 | Cycle  376 | Actual: 0.9041 Ah | Predicted: 0.9133 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  377 | Actual: 0.9041 Ah | Predicted: 0.9134 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  378 | Actual: 0.8977 Ah | Predicted: 0.9095 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  379 | Actual: 0.8977 Ah | Predicted: 0.9069 Ah | SOH:   90.4% | HEALTHY
+  Battery   5 | Cycle  380 | Actual: 0.8977 Ah | Predicted: 0.9066 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  381 | Actual: 0.8977 Ah | Predicted: 0.9069 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  382 | Actual: 0.8978 Ah | Predicted: 0.9066 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  383 | Actual: 0.8978 Ah | Predicted: 0.9062 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  384 | Actual: 0.8978 Ah | Predicted: 0.9053 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  385 | Actual: 0.8978 Ah | Predicted: 0.9047 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  386 | Actual: 0.8981 Ah | Predicted: 0.9049 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  387 | Actual: 0.8981 Ah | Predicted: 0.9047 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  388 | Actual: 0.8981 Ah | Predicted: 0.9046 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  389 | Actual: 0.8981 Ah | Predicted: 0.9042 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  390 | Actual: 0.8957 Ah | Predicted: 0.9034 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  391 | Actual: 0.8957 Ah | Predicted: 0.9029 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  392 | Actual: 0.8957 Ah | Predicted: 0.9030 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  393 | Actual: 0.8957 Ah | Predicted: 0.9026 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  394 | Actual: 0.8915 Ah | Predicted: 0.9003 Ah | SOH:   90.6% | HEALTHY
+  Battery   5 | Cycle  395 | Actual: 0.8915 Ah | Predicted: 0.9007 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  396 | Actual: 0.8915 Ah | Predicted: 0.9002 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  397 | Actual: 0.8915 Ah | Predicted: 0.8996 Ah | SOH:   90.8% | HEALTHY
+  Battery   5 | Cycle  398 | Actual: 0.8893 Ah | Predicted: 0.8988 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  399 | Actual: 0.8893 Ah | Predicted: 0.8991 Ah | SOH:   90.7% | HEALTHY
+  Battery   5 | Cycle  400 | Actual: 0.8893 Ah | Predicted: 0.8987 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  401 | Actual: 0.8893 Ah | Predicted: 0.8978 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  402 | Actual: 0.8893 Ah | Predicted: 0.8978 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  403 | Actual: 0.8893 Ah | Predicted: 0.8980 Ah | SOH:   90.9% | HEALTHY
+  Battery   5 | Cycle  404 | Actual: 0.8893 Ah | Predicted: 0.8976 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  405 | Actual: 0.8893 Ah | Predicted: 0.8974 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  406 | Actual: 0.8871 Ah | Predicted: 0.8968 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  407 | Actual: 0.8871 Ah | Predicted: 0.8972 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  408 | Actual: 0.8871 Ah | Predicted: 0.8969 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  409 | Actual: 0.8871 Ah | Predicted: 0.8959 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  410 | Actual: 0.8850 Ah | Predicted: 0.8950 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  411 | Actual: 0.8850 Ah | Predicted: 0.8956 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  412 | Actual: 0.8850 Ah | Predicted: 0.8953 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  413 | Actual: 0.8850 Ah | Predicted: 0.8911 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  414 | Actual: 0.8827 Ah | Predicted: 0.8896 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  415 | Actual: 0.8827 Ah | Predicted: 0.8895 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  416 | Actual: 0.8827 Ah | Predicted: 0.8899 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  417 | Actual: 0.8827 Ah | Predicted: 0.8897 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  418 | Actual: 0.8806 Ah | Predicted: 0.8889 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  419 | Actual: 0.8806 Ah | Predicted: 0.8889 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  420 | Actual: 0.8806 Ah | Predicted: 0.8880 Ah | SOH:   91.0% | HEALTHY
+  Battery   5 | Cycle  421 | Actual: 0.8806 Ah | Predicted: 0.8892 Ah | SOH:   91.1% | HEALTHY
+  Battery   5 | Cycle  422 | Actual: 0.8807 Ah | Predicted: 0.8891 Ah | SOH:   91.5% | HEALTHY
+  Battery   5 | Cycle  423 | Actual: 0.8807 Ah | Predicted: 0.8879 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  424 | Actual: 0.8807 Ah | Predicted: 0.8877 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  425 | Actual: 0.8807 Ah | Predicted: 0.8876 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  426 | Actual: 0.8786 Ah | Predicted: 0.8856 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  427 | Actual: 0.8786 Ah | Predicted: 0.8859 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  428 | Actual: 0.8786 Ah | Predicted: 0.8856 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  429 | Actual: 0.8786 Ah | Predicted: 0.8853 Ah | SOH:   91.3% | HEALTHY
+  Battery   5 | Cycle  430 | Actual: 0.8893 Ah | Predicted: 0.8850 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  431 | Actual: 0.8893 Ah | Predicted: 0.8847 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  432 | Actual: 0.8913 Ah | Predicted: 0.8846 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  433 | Actual: 0.8913 Ah | Predicted: 0.8850 Ah | SOH:   91.4% | HEALTHY
+  Battery   5 | Cycle  434 | Actual: 0.8913 Ah | Predicted: 0.8852 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  435 | Actual: 0.8913 Ah | Predicted: 0.8853 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  436 | Actual: 0.8827 Ah | Predicted: 0.8860 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  437 | Actual: 0.8827 Ah | Predicted: 0.8866 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  438 | Actual: 0.8827 Ah | Predicted: 0.8864 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  439 | Actual: 0.8827 Ah | Predicted: 0.8867 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  440 | Actual: 0.8784 Ah | Predicted: 0.8861 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  441 | Actual: 0.8784 Ah | Predicted: 0.8856 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  442 | Actual: 0.8784 Ah | Predicted: 0.8850 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  443 | Actual: 0.8784 Ah | Predicted: 0.8842 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  444 | Actual: 0.8760 Ah | Predicted: 0.8823 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  445 | Actual: 0.8760 Ah | Predicted: 0.8823 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  446 | Actual: 0.8760 Ah | Predicted: 0.8819 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  447 | Actual: 0.8760 Ah | Predicted: 0.8819 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  448 | Actual: 0.8741 Ah | Predicted: 0.8803 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  449 | Actual: 0.8741 Ah | Predicted: 0.8802 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  450 | Actual: 0.8741 Ah | Predicted: 0.8805 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  451 | Actual: 0.8741 Ah | Predicted: 0.8798 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  452 | Actual: 0.8718 Ah | Predicted: 0.8787 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  453 | Actual: 0.8718 Ah | Predicted: 0.8790 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  454 | Actual: 0.8718 Ah | Predicted: 0.8776 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  455 | Actual: 0.8718 Ah | Predicted: 0.8776 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  456 | Actual: 0.8697 Ah | Predicted: 0.8766 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  457 | Actual: 0.8697 Ah | Predicted: 0.8768 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  458 | Actual: 0.8697 Ah | Predicted: 0.8771 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  459 | Actual: 0.8697 Ah | Predicted: 0.8769 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  460 | Actual: 0.8673 Ah | Predicted: 0.8754 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  461 | Actual: 0.8673 Ah | Predicted: 0.8763 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  462 | Actual: 0.8673 Ah | Predicted: 0.8764 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  463 | Actual: 0.8673 Ah | Predicted: 0.8765 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  464 | Actual: 0.8651 Ah | Predicted: 0.8754 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  465 | Actual: 0.8651 Ah | Predicted: 0.8756 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  466 | Actual: 0.8651 Ah | Predicted: 0.8755 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  467 | Actual: 0.8651 Ah | Predicted: 0.8752 Ah | SOH:   91.8% | HEALTHY
+  Battery   5 | Cycle  468 | Actual: 0.8631 Ah | Predicted: 0.8736 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  469 | Actual: 0.8631 Ah | Predicted: 0.8735 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  470 | Actual: 0.8631 Ah | Predicted: 0.8737 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  471 | Actual: 0.8631 Ah | Predicted: 0.8736 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  472 | Actual: 0.8631 Ah | Predicted: 0.8726 Ah | SOH:   92.6% | HEALTHY
+  Battery   5 | Cycle  473 | Actual: 0.8631 Ah | Predicted: 0.8726 Ah | SOH:   92.6% | HEALTHY
+  Battery   5 | Cycle  474 | Actual: 0.8631 Ah | Predicted: 0.8711 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  475 | Actual: 0.8631 Ah | Predicted: 0.8701 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  476 | Actual: 0.8607 Ah | Predicted: 0.8684 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  477 | Actual: 0.8607 Ah | Predicted: 0.8688 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  478 | Actual: 0.8607 Ah | Predicted: 0.8690 Ah | SOH:   92.5% | HEALTHY
+  Battery   5 | Cycle  479 | Actual: 0.8607 Ah | Predicted: 0.8685 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  480 | Actual: 0.8652 Ah | Predicted: 0.8676 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  481 | Actual: 0.8652 Ah | Predicted: 0.8671 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  482 | Actual: 0.8697 Ah | Predicted: 0.8663 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  483 | Actual: 0.8697 Ah | Predicted: 0.8668 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  484 | Actual: 0.8628 Ah | Predicted: 0.8682 Ah | SOH:   92.6% | HEALTHY
+  Battery   5 | Cycle  485 | Actual: 0.8628 Ah | Predicted: 0.8710 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  486 | Actual: 0.8628 Ah | Predicted: 0.8709 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  487 | Actual: 0.8628 Ah | Predicted: 0.8717 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  488 | Actual: 0.8607 Ah | Predicted: 0.8713 Ah | SOH:   93.1% | HEALTHY
+  Battery   5 | Cycle  489 | Actual: 0.8607 Ah | Predicted: 0.8703 Ah | SOH:   93.0% | HEALTHY
+  Battery   5 | Cycle  490 | Actual: 0.8607 Ah | Predicted: 0.8703 Ah | SOH:   93.0% | HEALTHY
+  Battery   5 | Cycle  491 | Actual: 0.8607 Ah | Predicted: 0.8704 Ah | SOH:   93.0% | HEALTHY
+  Battery   5 | Cycle  492 | Actual: 0.8563 Ah | Predicted: 0.8699 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  493 | Actual: 0.8563 Ah | Predicted: 0.8683 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  494 | Actual: 0.8563 Ah | Predicted: 0.8681 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  495 | Actual: 0.8563 Ah | Predicted: 0.8680 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  496 | Actual: 0.8564 Ah | Predicted: 0.8677 Ah | SOH:   93.6% | HEALTHY
+  Battery   5 | Cycle  497 | Actual: 0.8564 Ah | Predicted: 0.8662 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  498 | Actual: 0.8564 Ah | Predicted: 0.8660 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  499 | Actual: 0.8564 Ah | Predicted: 0.8659 Ah | SOH:   93.4% | HEALTHY
+  Battery   5 | Cycle  500 | Actual: 0.8564 Ah | Predicted: 0.8656 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  501 | Actual: 0.8564 Ah | Predicted: 0.8644 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  502 | Actual: 0.8564 Ah | Predicted: 0.8643 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  503 | Actual: 0.8564 Ah | Predicted: 0.8644 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  504 | Actual: 0.8541 Ah | Predicted: 0.8635 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  505 | Actual: 0.8541 Ah | Predicted: 0.8623 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  506 | Actual: 0.8541 Ah | Predicted: 0.8621 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  507 | Actual: 0.8541 Ah | Predicted: 0.8621 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  508 | Actual: 0.8519 Ah | Predicted: 0.8610 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  509 | Actual: 0.8519 Ah | Predicted: 0.8606 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  510 | Actual: 0.8519 Ah | Predicted: 0.8602 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  511 | Actual: 0.8519 Ah | Predicted: 0.8601 Ah | SOH:   89.8% | HEALTHY
+  Battery   5 | Cycle  512 | Actual: 0.8497 Ah | Predicted: 0.8589 Ah | SOH:   89.7% | HEALTHY
+  Battery   5 | Cycle  513 | Actual: 0.8497 Ah | Predicted: 0.8589 Ah | SOH:   89.7% | HEALTHY
+  Battery   5 | Cycle  514 | Actual: 0.8497 Ah | Predicted: 0.8589 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  515 | Actual: 0.8497 Ah | Predicted: 0.8591 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  516 | Actual: 0.8497 Ah | Predicted: 0.8589 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  517 | Actual: 0.8497 Ah | Predicted: 0.8583 Ah | SOH:   91.2% | HEALTHY
+  Battery   5 | Cycle  518 | Actual: 0.8497 Ah | Predicted: 0.8581 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  519 | Actual: 0.8497 Ah | Predicted: 0.8581 Ah | SOH:   91.7% | HEALTHY
+  Battery   5 | Cycle  520 | Actual: 0.8476 Ah | Predicted: 0.8570 Ah | SOH:   91.6% | HEALTHY
+  Battery   5 | Cycle  521 | Actual: 0.8476 Ah | Predicted: 0.8561 Ah | SOH:   91.5% | HEALTHY
+  Battery   5 | Cycle  522 | Actual: 0.8476 Ah | Predicted: 0.8553 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  523 | Actual: 0.8476 Ah | Predicted: 0.8552 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  524 | Actual: 0.8453 Ah | Predicted: 0.8536 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  525 | Actual: 0.8453 Ah | Predicted: 0.8536 Ah | SOH:   91.9% | HEALTHY
+  Battery   5 | Cycle  526 | Actual: 0.8453 Ah | Predicted: 0.8533 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  527 | Actual: 0.8453 Ah | Predicted: 0.8550 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  528 | Actual: 0.8429 Ah | Predicted: 0.8525 Ah | SOH:   92.0% | HEALTHY
+  Battery   5 | Cycle  529 | Actual: 0.8429 Ah | Predicted: 0.8536 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  530 | Actual: 0.8429 Ah | Predicted: 0.8553 Ah | SOH:   92.7% | HEALTHY
+  Battery   5 | Cycle  531 | Actual: 0.8429 Ah | Predicted: 0.8568 Ah | SOH:   92.8% | HEALTHY
+  Battery   5 | Cycle  532 | Actual: 0.8408 Ah | Predicted: 0.8580 Ah | SOH:   93.0% | HEALTHY
+  Battery   5 | Cycle  533 | Actual: 0.8408 Ah | Predicted: 0.8502 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  534 | Actual: 0.8408 Ah | Predicted: 0.8487 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  535 | Actual: 0.8408 Ah | Predicted: 0.8488 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  536 | Actual: 0.8409 Ah | Predicted: 0.8482 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  537 | Actual: 0.8409 Ah | Predicted: 0.8480 Ah | SOH:   92.1% | HEALTHY
+  Battery   5 | Cycle  538 | Actual: 0.8409 Ah | Predicted: 0.8476 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  539 | Actual: 0.8409 Ah | Predicted: 0.8480 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  540 | Actual: 0.8408 Ah | Predicted: 0.8479 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  541 | Actual: 0.8408 Ah | Predicted: 0.8477 Ah | SOH:   92.2% | HEALTHY
+  Battery   5 | Cycle  542 | Actual: 0.8408 Ah | Predicted: 0.8469 Ah | SOH:   92.4% | HEALTHY
+  Battery   5 | Cycle  543 | Actual: 0.8408 Ah | Predicted: 0.8468 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  544 | Actual: 0.8432 Ah | Predicted: 0.8466 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  545 | Actual: 0.8432 Ah | Predicted: 0.8462 Ah | SOH:   92.3% | HEALTHY
+  Battery   5 | Cycle  546 | Actual: 0.8432 Ah | Predicted: 0.8460 Ah | SOH:   92.7% | HEALTHY
+  Battery   5 | Cycle  547 | Actual: 0.8587 Ah | Predicted: 0.8464 Ah | SOH:   92.7% | HEALTHY
+  Battery   5 | Cycle  548 | Actual: 0.8587 Ah | Predicted: 0.8462 Ah | SOH:   92.7% | HEALTHY
+  Battery   5 | Cycle  549 | Actual: 0.8587 Ah | Predicted: 0.8457 Ah | SOH:   92.7% | HEALTHY
+  Battery   5 | Cycle  550 | Actual: 0.8587 Ah | Predicted: 0.8452 Ah | SOH:   92.8% | HEALTHY
+  Battery   5 | Cycle  551 | Actual: 0.8500 Ah | Predicted: 0.8460 Ah | SOH:   92.9% | HEALTHY
+  Battery   5 | Cycle  552 | Actual: 0.8500 Ah | Predicted: 0.8483 Ah | SOH:   93.2% | HEALTHY
+  Battery   5 | Cycle  553 | Actual: 0.8500 Ah | Predicted: 0.8475 Ah | SOH:   93.1% | HEALTHY
+  Battery   5 | Cycle  554 | Actual: 0.8500 Ah | Predicted: 0.8477 Ah | SOH:   93.3% | HEALTHY
+  Battery   5 | Cycle  555 | Actual: 0.8455 Ah | Predicted: 0.8477 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle   49 | Actual: 1.0582 Ah | Predicted: 1.0169 Ah | SOH:  120.3% | HEALTHY
+  Battery   7 | Cycle   50 | Actual: 1.0582 Ah | Predicted: 1.0564 Ah | SOH:  125.0% | HEALTHY
+  Battery   7 | Cycle   51 | Actual: 1.0582 Ah | Predicted: 1.0563 Ah | SOH:  124.9% | HEALTHY
+  Battery   7 | Cycle   52 | Actual: 1.0582 Ah | Predicted: 1.0546 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   53 | Actual: 1.0547 Ah | Predicted: 1.0544 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   54 | Actual: 1.0547 Ah | Predicted: 1.0543 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   55 | Actual: 1.0547 Ah | Predicted: 1.0540 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   56 | Actual: 1.0547 Ah | Predicted: 1.0537 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   57 | Actual: 1.0544 Ah | Predicted: 1.0533 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   58 | Actual: 1.0544 Ah | Predicted: 1.0531 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   59 | Actual: 1.0544 Ah | Predicted: 1.0529 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   60 | Actual: 1.0544 Ah | Predicted: 1.0527 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   61 | Actual: 1.0545 Ah | Predicted: 1.0525 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   62 | Actual: 1.0545 Ah | Predicted: 1.0524 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   63 | Actual: 1.0545 Ah | Predicted: 1.0524 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   64 | Actual: 1.0545 Ah | Predicted: 1.0524 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   65 | Actual: 1.0507 Ah | Predicted: 1.0526 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   66 | Actual: 1.0507 Ah | Predicted: 1.0528 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   67 | Actual: 1.0507 Ah | Predicted: 1.0527 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   68 | Actual: 1.0507 Ah | Predicted: 1.0527 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   69 | Actual: 1.0508 Ah | Predicted: 1.0527 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   70 | Actual: 1.0508 Ah | Predicted: 1.0529 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   71 | Actual: 1.0508 Ah | Predicted: 1.0530 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   72 | Actual: 1.0508 Ah | Predicted: 1.0531 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   73 | Actual: 1.0505 Ah | Predicted: 1.0533 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   74 | Actual: 1.0505 Ah | Predicted: 1.0532 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   75 | Actual: 1.0505 Ah | Predicted: 1.0529 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   76 | Actual: 1.0505 Ah | Predicted: 1.0529 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   77 | Actual: 1.0467 Ah | Predicted: 1.0531 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   78 | Actual: 1.0467 Ah | Predicted: 1.0529 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   79 | Actual: 1.0467 Ah | Predicted: 1.0526 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   80 | Actual: 1.0467 Ah | Predicted: 1.0528 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   81 | Actual: 1.0470 Ah | Predicted: 1.0528 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   82 | Actual: 1.0470 Ah | Predicted: 1.0523 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   83 | Actual: 1.0470 Ah | Predicted: 1.0520 Ah | SOH:  124.4% | HEALTHY
+  Battery   7 | Cycle   84 | Actual: 1.0470 Ah | Predicted: 1.0523 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   85 | Actual: 1.0590 Ah | Predicted: 1.0538 Ah | SOH:  124.6% | HEALTHY
+  Battery   7 | Cycle   86 | Actual: 1.0590 Ah | Predicted: 1.0540 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   87 | Actual: 1.0590 Ah | Predicted: 1.0543 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   88 | Actual: 1.0590 Ah | Predicted: 1.0542 Ah | SOH:  124.7% | HEALTHY
+  Battery   7 | Cycle   89 | Actual: 1.0518 Ah | Predicted: 1.0528 Ah | SOH:  124.5% | HEALTHY
+
+  --- Stats | Messages: 487 | Rate: 8.1 msg/s | Active batteries: 2 | Predictions: 389 ---
+
+  Battery   7 | Cycle   90 | Actual: 1.0518 Ah | Predicted: 1.0526 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   91 | Actual: 1.0518 Ah | Predicted: 1.0526 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   92 | Actual: 1.0518 Ah | Predicted: 1.0522 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   93 | Actual: 1.0481 Ah | Predicted: 1.0523 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   94 | Actual: 1.0481 Ah | Predicted: 1.0524 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   95 | Actual: 1.0481 Ah | Predicted: 1.0522 Ah | SOH:  124.5% | HEALTHY
+  Battery   7 | Cycle   96 | Actual: 1.0481 Ah | Predicted: 1.0520 Ah | SOH:  124.4% | HEALTHY
+  Battery   7 | Cycle   97 | Actual: 1.0462 Ah | Predicted: 1.0513 Ah | SOH:  124.3% | HEALTHY
+  Battery   7 | Cycle   98 | Actual: 1.0462 Ah | Predicted: 1.0513 Ah | SOH:  124.3% | HEALTHY
+  Battery   7 | Cycle   99 | Actual: 1.0462 Ah | Predicted: 1.0511 Ah | SOH:  124.3% | HEALTHY
+  Battery   7 | Cycle  100 | Actual: 1.0462 Ah | Predicted: 1.0512 Ah | SOH:  124.3% | HEALTHY
+  Battery   7 | Cycle  101 | Actual: 1.0427 Ah | Predicted: 1.0486 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  102 | Actual: 1.0427 Ah | Predicted: 1.0486 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  103 | Actual: 1.0427 Ah | Predicted: 1.0484 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  104 | Actual: 1.0427 Ah | Predicted: 1.0481 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  105 | Actual: 1.0428 Ah | Predicted: 1.0481 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  106 | Actual: 1.0428 Ah | Predicted: 1.0484 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  107 | Actual: 1.0428 Ah | Predicted: 1.0485 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  108 | Actual: 1.0428 Ah | Predicted: 1.0482 Ah | SOH:  124.0% | HEALTHY
+  Battery   7 | Cycle  109 | Actual: 1.0409 Ah | Predicted: 1.0468 Ah | SOH:  123.8% | HEALTHY
+  Battery   7 | Cycle  110 | Actual: 1.0409 Ah | Predicted: 1.0470 Ah | SOH:  123.8% | HEALTHY
+  Battery   7 | Cycle  111 | Actual: 1.0409 Ah | Predicted: 1.0469 Ah | SOH:  123.8% | HEALTHY
+  Battery   7 | Cycle  112 | Actual: 1.0409 Ah | Predicted: 1.0467 Ah | SOH:  123.8% | HEALTHY
+  Battery   7 | Cycle  113 | Actual: 1.0371 Ah | Predicted: 1.0448 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  114 | Actual: 1.0371 Ah | Predicted: 1.0452 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  115 | Actual: 1.0371 Ah | Predicted: 1.0456 Ah | SOH:  123.7% | HEALTHY
+  Battery   7 | Cycle  116 | Actual: 1.0371 Ah | Predicted: 1.0451 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  117 | Actual: 1.0355 Ah | Predicted: 1.0448 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  118 | Actual: 1.0355 Ah | Predicted: 1.0452 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  119 | Actual: 1.0355 Ah | Predicted: 1.0446 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  120 | Actual: 1.0355 Ah | Predicted: 1.0441 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  121 | Actual: 1.0337 Ah | Predicted: 1.0437 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  122 | Actual: 1.0337 Ah | Predicted: 1.0442 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  123 | Actual: 1.0337 Ah | Predicted: 1.0446 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  124 | Actual: 1.0337 Ah | Predicted: 1.0439 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  125 | Actual: 1.0338 Ah | Predicted: 1.0432 Ah | SOH:  123.4% | HEALTHY
+  Battery   7 | Cycle  126 | Actual: 1.0338 Ah | Predicted: 1.0436 Ah | SOH:  123.4% | HEALTHY
+  Battery   7 | Cycle  127 | Actual: 1.0338 Ah | Predicted: 1.0440 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  128 | Actual: 1.0338 Ah | Predicted: 1.0437 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  129 | Actual: 1.0318 Ah | Predicted: 1.0428 Ah | SOH:  123.3% | HEALTHY
+  Battery   7 | Cycle  130 | Actual: 1.0318 Ah | Predicted: 1.0431 Ah | SOH:  123.4% | HEALTHY
+  Battery   7 | Cycle  131 | Actual: 1.0318 Ah | Predicted: 1.0402 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  132 | Actual: 1.0318 Ah | Predicted: 1.0403 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  133 | Actual: 1.0343 Ah | Predicted: 1.0398 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  134 | Actual: 1.0343 Ah | Predicted: 1.0399 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  135 | Actual: 1.0319 Ah | Predicted: 1.0396 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  136 | Actual: 1.0319 Ah | Predicted: 1.0489 Ah | SOH:  124.1% | HEALTHY
+  Battery   7 | Cycle  137 | Actual: 1.0319 Ah | Predicted: 1.0492 Ah | SOH:  124.1% | HEALTHY
+  Battery   7 | Cycle  138 | Actual: 1.0319 Ah | Predicted: 1.0451 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  139 | Actual: 1.0281 Ah | Predicted: 1.0429 Ah | SOH:  123.3% | HEALTHY
+  Battery   7 | Cycle  140 | Actual: 1.0281 Ah | Predicted: 1.0442 Ah | SOH:  123.5% | HEALTHY
+  Battery   7 | Cycle  141 | Actual: 1.0281 Ah | Predicted: 1.0452 Ah | SOH:  123.6% | HEALTHY
+  Battery   7 | Cycle  142 | Actual: 1.0281 Ah | Predicted: 1.0413 Ah | SOH:  123.2% | HEALTHY
+  Battery   7 | Cycle  143 | Actual: 1.0246 Ah | Predicted: 1.0391 Ah | SOH:  122.9% | HEALTHY
+  Battery   7 | Cycle  144 | Actual: 1.0246 Ah | Predicted: 1.0400 Ah | SOH:  123.0% | HEALTHY
+  Battery   7 | Cycle  145 | Actual: 1.0246 Ah | Predicted: 1.0409 Ah | SOH:  123.1% | HEALTHY
+  Battery   7 | Cycle  146 | Actual: 1.0246 Ah | Predicted: 1.0386 Ah | SOH:  122.8% | HEALTHY
+  Battery   7 | Cycle  147 | Actual: 1.0226 Ah | Predicted: 1.0376 Ah | SOH:  122.7% | HEALTHY
+  Battery   7 | Cycle  148 | Actual: 1.0226 Ah | Predicted: 1.0392 Ah | SOH:  122.9% | HEALTHY
+  Battery   7 | Cycle  149 | Actual: 1.0350 Ah | Predicted: 1.0404 Ah | SOH:  123.1% | HEALTHY
+  Battery   7 | Cycle  150 | Actual: 1.0350 Ah | Predicted: 1.0341 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  151 | Actual: 1.0350 Ah | Predicted: 1.0343 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  152 | Actual: 1.0350 Ah | Predicted: 1.0344 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  153 | Actual: 1.0352 Ah | Predicted: 1.0344 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  154 | Actual: 1.0352 Ah | Predicted: 1.0344 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  155 | Actual: 1.0352 Ah | Predicted: 1.0345 Ah | SOH:  122.4% | HEALTHY
+  Battery   7 | Cycle  156 | Actual: 1.0352 Ah | Predicted: 1.0342 Ah | SOH:  122.3% | HEALTHY
+  Battery   7 | Cycle  157 | Actual: 1.0297 Ah | Predicted: 1.0332 Ah | SOH:  122.2% | HEALTHY
+  Battery   7 | Cycle  158 | Actual: 1.0297 Ah | Predicted: 1.0297 Ah | SOH:  121.8% | HEALTHY
+  Battery   7 | Cycle  159 | Actual: 1.0297 Ah | Predicted: 1.0290 Ah | SOH:  121.7% | HEALTHY
+  Battery   7 | Cycle  160 | Actual: 1.0297 Ah | Predicted: 1.0286 Ah | SOH:  121.7% | HEALTHY
+  Battery   7 | Cycle  161 | Actual: 1.0262 Ah | Predicted: 1.0286 Ah | SOH:  121.7% | HEALTHY
+  Battery   7 | Cycle  162 | Actual: 1.0262 Ah | Predicted: 1.0282 Ah | SOH:  121.6% | HEALTHY
+  Battery   7 | Cycle  163 | Actual: 1.0262 Ah | Predicted: 1.0282 Ah | SOH:  121.6% | HEALTHY
+  Battery   7 | Cycle  164 | Actual: 1.0262 Ah | Predicted: 1.0283 Ah | SOH:  121.6% | HEALTHY
+  Battery   7 | Cycle  165 | Actual: 1.0226 Ah | Predicted: 1.0279 Ah | SOH:  121.6% | HEALTHY
+  Battery   7 | Cycle  166 | Actual: 1.0226 Ah | Predicted: 1.0271 Ah | SOH:  121.5% | HEALTHY
+  Battery   7 | Cycle  167 | Actual: 1.0226 Ah | Predicted: 1.0273 Ah | SOH:  121.5% | HEALTHY
+  Battery   7 | Cycle  168 | Actual: 1.0226 Ah | Predicted: 1.0272 Ah | SOH:  121.5% | HEALTHY
+  Battery   7 | Cycle  169 | Actual: 1.0208 Ah | Predicted: 1.0258 Ah | SOH:  121.3% | HEALTHY
+  Battery   7 | Cycle  170 | Actual: 1.0208 Ah | Predicted: 1.0261 Ah | SOH:  121.4% | HEALTHY
+  Battery   7 | Cycle  171 | Actual: 1.0208 Ah | Predicted: 1.0263 Ah | SOH:  121.4% | HEALTHY
+  Battery   7 | Cycle  172 | Actual: 1.0208 Ah | Predicted: 1.0262 Ah | SOH:  121.4% | HEALTHY
+  Battery   7 | Cycle  173 | Actual: 1.0189 Ah | Predicted: 1.0255 Ah | SOH:  121.3% | HEALTHY
+  Battery   7 | Cycle  174 | Actual: 1.0189 Ah | Predicted: 1.0254 Ah | SOH:  121.3% | HEALTHY
+  Battery   7 | Cycle  175 | Actual: 1.0189 Ah | Predicted: 1.0255 Ah | SOH:  121.3% | HEALTHY
+  Battery   7 | Cycle  176 | Actual: 1.0189 Ah | Predicted: 1.0253 Ah | SOH:  121.3% | HEALTHY
+  Battery   7 | Cycle  177 | Actual: 1.0153 Ah | Predicted: 1.0243 Ah | SOH:  121.2% | HEALTHY
+  Battery   7 | Cycle  178 | Actual: 1.0153 Ah | Predicted: 1.0244 Ah | SOH:  121.2% | HEALTHY
+  Battery   7 | Cycle  179 | Actual: 1.0153 Ah | Predicted: 1.0243 Ah | SOH:  121.2% | HEALTHY
+  Battery   7 | Cycle  180 | Actual: 1.0153 Ah | Predicted: 1.0246 Ah | SOH:  121.2% | HEALTHY
+  Battery   7 | Cycle  181 | Actual: 1.0115 Ah | Predicted: 1.0233 Ah | SOH:  121.0% | HEALTHY
+  Battery   7 | Cycle  182 | Actual: 1.0115 Ah | Predicted: 1.0236 Ah | SOH:  121.1% | HEALTHY
+  Battery   7 | Cycle  183 | Actual: 1.0115 Ah | Predicted: 1.0241 Ah | SOH:  121.1% | HEALTHY
+  Battery   7 | Cycle  184 | Actual: 1.0115 Ah | Predicted: 1.0245 Ah | SOH:  121.2% | HEALTHY
+  Battery   7 | Cycle  185 | Actual: 1.0115 Ah | Predicted: 1.0194 Ah | SOH:  120.6% | HEALTHY
+  Battery   7 | Cycle  186 | Actual: 1.0115 Ah | Predicted: 1.0193 Ah | SOH:  120.6% | HEALTHY
+  Battery   7 | Cycle  187 | Actual: 1.0115 Ah | Predicted: 1.0202 Ah | SOH:  120.7% | HEALTHY
+  Battery   7 | Cycle  188 | Actual: 1.0115 Ah | Predicted: 1.0201 Ah | SOH:  120.7% | HEALTHY
+  Battery   7 | Cycle  189 | Actual: 1.0098 Ah | Predicted: 1.0197 Ah | SOH:  120.6% | HEALTHY
+  Battery   7 | Cycle  190 | Actual: 1.0098 Ah | Predicted: 1.0188 Ah | SOH:  120.5% | HEALTHY
+  Battery   7 | Cycle  191 | Actual: 1.0098 Ah | Predicted: 1.0183 Ah | SOH:  120.5% | HEALTHY
+  Battery   7 | Cycle  192 | Actual: 1.0098 Ah | Predicted: 1.0190 Ah | SOH:  120.5% | HEALTHY
+  Battery   7 | Cycle  193 | Actual: 1.0078 Ah | Predicted: 1.0187 Ah | SOH:  120.5% | HEALTHY
+  Battery   7 | Cycle  194 | Actual: 1.0078 Ah | Predicted: 1.0193 Ah | SOH:  120.6% | HEALTHY
+  Battery   7 | Cycle  195 | Actual: 1.0078 Ah | Predicted: 1.0180 Ah | SOH:  120.4% | HEALTHY
+  Battery   7 | Cycle  196 | Actual: 1.0078 Ah | Predicted: 1.0183 Ah | SOH:  120.4% | HEALTHY
+  Battery   7 | Cycle  197 | Actual: 1.0038 Ah | Predicted: 1.0174 Ah | SOH:  120.3% | HEALTHY
+  Battery   7 | Cycle  198 | Actual: 1.0038 Ah | Predicted: 1.0177 Ah | SOH:  120.4% | HEALTHY
+  Battery   7 | Cycle  199 | Actual: 1.0038 Ah | Predicted: 1.0169 Ah | SOH:  120.3% | HEALTHY
+  Battery   7 | Cycle  200 | Actual: 1.0038 Ah | Predicted: 1.0158 Ah | SOH:   95.7% | HEALTHY
+  Battery   7 | Cycle  201 | Actual: 1.0021 Ah | Predicted: 1.0145 Ah | SOH:   95.6% | HEALTHY
+  Battery   7 | Cycle  202 | Actual: 1.0021 Ah | Predicted: 1.0141 Ah | SOH:   95.8% | HEALTHY
+  Battery   7 | Cycle  203 | Actual: 1.0021 Ah | Predicted: 1.0141 Ah | SOH:   95.8% | HEALTHY
+  Battery   7 | Cycle  204 | Actual: 1.0021 Ah | Predicted: 1.0130 Ah | SOH:   95.7% | HEALTHY
+  Battery   7 | Cycle  205 | Actual: 0.9984 Ah | Predicted: 1.0121 Ah | SOH:   95.7% | HEALTHY
+  Battery   7 | Cycle  206 | Actual: 0.9984 Ah | Predicted: 1.0109 Ah | SOH:   95.5% | HEALTHY
+  Battery   7 | Cycle  207 | Actual: 0.9984 Ah | Predicted: 1.0101 Ah | SOH:   95.5% | HEALTHY
+  Battery   7 | Cycle  208 | Actual: 0.9984 Ah | Predicted: 1.0119 Ah | SOH:   95.7% | HEALTHY
+  Battery   7 | Cycle  209 | Actual: 0.9984 Ah | Predicted: 1.0113 Ah | SOH:   95.6% | HEALTHY
+  Battery   7 | Cycle  210 | Actual: 0.9984 Ah | Predicted: 1.0105 Ah | SOH:   95.5% | HEALTHY
+  Battery   7 | Cycle  211 | Actual: 0.9984 Ah | Predicted: 1.0101 Ah | SOH:   95.5% | HEALTHY
+  Battery   7 | Cycle  212 | Actual: 0.9984 Ah | Predicted: 1.0096 Ah | SOH:   95.5% | HEALTHY
+  Battery   7 | Cycle  213 | Actual: 0.9946 Ah | Predicted: 1.0081 Ah | SOH:   95.3% | HEALTHY
+  Battery   7 | Cycle  214 | Actual: 0.9946 Ah | Predicted: 1.0069 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  215 | Actual: 0.9947 Ah | Predicted: 1.0061 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  216 | Actual: 0.9947 Ah | Predicted: 1.0060 Ah | SOH:   95.4% | HEALTHY
+  Battery   7 | Cycle  217 | Actual: 0.9947 Ah | Predicted: 1.0051 Ah | SOH:   95.3% | HEALTHY
+  Battery   7 | Cycle  218 | Actual: 0.9947 Ah | Predicted: 1.0046 Ah | SOH:   95.3% | HEALTHY
+  Battery   7 | Cycle  219 | Actual: 0.9909 Ah | Predicted: 1.0030 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  220 | Actual: 0.9909 Ah | Predicted: 1.0025 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  221 | Actual: 0.9909 Ah | Predicted: 1.0021 Ah | SOH:   95.0% | HEALTHY
+  Battery   7 | Cycle  222 | Actual: 0.9909 Ah | Predicted: 1.0006 Ah | SOH:   94.9% | HEALTHY
+  Battery   7 | Cycle  223 | Actual: 0.9887 Ah | Predicted: 0.9995 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  224 | Actual: 0.9887 Ah | Predicted: 0.9984 Ah | SOH:   95.0% | HEALTHY
+  Battery   7 | Cycle  225 | Actual: 0.9887 Ah | Predicted: 0.9976 Ah | SOH:   95.0% | HEALTHY
+  Battery   7 | Cycle  226 | Actual: 0.9887 Ah | Predicted: 0.9975 Ah | SOH:   95.0% | HEALTHY
+  Battery   7 | Cycle  227 | Actual: 0.9870 Ah | Predicted: 0.9966 Ah | SOH:   94.9% | HEALTHY
+  Battery   7 | Cycle  228 | Actual: 0.9870 Ah | Predicted: 0.9964 Ah | SOH:   94.9% | HEALTHY
+  Battery   7 | Cycle  229 | Actual: 0.9870 Ah | Predicted: 0.9967 Ah | SOH:   94.9% | HEALTHY
+  Battery   7 | Cycle  230 | Actual: 0.9870 Ah | Predicted: 0.9965 Ah | SOH:   94.8% | HEALTHY
+  Battery   7 | Cycle  231 | Actual: 0.9850 Ah | Predicted: 0.9964 Ah | SOH:   94.9% | HEALTHY
+  Battery   7 | Cycle  232 | Actual: 0.9850 Ah | Predicted: 0.9955 Ah | SOH:   94.8% | HEALTHY
+  Battery   7 | Cycle  233 | Actual: 0.9850 Ah | Predicted: 0.9956 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  234 | Actual: 0.9850 Ah | Predicted: 0.9957 Ah | SOH:   95.1% | HEALTHY
+  Battery   7 | Cycle  235 | Actual: 0.9833 Ah | Predicted: 0.9925 Ah | SOH:   94.8% | HEALTHY
+  Battery   7 | Cycle  236 | Actual: 0.9833 Ah | Predicted: 0.9920 Ah | SOH:   94.8% | HEALTHY
+  Battery   7 | Cycle  237 | Actual: 0.9833 Ah | Predicted: 0.9918 Ah | SOH:   94.8% | HEALTHY
+  Battery   7 | Cycle  238 | Actual: 0.9833 Ah | Predicted: 0.9911 Ah | SOH:   94.7% | HEALTHY
+  Battery   7 | Cycle  239 | Actual: 0.9811 Ah | Predicted: 0.9900 Ah | SOH:   94.6% | HEALTHY
+  Battery   7 | Cycle  240 | Actual: 0.9811 Ah | Predicted: 0.9894 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  241 | Actual: 0.9811 Ah | Predicted: 0.9890 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  242 | Actual: 0.9811 Ah | Predicted: 0.9897 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  243 | Actual: 0.9792 Ah | Predicted: 0.9887 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  244 | Actual: 0.9792 Ah | Predicted: 0.9882 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  245 | Actual: 0.9792 Ah | Predicted: 0.9877 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  246 | Actual: 0.9792 Ah | Predicted: 0.9872 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  247 | Actual: 0.9774 Ah | Predicted: 0.9859 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  248 | Actual: 0.9774 Ah | Predicted: 0.9859 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  249 | Actual: 0.9774 Ah | Predicted: 0.9855 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  250 | Actual: 0.9774 Ah | Predicted: 0.9855 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  251 | Actual: 0.9755 Ah | Predicted: 0.9847 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  252 | Actual: 0.9755 Ah | Predicted: 0.9840 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  253 | Actual: 0.9755 Ah | Predicted: 0.9831 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  254 | Actual: 0.9755 Ah | Predicted: 0.9841 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  255 | Actual: 0.9735 Ah | Predicted: 0.9836 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  256 | Actual: 0.9735 Ah | Predicted: 0.9835 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  257 | Actual: 0.9735 Ah | Predicted: 0.9831 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  258 | Actual: 0.9735 Ah | Predicted: 0.9830 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  259 | Actual: 0.9694 Ah | Predicted: 0.9821 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  260 | Actual: 0.9694 Ah | Predicted: 0.9810 Ah | SOH:   93.0% | HEALTHY
+
+  --- Stats | Messages: 658 | Rate: 7.3 msg/s | Active batteries: 2 | Predictions: 560 ---
+
+  Battery   7 | Cycle  261 | Actual: 0.9694 Ah | Predicted: 0.9798 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  262 | Actual: 0.9694 Ah | Predicted: 0.9787 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  263 | Actual: 0.9694 Ah | Predicted: 0.9775 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  264 | Actual: 0.9694 Ah | Predicted: 0.9779 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  265 | Actual: 0.9712 Ah | Predicted: 0.9780 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  266 | Actual: 0.9712 Ah | Predicted: 0.9779 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  267 | Actual: 0.9712 Ah | Predicted: 0.9768 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  268 | Actual: 0.9712 Ah | Predicted: 0.9763 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  269 | Actual: 0.9676 Ah | Predicted: 0.9749 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  270 | Actual: 0.9676 Ah | Predicted: 0.9753 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  271 | Actual: 0.9676 Ah | Predicted: 0.9750 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  272 | Actual: 0.9676 Ah | Predicted: 0.9741 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  273 | Actual: 0.9636 Ah | Predicted: 0.9737 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  274 | Actual: 0.9636 Ah | Predicted: 0.9734 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  275 | Actual: 0.9636 Ah | Predicted: 0.9732 Ah | SOH:   92.6% | HEALTHY
+  Battery   7 | Cycle  276 | Actual: 0.9636 Ah | Predicted: 0.9729 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  277 | Actual: 0.9618 Ah | Predicted: 0.9724 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  278 | Actual: 0.9618 Ah | Predicted: 0.9722 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  279 | Actual: 0.9618 Ah | Predicted: 0.9724 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  280 | Actual: 0.9618 Ah | Predicted: 0.9720 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  281 | Actual: 0.9616 Ah | Predicted: 0.9715 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  282 | Actual: 0.9616 Ah | Predicted: 0.9701 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  283 | Actual: 0.9616 Ah | Predicted: 0.9690 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  284 | Actual: 0.9616 Ah | Predicted: 0.9701 Ah | SOH:   91.6% | HEALTHY
+  Battery   7 | Cycle  285 | Actual: 0.9619 Ah | Predicted: 0.9700 Ah | SOH:   91.6% | HEALTHY
+  Battery   7 | Cycle  286 | Actual: 0.9619 Ah | Predicted: 0.9697 Ah | SOH:   91.6% | HEALTHY
+  Battery   7 | Cycle  287 | Actual: 0.9619 Ah | Predicted: 0.9690 Ah | SOH:   91.5% | HEALTHY
+  Battery   7 | Cycle  288 | Actual: 0.9619 Ah | Predicted: 0.9678 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  289 | Actual: 0.9597 Ah | Predicted: 0.9671 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  290 | Actual: 0.9597 Ah | Predicted: 0.9668 Ah | SOH:   91.9% | HEALTHY
+  Battery   7 | Cycle  291 | Actual: 0.9597 Ah | Predicted: 0.9666 Ah | SOH:   91.9% | HEALTHY
+  Battery   7 | Cycle  292 | Actual: 0.9597 Ah | Predicted: 0.9664 Ah | SOH:   92.2% | HEALTHY
+  Battery   7 | Cycle  293 | Actual: 0.9558 Ah | Predicted: 0.9647 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  294 | Actual: 0.9558 Ah | Predicted: 0.9646 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  295 | Actual: 0.9558 Ah | Predicted: 0.9639 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  296 | Actual: 0.9558 Ah | Predicted: 0.9632 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  297 | Actual: 0.9539 Ah | Predicted: 0.9620 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  298 | Actual: 0.9539 Ah | Predicted: 0.9620 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  299 | Actual: 0.9539 Ah | Predicted: 0.9612 Ah | SOH:   91.9% | HEALTHY
+  Battery   7 | Cycle  300 | Actual: 0.9539 Ah | Predicted: 0.9606 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  301 | Actual: 0.9541 Ah | Predicted: 0.9603 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  302 | Actual: 0.9541 Ah | Predicted: 0.9603 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  303 | Actual: 0.9541 Ah | Predicted: 0.9601 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  304 | Actual: 0.9541 Ah | Predicted: 0.9603 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  305 | Actual: 0.9539 Ah | Predicted: 0.9599 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  306 | Actual: 0.9539 Ah | Predicted: 0.9599 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  307 | Actual: 0.9539 Ah | Predicted: 0.9599 Ah | SOH:   92.0% | HEALTHY
+  Battery   7 | Cycle  308 | Actual: 0.9539 Ah | Predicted: 0.9601 Ah | SOH:   92.2% | HEALTHY
+  Battery   7 | Cycle  309 | Actual: 0.9519 Ah | Predicted: 0.9588 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  310 | Actual: 0.9519 Ah | Predicted: 0.9586 Ah | SOH:   92.1% | HEALTHY
+  Battery   7 | Cycle  311 | Actual: 0.9519 Ah | Predicted: 0.9558 Ah | SOH:   91.8% | HEALTHY
+  Battery   7 | Cycle  312 | Actual: 0.9891 Ah | Predicted: 0.9577 Ah | SOH:   92.3% | HEALTHY
+  Battery   7 | Cycle  313 | Actual: 0.9891 Ah | Predicted: 0.9570 Ah | SOH:   92.3% | HEALTHY
+  Battery   7 | Cycle  314 | Actual: 0.9891 Ah | Predicted: 0.9589 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  315 | Actual: 0.9655 Ah | Predicted: 0.9609 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  316 | Actual: 0.9655 Ah | Predicted: 0.9647 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  317 | Actual: 0.9655 Ah | Predicted: 0.9657 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  318 | Actual: 0.9655 Ah | Predicted: 0.9666 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  319 | Actual: 0.9615 Ah | Predicted: 0.9677 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  320 | Actual: 0.9615 Ah | Predicted: 0.9669 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  321 | Actual: 0.9615 Ah | Predicted: 0.9652 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  322 | Actual: 0.9615 Ah | Predicted: 0.9654 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  323 | Actual: 0.9577 Ah | Predicted: 0.9658 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  324 | Actual: 0.9577 Ah | Predicted: 0.9663 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  325 | Actual: 0.9577 Ah | Predicted: 0.9660 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  326 | Actual: 0.9577 Ah | Predicted: 0.9662 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  327 | Actual: 0.9536 Ah | Predicted: 0.9663 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  328 | Actual: 0.9536 Ah | Predicted: 0.9657 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  329 | Actual: 0.9536 Ah | Predicted: 0.9626 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  330 | Actual: 0.9536 Ah | Predicted: 0.9624 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  331 | Actual: 0.9518 Ah | Predicted: 0.9626 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  332 | Actual: 0.9518 Ah | Predicted: 0.9624 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  333 | Actual: 0.9518 Ah | Predicted: 0.9620 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  334 | Actual: 0.9518 Ah | Predicted: 0.9642 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  335 | Actual: 0.9499 Ah | Predicted: 0.9663 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  336 | Actual: 0.9499 Ah | Predicted: 0.9657 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  337 | Actual: 0.9499 Ah | Predicted: 0.9654 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  338 | Actual: 0.9499 Ah | Predicted: 0.9644 Ah | SOH:   93.8% | HEALTHY
+  Battery   7 | Cycle  339 | Actual: 0.9478 Ah | Predicted: 0.9637 Ah | SOH:   93.7% | HEALTHY
+  Battery   7 | Cycle  340 | Actual: 0.9478 Ah | Predicted: 0.9627 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  341 | Actual: 0.9478 Ah | Predicted: 0.9597 Ah | SOH:   93.3% | HEALTHY
+  Battery   7 | Cycle  342 | Actual: 0.9478 Ah | Predicted: 0.9590 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  343 | Actual: 0.9459 Ah | Predicted: 0.9592 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  344 | Actual: 0.9459 Ah | Predicted: 0.9576 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  345 | Actual: 0.9459 Ah | Predicted: 0.9581 Ah | SOH:   93.5% | HEALTHY
+  Battery   7 | Cycle  346 | Actual: 0.9459 Ah | Predicted: 0.9584 Ah | SOH:   93.7% | HEALTHY
+  Battery   7 | Cycle  347 | Actual: 0.9438 Ah | Predicted: 0.9574 Ah | SOH:   93.6% | HEALTHY
+  Battery   7 | Cycle  348 | Actual: 0.9438 Ah | Predicted: 0.9574 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  349 | Actual: 0.9438 Ah | Predicted: 0.9573 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  350 | Actual: 0.9438 Ah | Predicted: 0.9577 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  351 | Actual: 0.9440 Ah | Predicted: 0.9568 Ah | SOH:   92.4% | HEALTHY
+  Battery   7 | Cycle  352 | Actual: 0.9440 Ah | Predicted: 0.9562 Ah | SOH:   92.4% | HEALTHY
+  Battery   7 | Cycle  353 | Actual: 0.9440 Ah | Predicted: 0.9575 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  354 | Actual: 0.9440 Ah | Predicted: 0.9577 Ah | SOH:   92.5% | HEALTHY
+  Battery   7 | Cycle  355 | Actual: 0.9421 Ah | Predicted: 0.9559 Ah | SOH:   92.3% | HEALTHY
+  Battery   7 | Cycle  356 | Actual: 0.9421 Ah | Predicted: 0.9545 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  357 | Actual: 0.9421 Ah | Predicted: 0.9544 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  358 | Actual: 0.9421 Ah | Predicted: 0.9544 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  359 | Actual: 0.9399 Ah | Predicted: 0.9507 Ah | SOH:   92.3% | HEALTHY
+  Battery   7 | Cycle  360 | Actual: 0.9399 Ah | Predicted: 0.9501 Ah | SOH:   92.6% | HEALTHY
+  Battery   7 | Cycle  361 | Actual: 0.9399 Ah | Predicted: 0.9476 Ah | SOH:   92.3% | HEALTHY
+  Battery   7 | Cycle  362 | Actual: 0.9399 Ah | Predicted: 0.9463 Ah | SOH:   92.2% | HEALTHY
+  Battery   7 | Cycle  363 | Actual: 0.9420 Ah | Predicted: 0.9465 Ah | SOH:   92.2% | HEALTHY
+  Battery   7 | Cycle  364 | Actual: 0.9420 Ah | Predicted: 0.9476 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  365 | Actual: 0.9420 Ah | Predicted: 0.9469 Ah | SOH:   92.6% | HEALTHY
+  Battery   7 | Cycle  366 | Actual: 0.9458 Ah | Predicted: 0.9467 Ah | SOH:   92.6% | HEALTHY
+  Battery   7 | Cycle  367 | Actual: 0.9458 Ah | Predicted: 0.9469 Ah | SOH:   92.6% | HEALTHY
+  Battery   7 | Cycle  368 | Actual: 0.9458 Ah | Predicted: 0.9471 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  369 | Actual: 0.9458 Ah | Predicted: 0.9469 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  370 | Actual: 0.9421 Ah | Predicted: 0.9463 Ah | SOH:   92.7% | HEALTHY
+  Battery   7 | Cycle  371 | Actual: 0.9421 Ah | Predicted: 0.9469 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  372 | Actual: 0.9421 Ah | Predicted: 0.9473 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  373 | Actual: 0.9421 Ah | Predicted: 0.9469 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  374 | Actual: 0.9399 Ah | Predicted: 0.9461 Ah | SOH:   92.9% | HEALTHY
+  Battery   7 | Cycle  375 | Actual: 0.9399 Ah | Predicted: 0.9456 Ah | SOH:   92.8% | HEALTHY
+  Battery   7 | Cycle  376 | Actual: 0.9399 Ah | Predicted: 0.9453 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  377 | Actual: 0.9399 Ah | Predicted: 0.9449 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  378 | Actual: 0.9361 Ah | Predicted: 0.9441 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  379 | Actual: 0.9361 Ah | Predicted: 0.9445 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  380 | Actual: 0.9361 Ah | Predicted: 0.9443 Ah | SOH:   93.4% | HEALTHY
+  Battery   7 | Cycle  381 | Actual: 0.9361 Ah | Predicted: 0.9432 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  382 | Actual: 0.9337 Ah | Predicted: 0.9427 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  383 | Actual: 0.9337 Ah | Predicted: 0.9424 Ah | SOH:   93.2% | HEALTHY
+  Battery   7 | Cycle  384 | Actual: 0.9337 Ah | Predicted: 0.9416 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  385 | Actual: 0.9337 Ah | Predicted: 0.9417 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  386 | Actual: 0.9341 Ah | Predicted: 0.9413 Ah | SOH:   93.1% | HEALTHY
+  Battery   7 | Cycle  387 | Actual: 0.9341 Ah | Predicted: 0.9405 Ah | SOH:   93.0% | HEALTHY
+  Battery   7 | Cycle  388 | Actual: 0.9341 Ah | Predicted: 0.9397 Ah | SOH:   93.1% | HEALTHY
+
+
+  Stopping consumer...
+  Total messages received : 787
+  Total predictions made  : 688
+  Runtime                 : 112s
+  Average rate            : 7.0 msg/s
+  Consumer closed.
+(venv) PS D:\COURSES\EV Battery> 
