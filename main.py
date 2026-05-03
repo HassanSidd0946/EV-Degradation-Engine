@@ -2,6 +2,7 @@
 
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+import asyncio
 import numpy as np
 import pandas as pd
 from tensorflow import keras
@@ -15,7 +16,6 @@ from websocket_consumer import read_stream_and_predict
 
 from dotenv import load_dotenv
 load_dotenv()
-
 
 
 app = FastAPI(title="EV Battery SOH Predictor")
