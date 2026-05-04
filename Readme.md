@@ -26,7 +26,7 @@
 
 Lithium-ion battery degradation is one of the most operationally critical and economically consequential failure modes in electric vehicles. The gradual, non-linear decay of battery capacity — driven by electrochemical side reactions, thermal stress, and cycling history — renders conventional threshold-based monitoring systems inadequate for predictive maintenance at scale.
 
-This system addresses the problem through a multi-layered engineering approach. A Temporal Convolutional Network (TCN) trained on the NASA Lithium-ion Battery Aging Dataset performs sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells in real time. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
+This system addresses the problem through a multi-layered engineering approach. A **TCN+LSTM ensemble model** trained on the NASA Lithium-ion Battery Aging Dataset performs sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells in real time. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
 
 Beyond single-battery inference, the system is architected for fleet-scale operation. An Apache Kafka streaming pipeline simulates continuous IoT telemetry from multiple batteries at approximately 20 messages per second. A Redis Streams-based WebSocket gateway delivers live SOH predictions to a browser dashboard. Load testing with Locust confirmed zero failure rates on the core ML inference endpoint under production-representative concurrency.
 
@@ -67,9 +67,9 @@ HTTP Clients
       v
 [ FastAPI Backend ]
       |
-      |---> POST /predict  ---> TCN Inference ---> SOH%
+      |---> POST /predict  ---> TCN+LSTM Ensemble ---> SOH%
       |
-      |---> POST /analyze  ---> TCN Inference
+      |---> POST /analyze  ---> TCN+LSTM Ensemble
       |                              |
       |                              v
       |                    [ LangGraph Agent ]
@@ -204,9 +204,9 @@ The TCN best checkpoint was saved at epoch 25. Its validation residual distribut
 
 ### Model Selection Rationale
 
-Despite the LSTM achieving lower aggregate MAE (0.0270 vs 0.0686 Ah on the full mixed test set), the TCN demonstrates superior generalization on individual batteries with clean degradation profiles. On Battery 54, the TCN achieves MAE = 0.0197 Ah versus the LSTM's 0.0218 Ah. The LSTM's lower aggregate score is partially attributable to its tendency to memorize the dominant degradation trajectory seen during training, which penalizes the TCN less on out-of-distribution batteries.
+Individual model evaluation revealed complementary strengths: the LSTM achieves superior aggregate accuracy (MAE: 0.0270 Ah, R²: 0.4820) across the full heterogeneous test set, while the TCN demonstrates stronger generalization on individual batteries with clean monotonic degradation profiles (Battery 54: TCN MAE = 0.0197 Ah vs LSTM MAE = 0.0218 Ah) and a conservative underestimation bias preferable for safety-critical decisions.
 
-For the Kafka streaming consumer and FastAPI inference endpoint, the TCN was selected as the production model due to its faster inference time (no sequential hidden state computation) and its conservative prediction behavior.
+For the FastAPI inference endpoints (`/predict` and `/analyze`), a **TCN+LSTM ensemble** is used as the production model. Predictions from both models are averaged, combining the LSTM's superior aggregate accuracy with the TCN's conservative underestimation bias — the safer failure mode for battery management applications. For real-time Kafka streaming and WebSocket inference, the TCN alone is retained due to its faster inference speed with no sequential hidden state computation.
 
 ![Training and Validation Loss Curves](docs/phase3_loss_curves.png)
 
@@ -214,12 +214,12 @@ For the Kafka streaming consumer and FastAPI inference endpoint, the TCN was sel
 
 ## Agentic AI Orchestration
 
-The `/analyze` endpoint integrates a two-node LangGraph directed graph that transforms raw TCN predictions into structured, actionable maintenance reports.
+The `/analyze` endpoint integrates a two-node LangGraph directed graph that transforms raw ensemble predictions into structured, actionable maintenance reports.
 
 ### Agent Graph
 
 ```
-[ CSV Input + TCN Predictions ]
+[ CSV Input + Ensemble Predictions ]
               |
               v
       [ LangGraph StateGraph ]
@@ -244,7 +244,7 @@ The `/analyze` endpoint integrates a two-node LangGraph directed graph that tran
     [ JSON: analysis + recommendation ]
 ```
 
-**Node 1 — analyze_degradation:** Receives the battery ID, cycle count, actual capacity values, TCN predictions, and computed MAE. Generates a technical paragraph describing the degradation trend, prediction accuracy, and any anomalies detected.
+**Node 1 — analyze_degradation:** Receives the battery ID, cycle count, actual capacity values, ensemble predictions, and computed MAE. Generates a technical paragraph describing the degradation trend, prediction accuracy, and any anomalies detected.
 
 **Node 2 — give_recommendation:** Receives the SOH percentage and classification threshold. Applies the following decision logic:
 
@@ -340,15 +340,15 @@ TensorFlow inference is single-threaded by default. At 514 concurrent users, the
 
 ### Quantitative Results
 
-| Metric | LSTM Baseline | TCN Proposed | Target Threshold |
-|--------|--------------|-------------|-----------------|
+| Metric | LSTM | TCN | Target Threshold |
+|--------|------|-----|-----------------|
 | MAE (Ah) — full test set | 0.0270 | 0.0686 | < 0.12 Ah |
 | RMSE (Ah) — full test set | 0.1036 | 0.1434 | — |
 | R2 Score — full test set | 0.4820 | 0.0083 | — |
 | MAE (Ah) — Battery 54 only | 0.0218 | 0.0197 | — |
 | Residual Mean Bias | -0.0011 Ah | -0.0102 Ah | ~0 |
 
-Both models pass the target MAE threshold of 0.12 Ah. The LSTM demonstrates stronger aggregate performance on the mixed test set. The TCN demonstrates superior generalization on individual batteries with monotonic degradation profiles, and its conservative underestimation bias is preferable for safety-critical battery management decisions.
+Both models pass the target MAE threshold of 0.12 Ah. The LSTM demonstrates stronger aggregate performance on the mixed test set. The TCN demonstrates superior generalization on individual batteries with monotonic degradation profiles, and its conservative underestimation bias is preferable for safety-critical battery management decisions. The production ensemble averages both models' predictions to combine their complementary strengths.
 
 ### Predicted vs Actual Capacity
 
@@ -410,7 +410,7 @@ Access the Locust dashboard at `http://localhost:8089`.
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Deep Learning | TensorFlow / Keras | 2.x |
-| Model Architecture | TCN (dilated causal Conv1D), LSTM | Custom |
+| Model Architecture | TCN+LSTM Ensemble (dilated causal Conv1D + LSTM) | Custom |
 | Backend API | FastAPI + Uvicorn | Latest |
 | Agentic AI | LangGraph + LangChain | Latest |
 | LLM Provider | Azure OpenAI (GPT-4 class) | API |
@@ -441,6 +441,7 @@ ev-battery-soh/
 |-- locustfile.py                   # Locust load test (BatteryAPIUser, EVFleetSystemUser)
 |-- index.html                      # Live SOH dashboard (Chart.js)
 |-- best_tcn_v2.keras               # Saved TCN model weights
+|-- best_lstm.keras                 # Saved LSTM model weights
 |-- Battery_Data_Cleaned.csv        # Preprocessed NASA dataset
 |-- requirements.txt                # Python dependencies
 |-- .env.example                    # Azure OpenAI credential template

@@ -1,4 +1,4 @@
-# # main.py — ye file banao EV project folder mein
+# # main.py — EV Battery SOH Predictor (High-Concurrency Optimized)
 
 # from fastapi import FastAPI, UploadFile, File
 # from fastapi.middleware.cors import CORSMiddleware
@@ -27,7 +27,7 @@
 #     allow_headers=["*"],
 # )
 
-# # model load karo startup par
+# # Model load karo startup par
 # model = keras.models.load_model("best_tcn_v2.keras")
 
 # FEATURES    = ["Capacity", "Re", "Rct", "ambient_temperature"]
@@ -39,14 +39,14 @@
 
 # @app.post("/predict")
 # async def predict_soh(file: UploadFile = File(...)):
-#     # CSV read karo
+#     # CSV read karo (encoding safe)
 #     contents = await file.read()
 #     try:
 #         df = pd.read_csv(io.StringIO(contents.decode("utf-8")))
 #     except UnicodeDecodeError:
 #         df = pd.read_csv(io.StringIO(contents.decode("latin-1")))
 
-#     # validate karo
+#     # Validate karo
 #     missing = [col for col in FEATURES if col not in df.columns]
 #     if missing:
 #         return {"error": f"Missing columns: {missing}"}
@@ -54,12 +54,12 @@
 #     if len(df) < WINDOW_SIZE + 1:
 #         return {"error": f"Need at least {WINDOW_SIZE + 1} rows"}
 
-#     # scale karo
+#     # Scale karo
 #     scaler = MinMaxScaler()
 #     df_scaled = df.copy()
 #     df_scaled[FEATURES] = scaler.fit_transform(df[FEATURES])
 
-#     # window banao
+#     # Window banao
 #     feature_data = df_scaled[FEATURES].values
 #     windows = []
 #     for i in range(len(feature_data) - WINDOW_SIZE):
@@ -67,15 +67,16 @@
 
 #     X = np.array(windows, dtype=np.float32)
 
-#     # predict karo
-#     predictions_scaled = model.predict(X, verbose=0).flatten()
+#     # PREDICT: AI Model ko background thread mein bheja taake API block na ho
+#     raw_predictions = await asyncio.to_thread(model.predict, X, verbose=0)
+#     predictions_scaled = raw_predictions.flatten()
 
-#     # inverse scale
+#     # Inverse scale
 #     dummy = np.zeros((len(predictions_scaled), len(FEATURES)))
 #     dummy[:, 0] = predictions_scaled
 #     predictions_actual = scaler.inverse_transform(dummy)[:, 0]
 
-#     # actual values bhi bhejo
+#     # Actual values bhi bhejo
 #     actual_values = df["Capacity"].values[WINDOW_SIZE:]
 
 #     return {
@@ -91,9 +92,8 @@
 # @app.post("/analyze")
 # async def analyze_with_agent(file: UploadFile = File(...)):
 
-#     # file dobara readable banana
+#     # File dobara readable banana (encoding safe)
 #     contents = await file.read()
-#     # Nayi line — encoding safe
 #     try:
 #         df = pd.read_csv(io.StringIO(contents.decode("utf-8")))
 #     except UnicodeDecodeError:
@@ -116,7 +116,10 @@
 #         windows.append(feature_data[i:i + WINDOW_SIZE])
 
 #     X = np.array(windows, dtype=np.float32)
-#     predictions_scaled = model.predict(X, verbose=0).flatten()
+    
+#     # PREDICT: AI Model ko background thread mein bheja
+#     raw_predictions = await asyncio.to_thread(model.predict, X, verbose=0)
+#     predictions_scaled = raw_predictions.flatten()
 
 #     dummy = np.zeros((len(predictions_scaled), len(FEATURES)))
 #     dummy[:, 0] = predictions_scaled
@@ -126,7 +129,7 @@
 #     mae       = float(np.mean(np.abs(predictions_actual - actual_values)))
 #     final_soh = round(float(predictions_actual[-1] / predictions_actual[0] * 100), 2)
 
-#     # agent call karo
+#     # Agent call karo
 #     azure_key = os.getenv("AZURE_OPENAI_API_KEY", "")
 
 #     if azure_key:
@@ -138,7 +141,10 @@
 #             analysis      = "",
 #             recommendation= ""
 #         )
-#         result = battery_agent.invoke(state)
+        
+#         # AGENT INVOKE: Azure OpenAI network call ko background thread mein bheja
+#         result = await asyncio.to_thread(battery_agent.invoke, state)
+        
 #         ai_analysis        = result["analysis"]
 #         ai_recommendation  = result["recommendation"]
 #     else:
@@ -163,12 +169,6 @@
 #         await read_stream_and_predict(websocket, model)
 #     except WebSocketDisconnect:
 #         print("Client disconnected from live stream")
-
-
-
-
-
-
 
 
 
@@ -228,7 +228,13 @@ app.add_middleware(
 )
 
 # Model load karo startup par
-model = keras.models.load_model("best_tcn_v2.keras")
+tcn_model  = keras.models.load_model("best_tcn_v2.keras")
+lstm_model = keras.models.load_model("best_lstm.keras")
+
+def ensemble_predict(X):
+    tcn_preds  = tcn_model.predict(X, verbose=0).flatten()
+    lstm_preds = lstm_model.predict(X, verbose=0).flatten()
+    return (tcn_preds + lstm_preds) / 2.0
 
 FEATURES    = ["Capacity", "Re", "Rct", "ambient_temperature"]
 WINDOW_SIZE = 50
@@ -268,8 +274,7 @@ async def predict_soh(file: UploadFile = File(...)):
     X = np.array(windows, dtype=np.float32)
 
     # PREDICT: AI Model ko background thread mein bheja taake API block na ho
-    raw_predictions = await asyncio.to_thread(model.predict, X, verbose=0)
-    predictions_scaled = raw_predictions.flatten()
+    predictions_scaled = await asyncio.to_thread(ensemble_predict, X)
 
     # Inverse scale
     dummy = np.zeros((len(predictions_scaled), len(FEATURES)))
@@ -318,8 +323,7 @@ async def analyze_with_agent(file: UploadFile = File(...)):
     X = np.array(windows, dtype=np.float32)
     
     # PREDICT: AI Model ko background thread mein bheja
-    raw_predictions = await asyncio.to_thread(model.predict, X, verbose=0)
-    predictions_scaled = raw_predictions.flatten()
+    predictions_scaled = await asyncio.to_thread(ensemble_predict, X)
 
     dummy = np.zeros((len(predictions_scaled), len(FEATURES)))
     dummy[:, 0] = predictions_scaled
@@ -366,9 +370,6 @@ async def analyze_with_agent(file: UploadFile = File(...)):
 async def websocket_live_stream(websocket: WebSocket):
     await websocket.accept()
     try:
-        await read_stream_and_predict(websocket, model)
+        await read_stream_and_predict(websocket, tcn_model)
     except WebSocketDisconnect:
         print("Client disconnected from live stream")
-
-
-
