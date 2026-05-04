@@ -1,0 +1,193 @@
+# ============================================================
+# EV Battery Degradation Engine — Docker Compose
+# Ek command se sab services: FastAPI + Redis + Kafka
+# Usage: docker-compose up --build
+# ============================================================
+
+version: "3.9"
+
+services:
+
+  # ── 1. FastAPI — Main ML API ─────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev_api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env                        # Azure OpenAI credentials yahan se aayenge
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_BOOTSTRAP=kafka:29092
+    volumes:
+      - ./Battery_Data_Cleaned.csv:/app/Battery_Data_Cleaned.csv:ro
+      - ./best_tcn_v2.keras:/app/best_tcn_v2.keras:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - ev_network
+
+  # ── 2. Redis — Live stream buffer ────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: ev_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - ev_network
+
+  # ── 3. ZooKeeper — Kafka ke liye zarori ─────────────────
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.0
+    container_name: ev_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+      - zookeeper_logs:/var/lib/zookeeper/log
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - ev_network
+
+  # ── 4. Kafka — Streaming pipeline ───────────────────────
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: ev_kafka
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    ports:
+      - "9092:9092"       # Host se access (local scripts ke liye)
+      - "29092:29092"     # Internal Docker network
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - ev_network
+
+  # ── 5. Kafka Topic Setup — ek baar chalega ──────────────
+  kafka-init:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: ev_kafka_init
+    depends_on:
+      kafka:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      "kafka-topics --create \
+        --if-not-exists \
+        --bootstrap-server kafka:29092 \
+        --topic ev_battery_telemetry \
+        --partitions 3 \
+        --replication-factor 1"
+    networks:
+      - ev_network
+
+  # ── 6. Stream Simulator — CSV se Redis mein data bhejo ──
+  stream-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev_stream_sim
+    command: ["python", "stream_simulator.py", "Battery_Data_Cleaned.csv", "54", "1.0"]
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./Battery_Data_Cleaned.csv:/app/Battery_Data_Cleaned.csv:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles:
+      - streaming             # Sirf tab chalega jab: docker-compose --profile streaming up
+    networks:
+      - ev_network
+
+  # ── 7. Kafka Streamer — CSV se Kafka mein ───────────────
+  kafka-streamer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev_kafka_streamer
+    command: ["python", "kafka_streamer.py"]
+    environment:
+      - KAFKA_BOOTSTRAP=kafka:29092
+    volumes:
+      - ./Battery_Data_Cleaned.csv:/app/Battery_Data_Cleaned.csv:ro
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    profiles:
+      - kafka                 # Sirf tab chalega jab: docker-compose --profile kafka up
+    networks:
+      - ev_network
+
+  # ── 8. Kafka Consumer — Direct TCN inference ────────────
+  kafka-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ev_kafka_consumer
+    command: ["python", "kafka_consumer_direct.py"]
+    environment:
+      - KAFKA_BOOTSTRAP=kafka:29092
+    volumes:
+      - ./best_tcn_v2.keras:/app/best_tcn_v2.keras:ro
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    profiles:
+      - kafka
+    networks:
+      - ev_network
+
+# ── Volumes ─────────────────────────────────────────────────
+volumes:
+  redis_data:
+  kafka_data:
+  zookeeper_data:
+  zookeeper_logs:
+
+# ── Network ─────────────────────────────────────────────────
+networks:
+  ev_network:
+    driver: bridge
