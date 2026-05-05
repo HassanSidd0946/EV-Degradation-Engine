@@ -532,7 +532,7 @@ cd C:\kafka
   --replication-factor 1
 
 # Terminal 4: Producer
-cd ev-battery-soh
+cd EV-Degradation-Engine
 python kafka_streamer.py
 
 # Terminal 5: Consumer with TCN inference
