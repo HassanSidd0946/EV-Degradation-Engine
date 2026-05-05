@@ -1,3 +1,82 @@
 uvicorn main:app --reload --port 8000
 
 python stream_simulator.py Battery_Data_Cleaned.csv 54 1.0
+
+----------------------------------------------------------
+
+SYSTEM 1: FastAPI Backend + Redis Live Dashboard
+
+Terminal 1 — Redis Start karo
+docker start redis
+
+Terminal 2 — FastAPI Backend
+cd "D:\COURSES\EV Battery"
+uvicorn main:app --reload --port 8000
+
+Terminal 3 — WebSocket Consumer
+cd "D:\COURSES\EV Battery"
+python websocket_consumer.py
+
+Terminal 4 — Stream Simulator
+cd "D:\COURSES\EV Battery"
+python stream_simulator.py Battery_Data_Cleaned.csv 54 1.0
+
+Terminal 5 — Dashboard Serve
+cd "D:\COURSES\EV Battery"
+python -m http.server 3000
+open browser: http://localhost:3000
+
+----------------------------------------------------------
+
+SYSTEM 2: Kafka Streaming Pipeline
+
+Cleanup
+Remove-Item -Recurse -Force C:\tmp\zookeeper
+Remove-Item -Recurse -Force C:\tmp\kafka-logs
+
+Terminal 1 — ZooKeeper
+cd C:\kafka
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+Wait:
+INFO binding to port 0.0.0.0/0.0.0.0:2181
+
+Terminal 2 — Kafka Broker
+cd C:\kafka
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+wait:
+INFO [KafkaServer id=0] started
+
+Terminal 3 — Topic Create
+cd C:\kafka
+.\bin\windows\kafka-topics.bat --create --topic ev_battery_telemetry --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+wait:
+Created topic ev_battery_telemetry.
+
+Terminal 4 — Kafka Producer
+cd "D:\COURSES\EV Battery"
+python kafka_streamer.py
+wait:
+Sent: 100 | Failed: 0 | ~19 msg/s
+
+Terminal 5 — Kafka Consumer + TCN Inference
+cd "D:\COURSES\EV Battery"
+python kafka_consumer_direct.py
+wait:
+Battery   5 | Cycle  208 | Actual: 0.9838 Ah | Predicted: 0.9999 Ah | SOH: 98.2% | HEALTHY
+Battery   7 | Cycle   49 | Actual: 1.0582 Ah | Predicted: 1.0169 Ah | SOH: 120.3% | HEALTHY
+
+----------------------------------------------------------
+
+SYSTEM 3: Load Testing
+
+Terminal 1 — FastAPI
+cd "D:\COURSES\EV Battery"
+uvicorn main:app --reload --port 8000
+
+Terminal 2 — Locust
+cd "D:\COURSES\EV Battery"
+locust -f locustfile.py --host=http://localhost:8000
+browser: http://localhost:8089
+Number of users: 10 (start)
+Spawn rate: 2
+Host: http://localhost:8000
