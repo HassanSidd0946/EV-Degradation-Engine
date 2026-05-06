@@ -25,13 +25,13 @@
 
 ## Executive Summary
 
-Lithium-ion battery degradation is one of the most operationally critical and economically consequential failure modes in electric vehicles. The gradual, non-linear decay of battery capacity — driven by electrochemical side reactions, thermal stress, and cycling history — renders conventional threshold-based monitoring systems inadequate for predictive maintenance at scale.
+Lithium-ion battery degradation is one of the most operationally critical and economically consequential failure modes in electric vehicles. The gradual, non-linear decay of battery capacity, driven by electrochemical side reactions, thermal stress, and cycling history, renders conventional threshold-based monitoring systems inadequate for predictive maintenance at scale.
 
 This system addresses the problem through a multi-layered engineering approach. A **TCN+LSTM ensemble model** trained on the NASA Lithium-ion Battery Aging Dataset performs sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells in real time. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
 
 Beyond single-battery inference, the system is architected for fleet-scale operation. An Apache Kafka streaming pipeline simulates continuous IoT telemetry from multiple batteries at approximately 20 messages per second. A Redis Streams-based WebSocket gateway delivers live SOH predictions to a browser dashboard. Load testing with Locust confirmed zero failure rates on the core ML inference endpoint under production-representative concurrency.
 
-The system demonstrates that deep learning-based SOH prediction can be embedded within a fully observable, horizontally scalable, and operationally deployable data platform — not merely as a research artifact, but as production-ready infrastructure.
+The system demonstrates that deep learning-based SOH prediction can be embedded within a fully observable, horizontally scalable, and operationally deployable data platform, not merely as a research artifact, but as production-ready infrastructure.
 
 ---
 
@@ -128,7 +128,7 @@ Horizontal Scale Path:
 
 ## Dataset & Data Quality
 
-**Source:** NASA Ames Prognostics Center of Excellence — Lithium-ion Battery Aging Dataset
+**Source:** NASA Ames Prognostics Center of Excellence: Lithium-ion Battery Aging Dataset
 
 **Composition:** 7,368 rows across 34 battery cells (IDs 5, 6, 7, 18, 45–56, etc.), each representing one discharge cycle measurement.
 
@@ -147,7 +147,7 @@ The dataset exhibits several characteristics that required deliberate handling d
 
 First, anomalous zero-capacity readings appear at irregular intervals across multiple batteries (visible in the Battery 47 degradation curve). These correspond to incomplete discharge measurements or calibration resets in the NASA test rig, not genuine battery failure events. No imputation was applied; the sliding window approach naturally dilutes their influence when sufficient valid cycles surround them.
 
-Second, battery cycle counts are highly heterogeneous. Battery 50 contributes only 7 cycles to the test split — an extreme imbalance that disproportionately inflates per-battery TCN error metrics for that cell. This was documented and isolated in the per-battery MAE analysis rather than filtered out, to preserve methodological transparency.
+Second, battery cycle counts are highly heterogeneous. Battery 50 contributes only 7 cycles to the test split, an extreme imbalance that disproportionately inflates per-battery TCN error metrics for that cell. This was documented and isolated in the per-battery MAE analysis rather than filtered out, to preserve methodological transparency.
 
 Third, the dataset spans multiple battery chemistries and test conditions. Batteries in the 45–56 series operate at a nominal capacity of approximately 2 Ah, while earlier cells (5, 6, 7, 18) operate near 1 Ah. This cross-chemistry heterogeneity makes global normalization necessary and motivates the per-window MinMaxScaler design.
 
@@ -163,7 +163,7 @@ The chronological 80/20 train-test split was enforced without shuffling to simul
 
 Battery SOH prediction is formulated as a univariate regression problem: given a fixed-length sequence of multivariate battery measurements, predict the capacity (in Ah) of the next discharge cycle.
 
-Formally: given input tensor X of shape (50, 4) — representing 50 consecutive discharge cycles across 4 features — the model outputs a scalar y representing predicted capacity.
+Formally: given input tensor X of shape (50, 4), representing 50 consecutive discharge cycles across 4 features — the model outputs a scalar y representing predicted capacity.
 
 ### Sliding Window Construction
 
@@ -201,13 +201,13 @@ Dense(1) -> Predicted Capacity (Ah)
 
 Causal padding ensures no future timestep information leaks into the prediction. Dilation rates of 1, 2, 4, 8 provide a receptive field spanning the full 50-cycle input window with logarithmic parameter growth.
 
-The TCN best checkpoint was saved at epoch 25. Its validation residual distribution (mean = -0.0102 Ah) shows a slight negative bias — the model tends to marginally underestimate capacity — which is the conservative failure mode preferable in battery management applications.
+The TCN best checkpoint was saved at epoch 25. Its validation residual distribution (mean = -0.0102 Ah) shows a slight negative bias, the model tends to marginally underestimate capacity, which is the conservative failure mode preferable in battery management applications.
 
 ### Model Selection Rationale
 
 Individual model evaluation revealed complementary strengths: the LSTM achieves superior aggregate accuracy (MAE: 0.0270 Ah, R²: 0.4820) across the full heterogeneous test set, while the TCN demonstrates stronger generalization on individual batteries with clean monotonic degradation profiles (Battery 54: TCN MAE = 0.0197 Ah vs LSTM MAE = 0.0218 Ah) and a conservative underestimation bias preferable for safety-critical decisions.
 
-For the FastAPI inference endpoints (`/predict` and `/analyze`), a **TCN+LSTM ensemble** is used as the production model. Predictions from both models are averaged, combining the LSTM's superior aggregate accuracy with the TCN's conservative underestimation bias — the safer failure mode for battery management applications. For real-time Kafka streaming and WebSocket inference, the TCN alone is retained due to its faster inference speed with no sequential hidden state computation.
+For the FastAPI inference endpoints (`/predict` and `/analyze`), a **TCN+LSTM ensemble** is used as the production model. Predictions from both models are averaged, combining the LSTM's superior aggregate accuracy with the TCN's conservative underestimation bias, the safer failure mode for battery management applications. For real-time Kafka streaming and WebSocket inference, the TCN alone is retained due to its faster inference speed with no sequential hidden state computation.
 
 ![Training and Validation Loss Curves](docs/phase3_loss_curves.png)
 
@@ -245,9 +245,9 @@ The `/analyze` endpoint integrates a two-node LangGraph directed graph that tran
     [ JSON: analysis + recommendation ]
 ```
 
-**Node 1 — analyze_degradation:** Receives the battery ID, cycle count, actual capacity values, ensemble predictions, and computed MAE. Generates a technical paragraph describing the degradation trend, prediction accuracy, and any anomalies detected.
+**Node 1(analyze_degradation):** Receives the battery ID, cycle count, actual capacity values, ensemble predictions, and computed MAE. Generates a technical paragraph describing the degradation trend, prediction accuracy, and any anomalies detected.
 
-**Node 2 — give_recommendation:** Receives the SOH percentage and classification threshold. Applies the following decision logic:
+**Node 2(give_recommendation):** Receives the SOH percentage and classification threshold. Applies the following decision logic:
 
 | SOH Range | Classification | Recommended Action |
 |-----------|---------------|-------------------|
@@ -329,7 +329,7 @@ The FastAPI service was load tested using Locust with two simulated user profile
 
 **Findings:**
 
-The `/predict` and `/predict (fleet)` endpoints achieved zero failures at 260 concurrent users. Failures on `/analyze` were exclusively attributable to Azure OpenAI API response latency exceeding Locust's timeout threshold under extreme concurrency — a third-party API constraint, not an application-layer defect.
+The `/predict` and `/predict (fleet)` endpoints achieved zero failures at 260 concurrent users. Failures on `/analyze` were exclusively attributable to Azure OpenAI API response latency exceeding Locust's timeout threshold under extreme concurrency, a third-party API constraint, not an application-layer defect.
 
 TensorFlow inference is single-threaded by default. At 514 concurrent users, the request queue saturates the Uvicorn event loop, causing timeouts. The identified scaling solution is `asyncio.to_thread` for offloading synchronous TensorFlow calls to a thread pool, combined with multiple Uvicorn workers (`--workers 4`) for process-level parallelism. For production fleet deployments, horizontal scaling via containerized workers behind a load balancer is the prescribed architecture.
 
@@ -343,16 +343,16 @@ TensorFlow inference is single-threaded by default. At 514 concurrent users, the
 
 | Metric | LSTM | TCN | Target Threshold |
 |--------|------|-----|-----------------|
-| MAE (Ah) — full test set | 0.0270 | 0.0686 | < 0.12 Ah |
-| RMSE (Ah) — full test set | 0.1036 | 0.1434 | — |
-| R2 Score — full test set | 0.4820 | 0.0083 | — |
-| MAE (Ah) — Battery 54 only | 0.0218 | 0.0197 | — |
+| MAE (Ah) full test set | 0.0270 | 0.0686 | < 0.12 Ah |
+| RMSE (Ah) full test set | 0.1036 | 0.1434 | — |
+| R2 Score full test set | 0.4820 | 0.0083 | — |
+| MAE (Ah) Battery 54 only | 0.0218 | 0.0197 | — |
 | Residual Mean Bias | -0.0011 Ah | -0.0102 Ah | ~0 |
 
 **Note on TCN R2 Score:**
 The TCN aggregate R2 of 0.0083 on the full heterogeneous test set is an artifact of test set composition, not a model failure. The test set spans batteries with nominal capacities ranging from 0.85 Ah to 2.0 Ah across two distinct chemistry series, plus anomalous zero-capacity readings from Battery 50 (7 test cycles only). This multi-modal distribution inflates SS_total, making aggregate R2 an unreliable metric for this evaluation setting.
 
-Per-battery evaluation on Battery 54 (clean monotonic profile, 200 test cycles) yields an estimated R2 of approximately 0.85-0.90 for the TCN — confirming that the model generalizes well on individual batteries with sufficient test data. The LSTM's higher aggregate R2 (0.4820) reflects its tendency to memorize dominant training trajectories rather than generalize, which is corroborated by its weaker per-battery performance on Battery 54 (MAE = 0.0218 Ah vs TCN MAE = 0.0197 Ah).
+Per-battery evaluation on Battery 54 (clean monotonic profile, 200 test cycles) yields an estimated R2 of approximately 0.85-0.90 for the TCN, confirming that the model generalizes well on individual batteries with sufficient test data. The LSTM's higher aggregate R2 (0.4820) reflects its tendency to memorize dominant training trajectories rather than generalize, which is corroborated by its weaker per-battery performance on Battery 54 (MAE = 0.0218 Ah vs TCN MAE = 0.0197 Ah).
 
 MAE is the primary evaluation metric for this system, as it is robust to the multi-modal capacity distribution and directly interpretable in operational Ah units.
 
@@ -473,8 +473,8 @@ EV-Degradation-Engine/
 ### Prerequisites
 
 - Python 3.12
-- Java 11 (Eclipse Adoptium) — required for Kafka
-- Docker — required for Redis
+- Java 11 (Eclipse Adoptium): required for Kafka
+- Docker: required for Redis
 - Apache Kafka 3.7.0 at `C:\kafka` (Windows) or `/opt/kafka` (Linux)
 
 ### Installation
@@ -555,22 +555,22 @@ locust -f locustfile.py --host=http://localhost:8000
 
 ## Engineering Challenges & Solutions
 
-**Challenge 1 — Data Leakage Prevention**
+**Challenge 1: Data Leakage Prevention**
 Sliding window construction across a mixed-battery dataset risks including cycles from different batteries in the same window. Solved by grouping windows strictly per `battery_id` before concatenation.
 
-**Challenge 2 — Chronological Integrity**
+**Challenge 2: Chronological Integrity**
 Standard random train-test splits would allow the model to interpolate within known degradation curves rather than forecast future states. Enforced chronological split without shuffling to simulate real deployment conditions.
 
-**Challenge 3 — Stateful Kafka Consumer**
+**Challenge 3: Stateful Kafka Consumer**
 Kafka micro-batches deliver only the most recent messages per batch. A per-battery deque accumulates cycles across batches, maintaining the 50-cycle window requirement without requiring stateful Spark operators or external state stores.
 
-**Challenge 4 — Windows Hadoop Compatibility**
+**Challenge 4: Windows Hadoop Compatibility**
 PySpark's `RawLocalFileSystem.setPermission` calls `winutils.exe` for POSIX permission emulation. The `ExitCodeException exitCode=-1073741515` error persisted despite correct `HADOOP_HOME` configuration. Resolved by implementing a pure Python Kafka consumer that bypasses PySpark entirely for local development, while maintaining the full PySpark implementation for Linux/cloud deployment.
 
-**Challenge 5 — TensorFlow Inference Under Concurrent Load**
+**Challenge 5: TensorFlow Inference Under Concurrent Load**
 TensorFlow's Global Interpreter Lock (GIL) and single-threaded session management cause request queuing under concurrent API load. Identified solution path: `asyncio.to_thread` for non-blocking inference offloading and multiple Uvicorn workers for process-level parallelism.
 
-**Challenge 6 — Per-Window Normalization**
+**Challenge 6: Per-Window Normalization**
 Applying a global scaler fitted on training data causes distribution shift when inference windows span batteries with different nominal capacities. Resolved by fitting a fresh `MinMaxScaler` per inference window, which preserves relative feature relationships within each 50-cycle context.
 
 ---
@@ -602,7 +602,7 @@ GitHub: [HassanSidd0946](https://github.com/HassanSidd0946)
 
 ## Docker Deployment
 
-> **Entire stack with one command**: FastAPI + Redis + Kafka + ZooKeeper — all orchestrated via Docker Compose.
+> **Entire stack with one command**: FastAPI + Redis + Kafka + ZooKeeper, all orchestrated via Docker Compose.
 
 ---
 
@@ -613,13 +613,13 @@ GitHub: [HassanSidd0946](https://github.com/HassanSidd0946)
 | Docker Desktop | 24+ | [docker.com](https://www.docker.com/products/docker-desktop/) |
 | Docker Compose | v2.x (included in Desktop) | — |
 
-> **Note:** Java, Kafka binaries, and Redis do not need to be installed separately — everything comes bundled inside the containers.
+> **Note:** Java, Kafka binaries, and Redis do not need to be installed separately, everything comes bundled inside the containers.
 
 ---
 
 ### Quick Start (3 Steps)
 
-#### Step 1 — Create the `.env` file
+#### Step 1: Create the `.env` file
 
 ```bash
 cp .env.example .env
@@ -638,21 +638,21 @@ AZURE_OPENAI_API_VERSION=2024-02-01
 
 ---
 
-#### Step 2 — Start the core stack
+#### Step 2: Start the core stack
 
 ```bash
 docker-compose up --build
 ```
 
 This command starts the following services:
-- `ev_api` — FastAPI ML inference server → `http://localhost:8000`
-- `ev_redis` — Redis Streams buffer
-- `ev_zookeeper` — Kafka coordination
-- `ev_kafka` — Kafka broker (topic is created automatically)
+- `ev_api`: FastAPI ML inference server → `http://localhost:8000`
+- `ev_redis`: Redis Streams buffer
+- `ev_zookeeper`: Kafka coordination
+- `ev_kafka`: Kafka broker (topic is created automatically)
 
 ---
 
-#### Step 3 — Test the API
+#### Step 3: Test the API
 
 ```bash
 # Health check
@@ -689,8 +689,8 @@ docker-compose --profile kafka up
 ```
 
 Starts:
-- `ev_kafka_streamer` — CSV → Kafka topic `ev_battery_telemetry`
-- `ev_kafka_consumer` — Kafka → per-battery buffer → TCN inference
+- `ev_kafka_streamer`: CSV → Kafka topic `ev_battery_telemetry`
+- `ev_kafka_consumer`: Kafka → per-battery buffer → TCN inference
 
 ---
 
@@ -746,16 +746,16 @@ docker-compose up --build api
 | Problem | Solution |
 |---------|----------|
 | `Port 8000 already in use` | Use `lsof -i :8000` to find and stop the conflicting process |
-| `Kafka health check failing` | Wait 30–40 seconds — Kafka has a slow startup time |
+| `Kafka health check failing` | Wait 30–40 seconds: Kafka has a slow startup time |
 | `Model file not found` | Ensure `best_tcn_v2.keras` is present in the repo root |
 | `Azure API timeout` | Verify credentials in the `.env` file |
-| `/analyze` is slow | Expected — it makes an Azure OpenAI network call; ~5–15 seconds is normal |
+| `/analyze` is slow | Expected: it makes an Azure OpenAI network call; ~5–15 seconds is normal |
 
 ---
 
 ### Production Notes
 
-- `--workers 2` is set in the Dockerfile — increase this based on the number of available CPU cores
+- `--workers 2` is set in the Dockerfile: increase this based on the number of available CPU cores
 - Set `allow_origins` in `main.py` to a specific domain for production CORS configuration
 - Move `best_tcn_v2.keras` to Git LFS or Azure Blob Storage for large-scale deployments
 - Use Docker Secrets or Azure Key Vault for secrets management in production

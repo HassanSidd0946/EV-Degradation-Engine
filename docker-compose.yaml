@@ -109,13 +109,13 @@ services:
       kafka:
         condition: service_healthy
     entrypoint: ["/bin/sh", "-c"]
-    command: |
-      "kafka-topics --create \
-        --if-not-exists \
-        --bootstrap-server kafka:29092 \
-        --topic ev_battery_telemetry \
-        --partitions 3 \
-        --replication-factor 1"
+    command: >
+      kafka-topics --create
+        --if-not-exists
+        --bootstrap-server kafka:29092
+        --topic ev_battery_telemetry
+        --partitions 3
+        --replication-factor 1
     networks:
       - ev_network
 
