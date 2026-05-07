@@ -55,7 +55,7 @@ To satisfy the strict latency requirements of continuous SOH monitoring, the sys
 \subsection{Real-Time Telemetry Ingestion via Apache Kafka}
 Traditional HTTP-based ingestion layers often buckle under the concurrent load of fleet-scale IoT devices. To mitigate this, Apache Kafka is utilized as a high-throughput, distributed message broker. Telemetry generators (simulating EV battery sensors) publish continuous voltage, current, and temperature vectors to a partitioned Kafka topic. 
 
-By mapping each unique ``battery_id'' to a specific partition key, the system guarantees strict temporal ordering of messages. This offset-based ordering is critical for time-series forecasting, ensuring that the sequential integrity of the discharge cycles is maintained prior to inference. The Kafka consumer groups operate asynchronously, streaming the multiplexed data into the processing backend at a rate of approximately 20 messages per second per partition.
+By mapping each unique ``battery\_id'' to a specific partition key, the system guarantees strict temporal ordering of messages. This offset-based ordering is critical for time-series forecasting, ensuring that the sequential integrity of the discharge cycles is maintained prior to inference. The Kafka consumer groups operate asynchronously, streaming the multiplexed data into the processing backend at a rate of approximately 20 messages per second per partition.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{architecture_kafka.png}}
@@ -74,6 +74,9 @@ To visualize the degradation metrics instantaneously, the processed inference pa
 \section{Dual-AI Inference Methodology}
 
 The intelligence of the system is partitioned into two distinct paradigms: a high-speed neural network for continuous numerical prediction, and a large language model for asynchronous, reasoning-based diagnostics.
+
+\subsection{Dataset Specification}
+The proposed system is evaluated using the NASA Ames Prognostics Center of Excellence Lithium-ion Battery Aging Dataset. The study utilizes 7,368 discharge cycle measurements from 34 battery cells (including IDs 5, 6, 7, 18, and the 45–56 series). The dataset features a multi-modal capacity distribution (ranging from 0.85 Ah to 2.0 Ah) across different chemistries, providing a robust testbed for real-world degradation forecasting. A chronological 80/20 train-test split was enforced to simulate production forecasting conditions.
 
 \subsection{Temporal Convolutional Networks (TCN) for SOH Estimation}
 Predicting battery degradation requires modeling long-term dependencies within multivariate time-series telemetry. While Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks are traditionally employed, they suffer from sequential computation bottlenecks and the vanishing gradient problem. This architecture leverages a Temporal Convolutional Network (TCN), which allows for massive parallelization and strictly respects temporal ordering via causal convolutions.
@@ -118,6 +121,22 @@ To validate production readiness, the FastAPI endpoints were subjected to rigoro
 During load testing, local hardware constraints naturally introduced queuing latency as the single-threaded TensorFlow inference saturated the CPU cores. However, the architectural implementation of \texttt{asyncio.to\_thread()} successfully prevented event-loop blocking. As a result, the core ML inference endpoints (\texttt{/predict}) maintained a strict 0\% failure rate under high concurrency, completely avoiding API timeouts that would otherwise occur in a synchronous design. 
 
 This confirms that while absolute latency is hardware-bound, the asynchronous streaming architecture is highly resilient and perfectly structured for horizontal scaling across cloud-based Kubernetes clusters in a production environment.
+
+\begin{table}[htbp]
+\caption{Quantitative Performance Metrics on Full NASA Test Set}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Model Architecture} & \textbf{MAE (Ah)} & \textbf{RMSE (Ah)} & \textbf{Mean Bias} \\
+\hline
+LSTM (Baseline) & 0.0270 & 0.1036 & -0.0011 Ah \\
+\hline
+\textbf{Proposed TCN} & \textbf{0.0686} & \textbf{0.1434} & \textbf{-0.0102 Ah} \\
+\hline
+\end{tabular}
+\label{tab:performance}
+\end{center}
+\end{table}
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{locust_test_results.png}}
