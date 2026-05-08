@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
 
 \begin{document}
 
@@ -21,7 +22,7 @@ Lahore, Pakistan \\
 \maketitle
 
 \begin{abstract}
-The rapid proliferation of Electric Vehicles (EVs) necessitates robust Battery Management Systems (BMS) to prevent catastrophic failures and optimize the State of Health (SOH). Traditional predictive maintenance pipelines rely on batch-processing orchestrators, which introduce unacceptable latency for critical thermal or degradation events. This paper presents a highly scalable, real-time streaming architecture for EV battery SOH monitoring. By decoupling high-velocity telemetry ingestion from computationally heavy Large Language Model (LLM) workflows, we achieve millisecond-level inference latency. The system utilizes Apache Kafka and Redis streams for stateful data buffering, a Temporal Convolutional Network (TCN) for continuous SOH prediction, and a LangGraph-orchestrated LLM agent for on-demand, actionable maintenance reporting. Load testing demonstrates a 0\% failure rate under high concurrency, validating the architecture's viability for enterprise-scale EV fleets.
+The rapid proliferation of Electric Vehicles (EVs) necessitates robust Battery Management Systems (BMS) to prevent catastrophic failures and optimize the State of Health (SOH) \cite{b3}. Traditional predictive maintenance pipelines rely on batch-processing orchestrators, which introduce unacceptable latency for critical thermal or degradation events. This paper presents a highly scalable, real-time streaming architecture for EV battery SOH monitoring. By decoupling high-velocity telemetry ingestion from computationally heavy Large Language Model (LLM) workflows, we achieve millisecond-level inference latency. The system utilizes Apache Kafka and Redis streams for stateful data buffering, a Temporal Convolutional Network (TCN) for continuous SOH prediction, and a LangGraph-orchestrated LLM agent for on-demand, actionable maintenance reporting. Load testing demonstrates a 0\% failure rate under high concurrency, validating the architecture's viability for enterprise-scale EV fleets.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -53,7 +54,7 @@ To satisfy the strict latency requirements of continuous SOH monitoring, the sys
 \end{figure}
 
 \subsection{Real-Time Telemetry Ingestion via Apache Kafka}
-Traditional HTTP-based ingestion layers often buckle under the concurrent load of fleet-scale IoT devices. To mitigate this, Apache Kafka is utilized as a high-throughput, distributed message broker. Telemetry generators (simulating EV battery sensors) publish continuous voltage, current, and temperature vectors to a partitioned Kafka topic. 
+Traditional HTTP-based ingestion layers often buckle under the concurrent load of fleet-scale IoT devices. To mitigate this, Apache Kafka is utilized as a high-throughput, distributed message broker \cite{b2}. Telemetry generators (simulating EV battery sensors) publish continuous voltage, current, and temperature vectors to a partitioned Kafka topic. 
 
 By mapping each unique ``battery\_id'' to a specific partition key, the system guarantees strict temporal ordering of messages. This offset-based ordering is critical for time-series forecasting, ensuring that the sequential integrity of the discharge cycles is maintained prior to inference. The Kafka consumer groups operate asynchronously, streaming the multiplexed data into the processing backend at a rate of approximately 20 messages per second per partition.
 
@@ -79,7 +80,7 @@ The intelligence of the system is partitioned into two distinct paradigms: a hig
 The proposed system is evaluated using the NASA Ames Prognostics Center of Excellence Lithium-ion Battery Aging Dataset. The study utilizes 7,368 discharge cycle measurements from 34 battery cells (including IDs 5, 6, 7, 18, and the 45–56 series). The dataset features a multi-modal capacity distribution (ranging from 0.85 Ah to 2.0 Ah) across different chemistries, providing a robust testbed for real-world degradation forecasting. A chronological 80/20 train-test split was enforced to simulate production forecasting conditions.
 
 \subsection{Temporal Convolutional Networks (TCN) for SOH Estimation}
-Predicting battery degradation requires modeling long-term dependencies within multivariate time-series telemetry. While Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks are traditionally employed, they suffer from sequential computation bottlenecks and the vanishing gradient problem. This architecture leverages a Temporal Convolutional Network (TCN), which allows for massive parallelization and strictly respects temporal ordering via causal convolutions.
+Predicting battery degradation requires modeling long-term dependencies within multivariate time-series telemetry. While Recurrent Neural Networks (RNNs) and Long Short-Term Memory (LSTM) networks are traditionally employed, they suffer from sequential computation bottlenecks and the vanishing gradient problem. This architecture leverages a Temporal Convolutional Network (TCN) \cite{b1}, which allows for massive parallelization and strictly respects temporal ordering via causal convolutions.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{tcn_architecture.png}}
