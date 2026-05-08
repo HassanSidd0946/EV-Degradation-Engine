@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1778171462.28376 "report.tex" "report.pdf" "report" 1778171468.38115 0
+["pdflatex"] 1778260581.27109 "d:/COURSES/EV Battery/report/report.tex" "report.pdf" "report" 1778260585.65053 0
   "C:/Users/hassa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777712583 84158 d77284a6843bde1e4b9764f09fb2e89e ""
   "C:/Users/hassa/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778054894 13333486 5a96c4613aadd79e66191edb578d26bb ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -7,6 +7,7 @@
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb7t.tfm" 1136754254 2172 fd0c924230362ff848a33632ed45dc23 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmb8r.tfm" 1136754254 4524 6bce29db5bc272ba5f332261583fee9c ""
+  "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmbc7t.tfm" 1136754254 2732 3862f0304d4d7c3718523e7d6fd950ad ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmbi7t.tfm" 1136754254 2228 e564491c42a4540b5ebb710a75ff306c ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmbi8r.tfm" 1136754254 4480 10409ed8bab5aea9ec9a78028b763919 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/times/ptmr7t.tfm" 1136754254 2124 2601a75482e9426d33db523edf23570a ""
@@ -42,6 +43,7 @@
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb" 1136835348 45458 504e2b06fa82109d168c7a0afb09e145 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/courier/pcrr7t.vf" 1136765053 1344 6ff472164bf9de0fb2e864b28ac156d9 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/times/ptmb7t.vf" 1136754254 1372 788387fea833ef5963f4c5bffe33eb89 ""
+  "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/times/ptmbc7t.vf" 1136754254 1948 09614867cfee727c370daa115b7f3542 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/times/ptmbi7t.vf" 1136754254 1384 6ac0f8b839230f5d9389287365b243c0 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/times/ptmr7t.vf" 1136754254 1380 0ea3a3370054be6da6acd929ec569f06 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/vf/adobe/times/ptmrc7t.vf" 1136754254 1948 7330aeef3af211edff3b35fb2c12a0fd ""
@@ -77,10 +79,11 @@
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "architecture_kafka.png" 1777872145 656460 1f7600a8fcef5d97ddd18a71efcde2b9 ""
   "architecture_overall.png" 1777872178 682862 756e9d658478e72987da4e99689b6510 ""
+  "d:/COURSES/EV Battery/report/report.tex" 1778260575 16147 0d7d77aa24b663870cd07f865b92c848 ""
   "langgraph_workflow.png" 1778072415 364554 6a0d72d7bd617e1311a3458a09c33002 ""
   "locust_test_results.png" 1778083885 146556 63b357caec4cc814bf27290aa352eeff ""
-  "report.aux" 1778171467 3756 e5a7f67c5738709a0abcc7a54dd15c93 "pdflatex"
-  "report.tex" 1778171448 16266 5e3ff804fbd5a898dfd4b2f0bfee895d ""
+  "report.aux" 1778260585 3791 8e9dc3f00193bcaea341b2b57da17ea3 "pdflatex"
+  "report.tex" 1778260575 16147 0d7d77aa24b663870cd07f865b92c848 ""
   "soh_prediction_accuracy.png" 1777825048 187210 98fb24a5607630cfaa0e6b3017c9f3ba ""
   "tcn_architecture.png" 1778070776 77098 bcd6cef5e86f6d48b96f9ebfb3595588 ""
   (generated)
