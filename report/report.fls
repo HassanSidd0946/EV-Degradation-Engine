@@ -1,6 +1,6 @@
-PWD D:\COURSES\EV Battery\report
+PWD d:\COURSES\EV Battery\report
 INPUT C:\Users\hassa\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT report.tex
+INPUT d:\COURSES\EV Battery\report\report.tex
 OUTPUT report.log
 INPUT C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex\latex\ieeetran\IEEEtran.cls
 INPUT C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex\latex\ieeetran\IEEEtran.cls

@@ -1,5 +1,7 @@
 # EV Battery State of Health Prediction System
 
+**[Read the Full IEEE Research Report (PDF)](report.pdf)**
+
 **An end-to-end AI-powered platform for real-time lithium-ion battery degradation monitoring, agentic natural language diagnostics, and fleet-scale telemetry processing.**
 
 ---

@@ -30,7 +30,7 @@ Electric Vehicles, Predictive Maintenance, Apache Kafka, Temporal Convolutional 
 \end{IEEEkeywords}
 
 \section{\textbf{Introduction}}
-The transition towards sustainable transportation has positioned Electric Vehicles (EVs) at the forefront of the automotive industry. However, the lithium-ion battery pack remains the most expensive and volatile component of an EV, often accounting for nearly half of the vehicle's total cost. Gradual capacity degradation reduces the effective driving range, while abrupt internal failures can lead to thermal runaway—a severe safety hazard. Consequently, transitioning from reactive maintenance to AI-driven predictive maintenance is a critical mandate for fleet operators and automotive manufacturers.
+The transition towards sustainable transportation has positioned Electric Vehicles (EVs) at the forefront of the automotive industry. However, the lithium-ion battery pack remains the most expensive and volatile component of an EV, often accounting for nearly half of the vehicle's total cost. Gradual capacity degradation reduces the effective driving range, while abrupt internal failures can lead to thermal runaway, a severe safety hazard. Consequently, transitioning from reactive maintenance to AI-driven predictive maintenance is a critical mandate for fleet operators and automotive manufacturers.
 
 Historically, data engineering pipelines for predictive maintenance have relied on batch-processing orchestrators (e.g., Apache Airflow). While effective for historical analysis, batch processing introduces systemic latency. In a real-world EV fleet scenario, a battery's temperature or voltage metrics can fluctuate dangerously within seconds. Waiting for a scheduled cron job to trigger a diagnostic pipeline risks irreversible battery damage. Therefore, a real-time, event-driven architecture is paramount.
 
@@ -45,7 +45,7 @@ To address these challenges, this paper proposes an end-to-end decoupled streami
 
 \section{\textbf{System Architecture and Data Engineering}}
 
-To satisfy the strict latency requirements of continuous SOH monitoring, the system implements a highly decoupled streaming architecture. The design strictly separates the "hot path" (real-time telemetry ingestion and deep learning inference) from the "on-demand path" (agentic reasoning and natural language generation).
+To satisfy the strict latency requirements of continuous SOH monitoring, the system implements a highly decoupled streaming architecture. The design strictly separates the ``hot path" (real-time telemetry ingestion and deep learning inference) from the ``on-demand path" (agentic reasoning and natural language generation).
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=\linewidth]{architecture_overall.png}}
@@ -65,12 +65,12 @@ By mapping each unique ``battery\_id'' to a specific partition key, the system g
 \end{figure}
 
 \subsection{Stateful Buffer Management and Sliding Windows}
-Deep learning models, particularly sequence models, require a fixed temporal context to compute accurate predictions. The system implements a stateful buffer mechanism using Python's memory-efficient `collections.deque` optimized for concurrent operations within the FastAPI event loop. 
+Deep learning models, particularly sequence models, require a fixed temporal context to compute accurate predictions. The system implements a stateful buffer mechanism using Python's memory-efficient `collections.deque' optimized for concurrent operations within the FastAPI event loop. 
 
 For a given battery $i$, let the incoming telemetry stream be a sequence of vectors $X_i = \{x_1, x_2, \dots, x_t\}$. The stateful buffer maintains a sliding window of size $W$, where $W = 50$ cycles. At any time $t$, the inference window is strictly $x_{t-W+1} \dots x_t$. As new data arrives via the Kafka consumer, the oldest cycle is popped from the left of the deque in $O(1)$ time complexity, and the new cycle is appended to the right. This ensures that the Temporal Convolutional Network (TCN) always receives a contiguous, shape-aligned tensor of $(50, 4)$ without suffering from memory leaks over extended operational periods.
 
 \subsection{Event-Driven Observability}
-To visualize the degradation metrics instantaneously, the processed inference payloads—comprising the actual capacity, TCN predicted capacity, and calculated SOH percentage—are pushed to a frontend dashboard via WebSockets. This circumvents the overhead of continuous HTTP polling, maintaining a persistent bidirectional pipeline that updates the visual DOM within milliseconds of the Kafka ingestion event.
+To visualize the degradation metrics instantaneously, the processed inference payloads, comprising the actual capacity, TCN predicted capacity, and calculated SOH percentage, are pushed to a frontend dashboard via WebSockets. This circumvents the overhead of continuous HTTP polling, maintaining a persistent bidirectional pipeline that updates the visual DOM within milliseconds of the Kafka ingestion event.
 
 \section{\textbf{Dual-AI Inference Methodology}}
 
@@ -113,7 +113,7 @@ LSTM (Baseline) & 0.0270 & 0.1036 & -0.0011 Ah \\
 \end{table}
 
 \subsection{Agentic Orchestration via LangGraph}
-While the TCN provides real-time quantitative metrics, raw capacity values lack actionable context for non-technical stakeholders (e.g., fleet managers). Integrating a Large Language Model (LLM) directly into the hot path—executing GPT-4 inferences for every incoming Kafka message—is an architectural anti-pattern. Such a design would induce severe API rate-limiting, prohibitive financial costs, and catastrophic system throttling.
+While the TCN provides real-time quantitative metrics, raw capacity values lack actionable context for non-technical stakeholders (e.g., fleet managers). Integrating a Large Language Model (LLM) directly into the hot path, executing GPT-4 inferences for every incoming Kafka message, is an architectural anti-pattern. Such a design would induce severe API rate-limiting, prohibitive financial costs, and catastrophic system throttling.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.8\linewidth]{langgraph_workflow.png}}
@@ -121,7 +121,7 @@ While the TCN provides real-time quantitative metrics, raw capacity values lack 
 \label{fig:langgraph_flow}
 \end{figure}
 
-To resolve this, the system introduces a decoupled "Agentic Layer" orchestrated by LangGraph. This layer exposes an on-demand, RESTful analysis endpoint. When triggered by a maintenance engineer or an automated threshold alert, LangGraph constructs a directed acyclic graph (DAG) of reasoning nodes. The initial node interprets the TCN's recent trajectory to quantify the degradation slope, while the subsequent node interfaces with Azure OpenAI to generate a comprehensive, natural language diagnostic report. This architecture confines the LLM's inherently high latency to an asynchronous request-response cycle, thereby preserving the sub-millisecond integrity of the continuous telemetry dashboard.
+To resolve this, the system introduces a decoupled ``Agentic Layer" orchestrated by LangGraph. This layer exposes an on-demand, RESTful analysis endpoint. When triggered by a maintenance engineer or an automated threshold alert, LangGraph constructs a directed acyclic graph (DAG) of reasoning nodes. The initial node interprets the TCN's recent trajectory to quantify the degradation slope, while the subsequent node interfaces with Azure OpenAI to generate a comprehensive, natural language diagnostic report. This architecture confines the LLM's inherently high latency to an asynchronous request-response cycle, thereby preserving the sub-millisecond integrity of the continuous telemetry dashboard.
 
 \section{\textbf{System Scalability and Performance Evaluation}}
 
