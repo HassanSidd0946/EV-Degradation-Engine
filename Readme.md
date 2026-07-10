@@ -386,7 +386,7 @@ The scatter plots below compare each model's predictions against actual capacity
 
 Residual distributions (actual − predicted) for both models across the pooled test set, used to check for systematic bias.
 
-![Prediction Residuals — Model Comparison](docs/Prediction_Residual_Model_Comparison.png)
+![Prediction Residuals — Model Comparison](docs/residual_distribution.png)
 
 ### Per-Battery MAE Analysis
 
