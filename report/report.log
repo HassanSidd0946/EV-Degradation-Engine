@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.6)  8 MAY 2026 23:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.6)  10 JUL 2026 17:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -105,7 +105,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \c@IEEEbiography=\count289
 \@IEEEtranrubishbin=\box54
 )
-** ATTENTION: Overriding command lockouts (line 2).
+** ATTENTION: Overriding command lockouts (line 202).
 (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/cite\cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
@@ -336,24 +336,24 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 211.
+LaTeX Font Info:    ... okay on input line 211.
 
 -- Lines per column: 56 (exact).
 (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
@@ -375,72 +375,69 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 211.
  (report.out) (report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
-
-Underfull \hbox (badness 3758) in paragraph at lines 28--30
-[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Electric Ve-hi-cles, Pre-dic-tive Main-te-nance,
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 41.
-(C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 225.
+ (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 41.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 225.
  (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 2393) in paragraph at lines 41--42
+Underfull \hbox (badness 3758) in paragraph at lines 228--230
+[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Electric Ve-hi-cles, Pre-dic-tive Main-te-nance,
+ []
+
+
+Underfull \hbox (badness 2393) in paragraph at lines 241--242
 []\OT1/ptm/m/n/10 The im-ple-men-ta-tion of a high-throughput in-ges-tion
  []
 
-<architecture_overall.png, id=60, 1598.3715pt x 1164.7515pt>
+<architecture_overall.png, id=64, 1598.3715pt x 1164.7515pt>
 File: architecture_overall.png Graphic file (type png)
 <use architecture_overall.png>
-Package pdftex.def Info: architecture_overall.png  used on input line 51.
+Package pdftex.def Info: architecture_overall.png  used on input line 252.
 (pdftex.def)             Requested size: 252.0pt x 183.62706pt.
-<architecture_kafka.png, id=63, 1598.3715pt x 1020.2115pt>
-File: architecture_kafka.png Graphic file (type png)
-<use architecture_kafka.png>
-Package pdftex.def Info: architecture_kafka.png  used on input line 62.
-(pdftex.def)             Requested size: 252.0pt x 160.83983pt.
 [1{C:/Users/hassa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-<tcn_architecture.png, id=77, 154.69164pt x 121.81967pt>
+<architecture_kafka.png, id=82, 1598.3715pt x 1020.2115pt>
+File: architecture_kafka.png Graphic file (type png)
+<use architecture_kafka.png>
+Package pdftex.def Info: architecture_kafka.png  used on input line 265.
+(pdftex.def)             Requested size: 252.0pt x 160.83983pt.
+ [2 <./architecture_overall.png> <./architecture_kafka.png>]
+<tcn_architecture.png, id=98, 154.69164pt x 121.81967pt>
 File: tcn_architecture.png Graphic file (type png)
 <use tcn_architecture.png>
-Package pdftex.def Info: tcn_architecture.png  used on input line 86.
+Package pdftex.def Info: tcn_architecture.png  used on input line 296.
 (pdftex.def)             Requested size: 252.0pt x 198.45462pt.
- [2 <./architecture_overall.png> <./architecture_kafka.png> <./tcn_architecture.png>]
-<langgraph_workflow.png, id=93, 554.07pt x 959.585pt>
+<langgraph_workflow.png, id=100, 554.07pt x 959.585pt>
 File: langgraph_workflow.png Graphic file (type png)
 <use langgraph_workflow.png>
-Package pdftex.def Info: langgraph_workflow.png  used on input line 119.
+Package pdftex.def Info: langgraph_workflow.png  used on input line 335.
 (pdftex.def)             Requested size: 201.60077pt x 349.14014pt.
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 133.
+ [3 <./tcn_architecture.png>]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 349.
  (C:\Users\hassa\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [3 <./langgraph_workflow.png>]
-<locust_test_results.png, id=104, 1299.85625pt x 903.375pt>
+)
+<locust_test_results.png, id=112, 1299.85625pt x 903.375pt>
 File: locust_test_results.png Graphic file (type png)
 <use locust_test_results.png>
-Package pdftex.def Info: locust_test_results.png  used on input line 143.
+Package pdftex.def Info: locust_test_results.png  used on input line 359.
 (pdftex.def)             Requested size: 252.0pt x 175.13048pt.
-<soh_prediction_accuracy.png, id=105, 1003.8303pt x 426.393pt>
-File: soh_prediction_accuracy.png Graphic file (type png)
-<use soh_prediction_accuracy.png>
-Package pdftex.def Info: soh_prediction_accuracy.png  used on input line 149.
-(pdftex.def)             Requested size: 252.0pt x 107.0404pt.
-
-Underfull \hbox (badness 2435) in paragraph at lines 157--158
-[]\OT1/ptm/m/n/10 Future it-er-a-tions of this re-search will ex-plore edge-
- []
-
+<actual_vs_predicted.png, id=113, 1044.15094pt x 443.40656pt>
+File: actual_vs_predicted.png Graphic file (type png)
+<use actual_vs_predicted.png>
+Package pdftex.def Info: actual_vs_predicted.png  used on input line 365.
+(pdftex.def)             Requested size: 252.0pt x 107.00836pt.
+ [4 <./langgraph_workflow.png> <./locust_test_results.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -452,26 +449,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[4 <./locust_test_results.png> <./soh_prediction_accuracy.png>] (report.aux)
+[5
+
+ <./actual_vs_predicted.png>] (report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 0B279D44198059E7314EB8B14FAA2F49;3219.
+(rerunfilecheck)             Checksum: DE64E57CAEB1E48068BB328D18C7E2E5;3484.
  ) 
 Here is how much of TeX's memory you used:
- 11363 strings out of 467871
- 177644 string characters out of 5418377
- 611765 words of memory out of 5000000
- 40070 multiletter control sequences out of 15000+600000
- 668135 words of font info for 116 fonts, out of 8000000 for 9000
+ 11378 strings out of 467871
+ 177759 string characters out of 5418377
+ 612856 words of memory out of 5000000
+ 40078 multiletter control sequences out of 15000+600000
+ 669680 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1058b,448s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (4 pages, 1610474 bytes).
+ 75i,9n,79p,1427b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (5 pages, 1593722 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 143 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 204 PDF objects out of 1000 (max. 8388607)
+ 33 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

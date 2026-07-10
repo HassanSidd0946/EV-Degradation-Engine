@@ -228,7 +228,7 @@ app.add_middleware(
 )
 
 # Model load karo startup par
-tcn_model  = keras.models.load_model("best_tcn_v2.keras")
+tcn_model  = keras.models.load_model("best_tcn.keras")
 lstm_model = keras.models.load_model("best_lstm.keras")
 
 def ensemble_predict(X):

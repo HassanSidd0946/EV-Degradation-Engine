@@ -86,7 +86,7 @@ except ImportError:
 
 KAFKA_BROKER    = "localhost:9092"
 TOPIC_NAME      = "ev_battery_telemetry"
-MODEL_PATH      = "best_tcn_v2.keras"      # path to your saved TCN model
+MODEL_PATH      = "best_tcn.keras"      # path to your saved TCN model
 WINDOW_SIZE     = 50                        # must match training config
 FEATURES        = ["Capacity", "Re", "Rct", "ambient_temperature"]
 CHECKPOINT_DIR  = "C:/tmp/ev_battery_checkpoint"
@@ -406,7 +406,7 @@ def main():
     # Validate model exists
     if not os.path.exists(MODEL_PATH):
         print(f"\nERROR: Model not found at {MODEL_PATH}")
-        print("Make sure best_tcn_v2.keras is in the same directory")
+        print("Make sure best_tcn.keras is in the same directory")
         sys.exit(1)
 
     spark = create_spark_session()

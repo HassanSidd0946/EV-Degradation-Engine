@@ -219,7 +219,7 @@ box(ax, 4.6, 3.05, 3.5, 0.95, 'Sliding Window',
     C['tcn'], C['tcn_b'], fontsize=9.5, subfontsize=7.5)
 
 box(ax, 8.3, 3.05, 2.8, 0.95, 'TCN Inference',
-    'best_tcn_v2.keras\nMAE < 0.12 Ah',
+    'best_tcn.keras\nMAE < 0.12 Ah',
     C['tcn'], C['tcn_b'], fontsize=9.5, subfontsize=7.5)
 
 arrow(ax, 4.3, 3.52, 4.6, 3.52, '', C['tcn_b'], lw=1.8)

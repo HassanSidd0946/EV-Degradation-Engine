@@ -18,7 +18,7 @@ import tensorflow as tf
 # ── Config ────────────────────────────────────────────────────
 KAFKA_BROKER  = "localhost:9092"
 TOPIC_NAME    = "ev_battery_telemetry"
-MODEL_PATH    = "best_tcn_v2.keras"
+MODEL_PATH    = "best_tcn.keras"
 WINDOW_SIZE   = 50
 FEATURES      = ["Capacity", "Re", "Rct", "ambient_temperature"]
 GROUP_ID      = "ev_soh_consumer_group"

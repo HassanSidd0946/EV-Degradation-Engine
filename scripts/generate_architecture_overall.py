@@ -155,7 +155,7 @@ box(ax, 15.6, 9.3, 3.2, 0.95, 'Kafka Consumer',
 section_label(ax, 0.3, 8.65, '[ ML INFERENCE LAYER ]', C['border_ml'])
 
 box(ax, 1.8, 7.5, 8.2, 0.95,
-    'TCN Model  (best_tcn_v2.keras)',
+    'TCN Model  (best_tcn.keras)',
     'Input: (50, 4)  |  Causal Conv1D  |  Dilation 1,2,4,8  |  MAE target < 0.12 Ah',
     C['box_ml'], C['border_ml'], fontsize=11)
 

@@ -7,7 +7,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {I}\textbf  {Introduction}}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}\textbf  {System Architecture and Data Engineering}}{1}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Real-Time Telemetry Ingestion via Apache Kafka}{1}{subsection.2.1}\protected@file@percent }
-\citation{b1}
+\citation{b4}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overall System Architecture illustrating data ingestion, ML inference, and decoupled Agentic AI layers.}}{2}{figure.1}\protected@file@percent }
 \newlabel{fig:overall_arch}{{1}{2}{Overall System Architecture illustrating data ingestion, ML inference, and decoupled Agentic AI layers}{figure.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Kafka Scalability and Streaming Architecture with stateful buffering.}}{2}{figure.2}\protected@file@percent }
@@ -15,25 +15,28 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Stateful Buffer Management and Sliding Windows}{2}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Event-Driven Observability}{2}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}\textbf  {Dual-AI Inference Methodology}}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset Specification}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Temporal Convolutional Networks (TCN) for SOH Estimation}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Temporal Convolutional Network (TCN) layers showing dilated causal convolutions and residual blocks.}}{2}{figure.3}\protected@file@percent }
-\newlabel{fig:tcn_arch}{{3}{2}{Temporal Convolutional Network (TCN) layers showing dilated causal convolutions and residual blocks}{figure.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Quantitative Performance Metrics on Full NASA Test Set}}{3}{table.1}\protected@file@percent }
-\newlabel{tab:performance}{{I}{3}{Quantitative Performance Metrics on Full NASA Test Set}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Agentic Orchestration via LangGraph}{3}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}\textbf  {System Scalability and Performance Evaluation}}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Asynchronous I/O Unblocking}{3}{subsection.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Directed Acyclic Graph (DAG) for the Agentic AI layer showing reasoning nodes for SOH analysis.}}{3}{figure.4}\protected@file@percent }
-\newlabel{fig:langgraph_flow}{{4}{3}{Directed Acyclic Graph (DAG) for the Agentic AI layer showing reasoning nodes for SOH analysis}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Concurrency Stress Testing and Architectural Resilience}{3}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset Specification and Evaluation Methodology}{2}{subsection.3.1}\protected@file@percent }
+\citation{b1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}LSTM Baseline}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Temporal Convolutional Network (TCN) for SOH Estimation}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Temporal Convolutional Network (TCN) layers showing dilated causal convolutions and residual blocks.}}{3}{figure.3}\protected@file@percent }
+\newlabel{fig:tcn_arch}{{3}{3}{Temporal Convolutional Network (TCN) layers showing dilated causal convolutions and residual blocks}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Quantitative Performance Metrics (Per-Battery Chronological Test Split, 13/34 Batteries Evaluated)}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:performance}{{I}{3}{Quantitative Performance Metrics (Per-Battery Chronological Test Split, 13/34 Batteries Evaluated)}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Agentic Orchestration via LangGraph}{3}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Directed Acyclic Graph (DAG) for the Agentic AI layer showing reasoning nodes for SOH analysis.}}{4}{figure.4}\protected@file@percent }
+\newlabel{fig:langgraph_flow}{{4}{4}{Directed Acyclic Graph (DAG) for the Agentic AI layer showing reasoning nodes for SOH analysis}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}\textbf  {System Scalability and Performance Evaluation}}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Asynchronous I/O Unblocking}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Concurrency Stress Testing and Architectural Resilience}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Locust Load Test statistics at 260 concurrent users. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint.}}{4}{figure.5}\protected@file@percent }
+\newlabel{fig:locust_results}{{5}{4}{Locust Load Test statistics at 260 concurrent users. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint}{figure.5}{}}
 \bibcite{b1}{1}
 \bibcite{b2}{2}
 \bibcite{b3}{3}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Locust Load Test statistics under a simulated 1000 concurrent user load. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to third-party LLM API rate limits.}}{4}{figure.5}\protected@file@percent }
-\newlabel{fig:locust_results}{{5}{4}{Locust Load Test statistics under a simulated 1000 concurrent user load. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to third-party LLM API rate limits}{figure.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comparison of Actual vs. Predicted Capacity for Battery 54, demonstrating accurate tracking of monotonic degradation over 200 cycles.}}{4}{figure.6}\protected@file@percent }
-\newlabel{fig:accuracy_graph}{{6}{4}{Comparison of Actual vs. Predicted Capacity for Battery 54, demonstrating accurate tracking of monotonic degradation over 200 cycles}{figure.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}\textbf  {Conclusion and Future Work}}{4}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{4}{section*.1}\protected@file@percent }
-\gdef \@abspage@last{4}
+\bibcite{b4}{4}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comparison of Actual vs. Predicted Capacity for a representative test-set battery, demonstrating tracking of degradation trajectory across the evaluated test cycles.}}{5}{figure.6}\protected@file@percent }
+\newlabel{fig:accuracy_graph}{{6}{5}{Comparison of Actual vs. Predicted Capacity for a representative test-set battery, demonstrating tracking of degradation trajectory across the evaluated test cycles}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}\textbf  {Conclusion and Future Work}}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.1}\protected@file@percent }
+\gdef \@abspage@last{5}
