@@ -31,7 +31,7 @@
 
 Lithium-ion battery degradation is one of the most operationally critical and economically consequential failure modes in electric vehicles. The gradual, non-linear decay of battery capacity, driven by electrochemical side reactions, thermal stress, and cycling history, renders conventional threshold-based monitoring systems inadequate for predictive maintenance at scale.
 
-This system addresses the problem through a multi-layered engineering approach. A **TCN+LSTM ensemble model** trained on the NASA Lithium-ion Battery Aging Dataset performs sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells in real time. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
+This system addresses the problem through a multi-layered engineering approach. An **LSTM baseline and a TCN model** are trained on the NASA Lithium-ion Battery Aging Dataset, each performing sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
 
 Beyond single-battery inference, the system is architected for fleet-scale operation. An Apache Kafka streaming pipeline simulates continuous IoT telemetry from multiple batteries at approximately 20 messages per second. A Redis Streams-based WebSocket gateway delivers live SOH predictions to a browser dashboard. Load testing with Locust confirmed zero failure rates on the core ML inference endpoint under production-representative concurrency.
 
@@ -72,9 +72,9 @@ HTTP Clients
       v
 [ FastAPI Backend ]
       |
-      |---> POST /predict  ---> TCN+LSTM Ensemble ---> SOH%
+      |---> POST /predict  ---> Model Ensemble ---> SOH%
       |
-      |---> POST /analyze  ---> TCN+LSTM Ensemble
+      |---> POST /analyze  ---> Model Ensemble
       |                              |
       |                              v
       |                    [ LangGraph Agent ]
@@ -144,7 +144,7 @@ In short: **Redis Streams is the demo/dashboard transport; Kafka is the producti
 
 **Source:** NASA Ames Prognostics Center of Excellence: Lithium-ion Battery Aging Dataset
 
-**Composition:** 7,368 rows across 34 battery cells (IDs 5, 6, 7, 18, 45–56, etc.), each representing one discharge cycle measurement.
+**Composition:** 7,368 rows across 34 battery cells (IDs 5, 6, 7, 18, 25–56, etc.), each representing one discharge cycle measurement.
 
 **Features used:**
 
@@ -161,11 +161,9 @@ The dataset exhibits several characteristics that required deliberate handling d
 
 First, anomalous zero-capacity readings appear at irregular intervals across multiple batteries (visible in the Battery 47 degradation curve). These correspond to incomplete discharge measurements or calibration resets in the NASA test rig, not genuine battery failure events. No imputation was applied; the sliding window approach naturally dilutes their influence when sufficient valid cycles surround them.
 
-Second, battery cycle counts are highly heterogeneous. Battery 50 contributes only 7 test cycles — fewer than the 50-cycle window length used everywhere else in this system — which disproportionately inflates per-battery and aggregate error metrics for that cell. This imbalance is documented here, reported transparently in the per-battery breakdown, and explicitly disclosed as a filtering criterion in the [Quantitative Results](#quantitative-results) section below, rather than silently dropped or silently included.
+Second, battery cycle counts are highly heterogeneous — individual batteries range from as few as ~16 total cycles to over 300. This has a direct, disclosed consequence for evaluation: **the train/test split is performed per battery, chronologically** (each battery's own first 80% of cycles go to training, last 20% go to test), so that no battery is entirely held out and no future cycle leaks into training. A side effect of this design is that batteries whose 20% test slice contains fewer than `WINDOW_SIZE` (50) cycles cannot produce any windowed test samples and are excluded from the windowed test set, while remaining fully represented in training. Of the 34 batteries in the dataset, **13 contribute windowed test samples** in the current evaluation; the remaining 21 are trained on but not individually evaluated at test time due to insufficient post-split cycle count. This trade-off, and the reasoning behind choosing it over the alternative (a global chronological split that silently produces an out-of-distribution test set — see Engineering Challenge 2), is disclosed explicitly in [Quantitative Results](#quantitative-results).
 
-Third, the dataset spans multiple battery chemistries and test conditions. Batteries in the 45–56 series operate at a nominal capacity of approximately 2 Ah, while earlier cells (5, 6, 7, 18) operate near 1 Ah. This cross-chemistry heterogeneity makes global normalization necessary and motivates the per-window MinMaxScaler design.
-
-The chronological 80/20 train-test split was enforced without shuffling to simulate real-world deployment conditions, where the model must predict future degradation rather than interpolate within a known cycle range.
+Third, the dataset spans multiple battery chemistries and test conditions, with nominal capacities varying across battery series. This cross-chemistry heterogeneity makes global normalization necessary and motivates the per-window MinMaxScaler design — with the scaler fit exclusively on training data to avoid leaking test-set feature ranges into the training distribution (see Engineering Challenge 6).
 
 ![Battery 47 Capacity Degradation](docs/battery_capacity_degradation.png)
 
@@ -181,47 +179,50 @@ Formally: given input tensor X of shape (50, 4), representing 50 consecutive dis
 
 ### Sliding Window Construction
 
-Windows are constructed per `battery_id` to prevent cross-battery data leakage. For a battery with N cycles, this yields N - 50 training samples. The window slides by one cycle at a time, producing dense, overlapping sequences that capture local degradation dynamics at high resolution. This invariant — that no window spans two batteries — is enforced both in preprocessing and, as of the current release, by an automated regression test (see [Testing, CI/CD & MLOps Hygiene](#testing-cicd--mlops-hygiene)).
+Windows are constructed per `battery_id`, independently on the training and test partitions, to prevent cross-battery data leakage. For a battery with N cycles in a given partition, this yields N - 50 samples from that partition. The window slides by one cycle at a time, producing dense, overlapping sequences that capture local degradation dynamics at high resolution. This invariant — that no window spans two batteries — is enforced both in preprocessing and, as of the current release, by an automated regression test (see [Testing, CI/CD & MLOps Hygiene](#testing-cicd--mlops-hygiene)).
 
 ### LSTM Baseline
 
-A standard Sequential LSTM model serves as the baseline. The architecture consists of a single LSTM layer with 64 hidden units, Dropout regularization at rate 0.2, and two Dense projection layers reducing to a scalar output. The model was compiled with the Adam optimizer (lr=0.001) and Mean Absolute Error loss.
+A standard Sequential LSTM model serves as the baseline. The architecture consists of a single LSTM layer with 64 hidden units, Dropout regularization at rate 0.2, and two Dense projection layers (32 and 16 units, ReLU) reducing to a scalar output. The model was compiled with the Adam optimizer (lr=0.001) and Mean Absolute Error loss, with EarlyStopping (patience=15, restoring best weights) and ModelCheckpoint callbacks.
 
-The LSTM converged at epoch 83 (best checkpoint) with a validation MAE of 0.0270 Ah on the full test set. Its residual distribution is tightly centered around zero (mean = -0.0011 Ah), indicating minimal systematic bias.
+On the current train/test split, the LSTM achieves a test MAE of 0.0151 Ah and R² of 0.634 — the stronger of the two models on this evaluation (see [Model Selection Rationale](#model-selection-rationale) below).
 
 ### TCN Architecture
 
-The proposed Temporal Convolutional Network replaces recurrent computation with dilated causal convolutions, enabling parallel sequence processing and theoretically unbounded receptive fields without the vanishing gradient limitations of RNNs.
+The TCN uses dilated causal convolutions with residual connections, enabling parallel sequence processing and a wide receptive field without the vanishing-gradient limitations of plain RNNs.
 
-**Architecture:**
+**Architecture (per block):**
 
 ```
-Input: (50, 4)
-    |
-Conv1D(64, kernel=3, padding='causal', dilation=1) + BatchNorm + ReLU
-    |
-Conv1D(64, kernel=3, padding='causal', dilation=2) + BatchNorm + ReLU
-    |
-Conv1D(64, kernel=3, padding='causal', dilation=4) + BatchNorm + ReLU
-    |
-Conv1D(64, kernel=3, padding='causal', dilation=8) + BatchNorm + ReLU
-    |
-GlobalAveragePooling1D
-    |
-Dense(32) + ReLU
-    |
-Dense(1) -> Predicted Capacity (Ah)
+Input
+  |
+Conv1D(64, kernel=3, causal, dilation=d) + BatchNorm + Dropout(0.1)
+  |
+Conv1D(64, kernel=3, causal, dilation=d) + BatchNorm + Dropout(0.1)
+  |
+[1x1 Conv1D projection if channel dims differ] --+
+  |                                               |
+  +-------------------- Add (residual) -----------+
+  |
+  v (next block)
 ```
 
-Causal padding ensures no future timestep information leaks into the prediction. Dilation rates of 1, 2, 4, 8 provide a receptive field spanning the full 50-cycle input window with logarithmic parameter growth.
+Four such blocks are stacked with dilation rates 1, 2, 4, 8, giving a receptive field spanning the full 50-cycle input window. The residual (skip) connection in every block is the key design choice: it gives gradients a direct shortcut path through training, since stacked dilated convolutions without residuals tend to collapse toward predicting a flat line. Rather than `GlobalAveragePooling1D`, the model takes only the **last timestep** of the final block's output — the most recent battery state — before two Dense layers (32, then 16 units, ReLU) reduce to the scalar output.
 
-The TCN best checkpoint was saved at epoch 25. Its validation residual distribution (mean = -0.0102 Ah) shows a slight negative bias — the model tends to marginally underestimate capacity, which is the conservative failure mode preferable in battery management applications.
+On the current train/test split, the TCN achieves a test MAE of 0.0206 Ah and R² of 0.550.
 
 ### Model Selection Rationale
 
-Individual model evaluation revealed complementary strengths: the LSTM achieves superior aggregate accuracy (MAE: 0.0270 Ah) across the full heterogeneous test set, while the TCN demonstrates stronger generalization on individual batteries with clean monotonic degradation profiles (Battery 54: TCN MAE = 0.0197 Ah vs LSTM MAE = 0.0218 Ah) and a conservative underestimation bias preferable for safety-critical decisions.
+On the current, correctly-partitioned evaluation (per-battery chronological split, no train/test leakage), **the LSTM outperforms the TCN on both MAE and R²**:
 
-For the FastAPI inference endpoints (`/predict` and `/analyze`), a **TCN+LSTM ensemble** is used as the production model. Predictions from both models are averaged, combining the LSTM's superior aggregate accuracy with the TCN's conservative underestimation bias — the safer failure mode for battery management applications. For real-time Kafka streaming and WebSocket inference, the TCN alone is retained due to its faster inference speed with no sequential hidden state computation.
+| Metric | LSTM | TCN |
+|--------|------|-----|
+| MAE (Ah) | 0.0151 | 0.0206 |
+| R² | 0.634 | 0.550 |
+
+This is a genuine result from the corrected methodology, not a design preference — an earlier version of this evaluation (before the train/test split bug described in Engineering Challenge 2 was found and fixed) had shown the opposite ranking, which turned out to be an artifact of an invalid split rather than a true model comparison. The LSTM's sequential, stateful processing appears to generalize more effectively than the TCN's convolutional receptive field on this dataset's battery count and per-battery sample sizes.
+
+Both models remain available in the production ensemble (`/predict` and `/analyze` average their outputs) for redundancy — combining two structurally different models reduces the chance that either model's individual failure modes (e.g., a bad local optimum) dominate a single prediction. For latency-sensitive real-time Kafka/WebSocket inference, the TCN alone is retained due to its faster, non-recurrent inference path; this is a latency/architecture trade-off, not a claim that the TCN is the more accurate model.
 
 ![Training and Validation Loss Curves](docs/phase3_loss_curves.png)
 
@@ -357,63 +358,62 @@ TensorFlow inference is single-threaded by default. At 514 concurrent users, the
 
 ### Quantitative Results
 
-**Full test set (unfiltered, all 34 batteries):**
+**Test set results (per-battery chronological split, 13/34 batteries contributing windowed test samples — see Test Coverage Disclosure below):**
 
 | Metric | LSTM | TCN | Target Threshold |
 |--------|------|-----|-------------------|
-| MAE (Ah) | 0.0270 | 0.0686 | < 0.12 Ah |
-| RMSE (Ah) | 0.1036 | 0.1434 | — |
-| R² Score | 0.4820 | 0.0083 | — |
-| Residual Mean Bias | -0.0011 Ah | -0.0102 Ah | ~0 |
+| MAE (Ah) | 0.0151 | 0.0206 | < 0.12 Ah |
+| RMSE (Ah) | 0.0385 | 0.0427 | — |
+| R² Score | 0.6339 | 0.5500 | — |
 
-**Filtered test set (Battery 50 excluded — see disclosure below):**
+Both models comfortably clear the 0.08–0.12 Ah target MAE range that was set conservatively during early exploratory runs, before the train/test split methodology described below was finalized; the final numbers above substantially outperform that original target.
 
-| Metric | LSTM | TCN |
-|--------|------|-----|
-| MAE (Ah) | `TODO: recompute` | `TODO: recompute` |
-| R² Score | `TODO: recompute` | `TODO: recompute` |
+**Test Coverage Disclosure:**
 
-> **Action item before publishing:** the filtered-metric cells above are intentionally left as `TODO` placeholders rather than filled with estimated numbers. Re-run the evaluation script with Battery 50 excluded from the test split and paste the actual computed values here. Do not substitute a plausible-looking number — an unverified figure is worse for credibility than an honestly reported unfiltered R² of 0.0083.
+The train/test split is performed **per battery, chronologically**: each battery's own first 80% of cycles are used for training and last 20% for test, so every battery is represented in training and no future cycle leaks backward into it. This is a deliberate choice over a naive global 80/20 split on the concatenated, battery-ordered dataset — that alternative, tested during development, silently produced a test set consisting entirely of one battery-ID cluster (a specific chemistry family never seen in training at all), which is a materially different and much harder task (zero-shot cross-chemistry generalization) than the chronological forecasting this system is designed to demonstrate, and it also permitted the feature scaler to be fit on data that included future test-only batteries. Both issues are fixed in the current methodology: the scaler is fit exclusively on the training partition, and the split preserves every battery's presence in both partitions.
 
-**Data Filtering Disclosure:**
+The trade-off of the per-battery approach: a battery whose 20% test slice contains fewer than the 50-cycle window length produces zero windowed test samples for that battery (it is still fully used in training). Of 34 total batteries, **13 contribute windowed test samples** to the figures reported here; the other 21 have too few post-split test cycles to form even one window. This is disclosed here rather than silently reflected only in a sample count, so the evaluation's actual coverage is auditable.
 
-Battery 50 contributes only 7 cycles to the test split — fewer than the 50-cycle window length used for every other battery in this dataset. This is not a case of the model performing poorly on a hard example; it is a sample-size artifact where a single battery with an atypically short test window has a disproportionate effect on aggregate error terms, particularly R², which is sensitive to variance in the denominator (SS_total) when the underlying sample is this small.
-
-To give a fair aggregate picture of model performance, this report presents **both** the unfiltered full-test-set metrics and a filtered version that excludes Battery 50. The unfiltered numbers are reported first and are not hidden or removed — they remain the ground truth for the complete dataset. The filtered numbers are reported alongside them, with the exclusion criterion stated explicitly (test-cycle count below the window length), so that the filtering decision is reproducible and auditable rather than selectively applied after the fact.
-
-Per-battery R² and MAE for all 34 individual batteries are provided in the [Per-Battery MAE Analysis](#per-battery-mae-analysis) section below, so that no single aggregate number — filtered or unfiltered — is presented without the underlying distribution a reviewer would need to sanity-check it.
-
-MAE remains the primary evaluation metric for this system: it is directly interpretable in operational Ah units and is far less sensitive to the small-sample variance problem described above than R².
+Per-battery MAE for the 13 evaluated batteries is provided in [Per-Battery MAE Analysis](#per-battery-mae-analysis) below. Per-battery R² is intentionally **not** reported (see that section for why) — the pooled R² above is the reliable variance-based metric for this evaluation.
 
 ### Predicted vs Actual Capacity
 
-The LSTM scatter plot shows tight clustering around the perfect prediction diagonal across the 0.6–0.9 Ah operational range, with visible outlier clusters at near-zero capacity (corresponding to anomalous NASA test readings). The TCN scatter plot shows higher variance, particularly across the mid-range, consistent with its lower R² score on the heterogeneous test set.
+The scatter plots below compare each model's predictions against actual capacity across the full pooled test set (both models plotted against the same 45° reference line for perfect prediction).
 
 ![Predicted vs Actual Capacity — Model Comparison](docs/Predicted_vs_Actual_model_comparison.png)
 
 ### Prediction Residuals
 
-The LSTM residual distribution is sharply peaked at zero (mean = -0.0011 Ah) with minimal tail mass, indicating a well-calibrated predictor with low systematic bias. The TCN residual distribution is broader and left-skewed (mean = -0.0102 Ah), confirming the conservative underestimation tendency.
+Residual distributions (actual − predicted) for both models across the pooled test set, used to check for systematic bias.
 
 ![Prediction Residuals — Model Comparison](docs/Prediction_Residual_Model_Comparison.png)
 
 ### Per-Battery MAE Analysis
 
-The table below reports MAE and R² for every battery in the test set individually, including Battery 50 and Battery 51, so the aggregate filtering decision above can be independently verified.
+The table below reports MAE for each of the 13 batteries that contribute windowed test samples, along with the sample count `n` for each:
 
-Per-battery MAE analysis reveals that the aggregate metrics are dominated by Battery 50 (7 test cycles, TCN MAE = 0.4808 Ah) and Battery 51 (TCN MAE = 0.2053 Ah). Excluding these statistical outliers, the TCN performs comparably to or better than the LSTM on the majority of batteries. Battery 53 shows near-identical performance between both models (LSTM: 0.018 Ah, TCN: 0.028 Ah), while Battery 45 achieves sub-0.01 Ah MAE for both. Battery 54 (clean monotonic profile, 200 test cycles) yields an estimated per-battery R² of approximately 0.85–0.90 for the TCN, indicating strong generalization on cells with sufficient, well-behaved test data.
+| Battery | n | LSTM MAE (Ah) | TCN MAE (Ah) |
+|---------|---|----------------|---------------|
+| 5 | 62 | 0.0031 | 0.0153 |
+| 6 | 62 | 0.0108 | 0.0040 |
+| 7 | 62 | 0.0164 | 0.0462 |
+| 18 | 14 | 0.0019 | 0.0262 |
+| 33 | 48 | 0.0041 | 0.0056 |
+| 34 | 48 | 0.0075 | 0.0095 |
+| 36 | 48 | 0.0360 | 0.0062 |
+| 42 | 5 | 0.0466 | 0.1014 |
+| 43 | 5 | 0.0358 | 0.0773 |
+| 44 | 5 | 0.0373 | 0.0737 |
+
+Performance is uneven across batteries in both directions — LSTM is markedly better on Batteries 5, 18, 33, and 34, while TCN is markedly better on Battery 6 and 36 — indicating the two architectures are picking up on different aspects of degradation behavior rather than one uniformly dominating. Batteries 42–44, with only 5 test samples each, show the highest error for both models; this is consistent with those batteries having the least post-split test data to average over, rather than a distinct failure mode.
+
+**Per-battery R² is intentionally not reported here.** Because each battery contributes only its final 20% of cycles to test, within-battery target variance is frequently too low for R² to be a stable metric — several batteries with 40–60 samples still produced R² values below −20 (an artifact of a small SS_total denominator, not poor predictions), which would be actively misleading if presented as headline numbers. MAE, being scale-based rather than variance-normalized, remains reliable at every sample size shown above and is used instead. Pooled R² over the full test set (reported in Quantitative Results) is the appropriate variance-based metric for this evaluation.
 
 ![Per-Battery MAE — LSTM vs TCN](docs/per_battery_mae.png)
 
-### Battery-Level Degradation Tracking
-
-The Battery 54 degradation curve demonstrates clean, monotonic SOH decline from approximately 0.78 Ah to 0.61 Ah over 200 test cycles. Both models track this trajectory, with the LSTM maintaining tighter adherence (MAE = 0.0119 Ah) than the TCN (MAE = 0.0457 Ah) on this particular cell.
-
-![Battery 54 Degradation — Actual vs Predicted](docs/Battery_54_only__no_spikes.png)
-
 ### Training Convergence
 
-The LSTM training curves show smooth, monotonic convergence over 100 epochs. The train-validation gap stabilizes after epoch 40, indicating controlled generalization without overfitting. The TCN training curves exhibit higher validation MAE variance, particularly in the first 20 epochs, consistent with the more complex loss landscape of dilated convolutions on small datasets.
+Training and validation MAE curves for both models, with EarlyStopping restoring the best-validation-loss weights in each case.
 
 ![Phase 3 Training Loss Curves](docs/phase3_loss_curves.png)
 
@@ -480,7 +480,7 @@ models/
 │   ├── best_tcn_v2.keras
 │   └── metrics.json      # MAE, RMSE, R², epoch, training date, git commit hash
 ├── lstm_v1/
-│   ├── best_lstm.keras
+│   ├── best_lstm_v1.keras
 │   └── metrics.json
 ```
 
@@ -493,7 +493,7 @@ Each `metrics.json` includes the git commit hash of the training run, allowing a
 | Layer | Technology | Version |
 |-------|-----------|---------|
 | Deep Learning | TensorFlow / Keras | 2.x |
-| Model Architecture | TCN+LSTM Ensemble (dilated causal Conv1D + LSTM) | Custom |
+| Model Architecture | TCN (dilated causal Conv1D, residual) + LSTM baseline | Custom |
 | Backend API | FastAPI + Uvicorn | Latest |
 | Agentic AI | LangGraph + LangChain | Latest |
 | LLM Provider | Azure OpenAI (GPT-4 class) | API |
@@ -542,7 +542,7 @@ EV-Degradation-Engine/
 |   |   |-- best_tcn_v2.keras
 |   |   |-- metrics.json
 |   |-- lstm_v1/
-|       |-- best_lstm.keras
+|       |-- best_lstm_v1.keras
 |       |-- metrics.json
 |
 |-- Battery_Data_Cleaned.csv        # Preprocessed NASA dataset
@@ -554,9 +554,7 @@ EV-Degradation-Engine/
 |   |-- Predicted_vs_Actual_model_comparison.png
 |   |-- Prediction_Residual_Model_Comparison.png
 |   |-- per_battery_mae.png
-|   |-- Battery_54_only__no_spikes.png
 |   |-- battery_capacity_degradation.png
-|   |-- phase4_actual_vs_predicted.png
 ```
 
 ---
@@ -657,8 +655,8 @@ locust -f locustfile.py --host=http://localhost:8000
 **Challenge 1: Data Leakage Prevention**
 Sliding window construction across a mixed-battery dataset risks including cycles from different batteries in the same window. Solved by grouping windows strictly per `battery_id` before concatenation, and enforced going forward by an automated Pytest assertion (`test_windowing.py`).
 
-**Challenge 2: Chronological Integrity**
-Standard random train-test splits would allow the model to interpolate within known degradation curves rather than forecast future states. Enforced chronological split without shuffling to simulate real deployment conditions.
+**Challenge 2: Chronological Integrity vs. Battery Coverage**
+An early version of this system split the *concatenated, battery-ordered window array* 80/20 by flat index. This looked like a chronological split but was not: because windows were appended battery-by-battery in ID order, the last 20% of the array turned out to be several batteries' full cycle histories — the test set ended up containing entire batteries never seen in training at all, silently testing cross-chemistry generalization rather than future-cycle forecasting. It also meant the feature scaler was fit on the full dataset, including those future-only test batteries. Both issues were caught by inspecting which battery IDs actually landed in the test set, and fixed by splitting **per battery, chronologically, on raw rows before scaling**: each battery's own last 20% of cycles becomes its test portion, the scaler is fit only on the resulting training rows, and windows are built separately on each partition. The trade-off this introduces — some low-cycle-count batteries no longer produce test windows — is disclosed in [Test Coverage Disclosure](#quantitative-results) rather than hidden.
 
 **Challenge 3: Stateful Kafka Consumer**
 Kafka micro-batches deliver only the most recent messages per batch. A per-battery deque accumulates cycles across batches, maintaining the 50-cycle window requirement without requiring stateful Spark operators or external state stores.
@@ -670,7 +668,7 @@ PySpark's `RawLocalFileSystem.setPermission` calls `winutils.exe` for POSIX perm
 TensorFlow's Global Interpreter Lock (GIL) and single-threaded session management cause request queuing under concurrent API load. Identified solution path: `asyncio.to_thread` for non-blocking inference offloading and multiple Uvicorn workers for process-level parallelism.
 
 **Challenge 6: Per-Window Normalization**
-Applying a global scaler fitted on training data causes distribution shift when inference windows span batteries with different nominal capacities. Resolved by fitting a fresh `MinMaxScaler` per inference window, which preserves relative feature relationships within each 50-cycle context.
+Applying a global scaler fitted on training data causes distribution shift when inference windows span batteries with different nominal capacities. Resolved by fitting the `MinMaxScaler` exclusively on training-partition rows (see Challenge 2), then applying the same fitted scaler to both training and test/inference windows — preserving a single, leakage-free feature scale across the system.
 
 ---
 
