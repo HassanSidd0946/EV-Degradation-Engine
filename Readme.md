@@ -390,7 +390,7 @@ Residual distributions (actual − predicted) for both models across the pooled 
 
 ### Per-Battery MAE Analysis
 
-The table below reports MAE for each of the 13 batteries that contribute windowed test samples, along with the sample count `n` for each:
+The table below reports MAE for each battery with at least 5 windowed test samples, along with the sample count `n` for each. Of the 13 batteries that contribute windowed test samples to the pooled aggregate metrics above, 3 (with fewer than 5 test samples each) are omitted from this table — their error at that sample size would be as statistically unreliable as the per-battery R² values discussed below, so they are excluded from the per-battery breakdown while remaining included in the pooled MAE/R² figures.
 
 | Battery | n | LSTM MAE (Ah) | TCN MAE (Ah) |
 |---------|---|----------------|---------------|
