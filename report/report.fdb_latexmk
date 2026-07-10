@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1783687109.88418 "d:/COURSES/EV Battery/report/report.tex" "report.pdf" "report" 1783687115.48105 0
+["pdflatex"] 1783688608.24733 "d:/COURSES/EV Battery/report/report.tex" "report.pdf" "report" 1783688616.91481 0
   "C:/Users/hassa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777712583 84158 d77284a6843bde1e4b9764f09fb2e89e ""
   "C:/Users/hassa/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778054894 13333486 5a96c4613aadd79e66191edb578d26bb ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -109,15 +109,15 @@
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1751104012 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "actual_vs_predicted.png" 1783685936 118041 8abbf16ec5d4708177bb853ad11d82f9 ""
+  "actual_vs_predicted.png" 1783688597 118041 8abbf16ec5d4708177bb853ad11d82f9 ""
   "architecture_kafka.png" 1777872145 656460 1f7600a8fcef5d97ddd18a71efcde2b9 ""
   "architecture_overall.png" 1777872178 682862 756e9d658478e72987da4e99689b6510 ""
-  "d:/COURSES/EV Battery/report/report.tex" 1783683920 38251 21685d6b60019b8472f84916fefc0f61 ""
+  "d:/COURSES/EV Battery/report/report.tex" 1783688597 38251 21685d6b60019b8472f84916fefc0f61 ""
   "langgraph_workflow.png" 1778072415 364554 6a0d72d7bd617e1311a3458a09c33002 ""
   "locust_test_results.png" 1778083885 146556 63b357caec4cc814bf27290aa352eeff ""
-  "report.aux" 1783687115 5270 4a384eab8926c1288b5eec1d8633fa36 "pdflatex"
-  "report.out" 1783687115 3484 de64e57caeb1e48068bb328d18c7e2e5 "pdflatex"
-  "report.tex" 1783683920 38251 21685d6b60019b8472f84916fefc0f61 ""
+  "report.aux" 1783688616 5270 4a384eab8926c1288b5eec1d8633fa36 "pdflatex"
+  "report.out" 1783688616 3484 de64e57caeb1e48068bb328d18c7e2e5 "pdflatex"
+  "report.tex" 1783688597 38251 21685d6b60019b8472f84916fefc0f61 ""
   "tcn_architecture.png" 1778070776 77098 bcd6cef5e86f6d48b96f9ebfb3595588 ""
   (generated)
   "report.aux"

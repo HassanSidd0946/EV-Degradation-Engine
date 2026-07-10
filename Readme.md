@@ -132,11 +132,11 @@ Horizontal Scale Path:
 
 This system intentionally implements two distinct real-time paths rather than a single unified pipeline, because they solve different problems and target different consumers:
 
-**Redis Streams (`stream_simulator.py` → `websocket_consumer.py`)** is the **single-device, low-latency edge path**. It exists to answer the question "what is happening to *this one battery* right now?" for a human-facing dashboard. Redis XADD/XREAD was chosen for its sub-millisecond write latency and minimal operational overhead — no partition management, no consumer group rebalancing — which is appropriate when the consumer count is exactly one (the WebSocket gateway) and the data volume is a single battery's cycle stream at human-readable speed (1 event/second).
+**Redis Streams (`stream_simulator.py` → `websocket_consumer.py`)** is the **single-device, low-latency edge path**. It exists to answer the question "what is happening to *this one battery* right now?" for a human-facing dashboard. Redis XADD/XREAD was chosen for its sub-millisecond write latency and minimal operational overhead no partition management, no consumer group rebalancing which is appropriate when the consumer count is exactly one (the WebSocket gateway) and the data volume is a single battery's cycle stream at human-readable speed (1 event/second).
 
-**Apache Kafka (`kafka_streamer.py` → `kafka_consumer_direct.py` / `pyspark_consumer.py`)** is the **fleet-scale, ordered-ingestion path**. It exists to answer a different question: "how do we durably and correctly ingest telemetry from an entire fleet of vehicles, at production message volume, with replay and multi-consumer capability?" Kafka's partition-by-`battery_id` design guarantees per-battery message ordering across a theoretically unbounded number of concurrent producers, and its log-based retention allows the same message stream to be replayed by multiple independent consumers (e.g., the TCN inference consumer and, separately, a future analytics/archival consumer) without coordination between them — a capability Redis Streams does not provide at this durability guarantee.
+**Apache Kafka (`kafka_streamer.py` → `kafka_consumer_direct.py` / `pyspark_consumer.py`)** is the **fleet-scale, ordered-ingestion path**. It exists to answer a different question: "how do we durably and correctly ingest telemetry from an entire fleet of vehicles, at production message volume, with replay and multi-consumer capability?" Kafka's partition-by-`battery_id` design guarantees per-battery message ordering across a theoretically unbounded number of concurrent producers, and its log-based retention allows the same message stream to be replayed by multiple independent consumers (e.g., the TCN inference consumer and, separately, a future analytics/archival consumer) without coordination between them, a capability Redis Streams does not provide at this durability guarantee.
 
-In short: **Redis Streams is the demo/dashboard transport; Kafka is the production ingestion backbone.** They are not redundant implementations of the same problem — they sit at different points in the system's maturity curve, and the repository intentionally includes both to demonstrate the engineering judgment of choosing the right tool for single-consumer low-latency delivery versus multi-consumer durable ingestion, rather than defaulting to one technology for every use case.
+In short: **Redis Streams is the demo/dashboard transport; Kafka is the production ingestion backbone.** They are not redundant implementations of the same problem they sit at different points in the system's maturity curve, and the repository intentionally includes both to demonstrate the engineering judgment of choosing the right tool for single-consumer low-latency delivery versus multi-consumer durable ingestion, rather than defaulting to one technology for every use case.
 
 ---
 
@@ -161,9 +161,9 @@ The dataset exhibits several characteristics that required deliberate handling d
 
 First, anomalous zero-capacity readings appear at irregular intervals across multiple batteries (visible in the Battery 47 degradation curve). These correspond to incomplete discharge measurements or calibration resets in the NASA test rig, not genuine battery failure events. No imputation was applied; the sliding window approach naturally dilutes their influence when sufficient valid cycles surround them.
 
-Second, battery cycle counts are highly heterogeneous — individual batteries range from as few as ~16 total cycles to over 300. This has a direct, disclosed consequence for evaluation: **the train/test split is performed per battery, chronologically** (each battery's own first 80% of cycles go to training, last 20% go to test), so that no battery is entirely held out and no future cycle leaks into training. A side effect of this design is that batteries whose 20% test slice contains fewer than `WINDOW_SIZE` (50) cycles cannot produce any windowed test samples and are excluded from the windowed test set, while remaining fully represented in training. Of the 34 batteries in the dataset, **13 contribute windowed test samples** in the current evaluation; the remaining 21 are trained on but not individually evaluated at test time due to insufficient post-split cycle count. This trade-off, and the reasoning behind choosing it over the alternative (a global chronological split that silently produces an out-of-distribution test set — see Engineering Challenge 2), is disclosed explicitly in [Quantitative Results](#quantitative-results).
+Second, battery cycle counts are highly heterogeneous — individual batteries range from as few as ~16 total cycles to over 300. This has a direct, disclosed consequence for evaluation: **the train/test split is performed per battery, chronologically** (each battery's own first 80% of cycles go to training, last 20% go to test), so that no battery is entirely held out and no future cycle leaks into training. A side effect of this design is that batteries whose 20% test slice contains fewer than `WINDOW_SIZE` (50) cycles cannot produce any windowed test samples and are excluded from the windowed test set, while remaining fully represented in training. Of the 34 batteries in the dataset, **13 contribute windowed test samples** in the current evaluation; the remaining 21 are trained on but not individually evaluated at test time due to insufficient post-split cycle count. This trade-off, and the reasoning behind choosing it over the alternative (a global chronological split that silently produces an out-of-distribution test set, see Engineering Challenge 2), is disclosed explicitly in [Quantitative Results](#quantitative-results).
 
-Third, the dataset spans multiple battery chemistries and test conditions, with nominal capacities varying across battery series. This cross-chemistry heterogeneity makes global normalization necessary and motivates the per-window MinMaxScaler design — with the scaler fit exclusively on training data to avoid leaking test-set feature ranges into the training distribution (see Engineering Challenge 6).
+Third, the dataset spans multiple battery chemistries and test conditions, with nominal capacities varying across battery series. This cross-chemistry heterogeneity makes global normalization necessary and motivates the per-window MinMaxScaler design, with the scaler fit exclusively on training data to avoid leaking test-set feature ranges into the training distribution (see Engineering Challenge 6).
 
 ![Battery 47 Capacity Degradation](docs/battery_capacity_degradation.png)
 
@@ -175,11 +175,11 @@ Third, the dataset spans multiple battery chemistries and test conditions, with 
 
 Battery SOH prediction is formulated as a univariate regression problem: given a fixed-length sequence of multivariate battery measurements, predict the capacity (in Ah) of the next discharge cycle.
 
-Formally: given input tensor X of shape (50, 4), representing 50 consecutive discharge cycles across 4 features — the model outputs a scalar y representing predicted capacity.
+Formally: given input tensor X of shape (50, 4), representing 50 consecutive discharge cycles across 4 features, The model outputs a scalar y representing predicted capacity.
 
 ### Sliding Window Construction
 
-Windows are constructed per `battery_id`, independently on the training and test partitions, to prevent cross-battery data leakage. For a battery with N cycles in a given partition, this yields N - 50 samples from that partition. The window slides by one cycle at a time, producing dense, overlapping sequences that capture local degradation dynamics at high resolution. This invariant — that no window spans two batteries — is enforced both in preprocessing and, as of the current release, by an automated regression test (see [Testing, CI/CD & MLOps Hygiene](#testing-cicd--mlops-hygiene)).
+Windows are constructed per `battery_id`, independently on the training and test partitions, to prevent cross-battery data leakage. For a battery with N cycles in a given partition, this yields N - 50 samples from that partition. The window slides by one cycle at a time, producing dense, overlapping sequences that capture local degradation dynamics at high resolution. This invariant that no window spans two batteries, is enforced both in preprocessing and, as of the current release, by an automated regression test (see [Testing, CI/CD & MLOps Hygiene](#testing-cicd--mlops-hygiene)).
 
 ### LSTM Baseline
 
@@ -207,7 +207,7 @@ Conv1D(64, kernel=3, causal, dilation=d) + BatchNorm + Dropout(0.1)
   v (next block)
 ```
 
-Four such blocks are stacked with dilation rates 1, 2, 4, 8, giving a receptive field spanning the full 50-cycle input window. The residual (skip) connection in every block is the key design choice: it gives gradients a direct shortcut path through training, since stacked dilated convolutions without residuals tend to collapse toward predicting a flat line. Rather than `GlobalAveragePooling1D`, the model takes only the **last timestep** of the final block's output — the most recent battery state — before two Dense layers (32, then 16 units, ReLU) reduce to the scalar output.
+Four such blocks are stacked with dilation rates 1, 2, 4, 8, giving a receptive field spanning the full 50-cycle input window. The residual (skip) connection in every block is the key design choice: it gives gradients a direct shortcut path through training, since stacked dilated convolutions without residuals tend to collapse toward predicting a flat line. Rather than `GlobalAveragePooling1D`, the model takes only the **last timestep** of the final block's output, the most recent battery state before two Dense layers (32, then 16 units, ReLU) reduce to the scalar output.
 
 On the current train/test split, the TCN achieves a test MAE of 0.0206 Ah and R² of 0.550.
 
@@ -220,11 +220,11 @@ On the current, correctly-partitioned evaluation (per-battery chronological spli
 | MAE (Ah) | 0.0151 | 0.0206 |
 | R² | 0.634 | 0.550 |
 
-This is a genuine result from the corrected methodology, not a design preference — an earlier version of this evaluation (before the train/test split bug described in Engineering Challenge 2 was found and fixed) had shown the opposite ranking, which turned out to be an artifact of an invalid split rather than a true model comparison. The LSTM's sequential, stateful processing appears to generalize more effectively than the TCN's convolutional receptive field on this dataset's battery count and per-battery sample sizes.
+This is a genuine result from the corrected methodology, not a design preference, An earlier version of this evaluation (before the train/test split bug described in Engineering Challenge 2 was found and fixed) had shown the opposite ranking, which turned out to be an artifact of an invalid split rather than a true model comparison. The LSTM's sequential, stateful processing appears to generalize more effectively than the TCN's convolutional receptive field on this dataset's battery count and per-battery sample sizes.
 
-Both models remain available in the production ensemble (`/predict` and `/analyze` average their outputs) for redundancy — combining two structurally different models reduces the chance that either model's individual failure modes (e.g., a bad local optimum) dominate a single prediction. For latency-sensitive real-time Kafka/WebSocket inference, the TCN alone is retained due to its faster, non-recurrent inference path; this is a latency/architecture trade-off, not a claim that the TCN is the more accurate model.
+Both models remain available in the production ensemble (`/predict` and `/analyze` average their outputs) for redundancy, combining two structurally different models reduces the chance that either model's individual failure modes (e.g., a bad local optimum) dominate a single prediction. For latency-sensitive real-time Kafka/WebSocket inference, the TCN alone is retained due to its faster, non-recurrent inference path; this is a latency/architecture trade-off, not a claim that the TCN is the more accurate model.
 
-![Training and Validation Loss Curves](docs/phase3_loss_curves.png)
+![Training and Validation Loss Curves](docs/loss_curves.png)
 
 ---
 
@@ -346,7 +346,7 @@ The FastAPI service was load tested using Locust with two simulated user profile
 
 **Findings:**
 
-The `/predict` and `/predict (fleet)` endpoints achieved zero failures at 260 concurrent users. Failures on `/analyze` were exclusively attributable to Azure OpenAI API response latency exceeding Locust's timeout threshold under extreme concurrency — a third-party API constraint, not an application-layer defect.
+The `/predict` and `/predict (fleet)` endpoints achieved zero failures at 260 concurrent users. Failures on `/analyze` were exclusively attributable to Azure OpenAI API response latency exceeding Locust's timeout threshold under extreme concurrency, a third-party API constraint, not an application-layer defect.
 
 TensorFlow inference is single-threaded by default. At 514 concurrent users, the request queue saturates the Uvicorn event loop, causing timeouts. The identified scaling solution is `asyncio.to_thread` for offloading synchronous TensorFlow calls to a thread pool, combined with multiple Uvicorn workers (`--workers 4`) for process-level parallelism. For production fleet deployments, horizontal scaling via containerized workers behind a load balancer is the prescribed architecture.
 
@@ -358,7 +358,7 @@ TensorFlow inference is single-threaded by default. At 514 concurrent users, the
 
 ### Quantitative Results
 
-**Test set results (per-battery chronological split, 13/34 batteries contributing windowed test samples — see Test Coverage Disclosure below):**
+**Test set results (per-battery chronological split, 13/34 batteries contributing windowed test samples; see Test Coverage Disclosure below):**
 
 | Metric | LSTM | TCN | Target Threshold |
 |--------|------|-----|-------------------|
@@ -370,17 +370,17 @@ Both models comfortably clear the 0.08–0.12 Ah target MAE range that was set c
 
 **Test Coverage Disclosure:**
 
-The train/test split is performed **per battery, chronologically**: each battery's own first 80% of cycles are used for training and last 20% for test, so every battery is represented in training and no future cycle leaks backward into it. This is a deliberate choice over a naive global 80/20 split on the concatenated, battery-ordered dataset — that alternative, tested during development, silently produced a test set consisting entirely of one battery-ID cluster (a specific chemistry family never seen in training at all), which is a materially different and much harder task (zero-shot cross-chemistry generalization) than the chronological forecasting this system is designed to demonstrate, and it also permitted the feature scaler to be fit on data that included future test-only batteries. Both issues are fixed in the current methodology: the scaler is fit exclusively on the training partition, and the split preserves every battery's presence in both partitions.
+The train/test split is performed **per battery, chronologically**: each battery's own first 80% of cycles are used for training and last 20% for test, so every battery is represented in training and no future cycle leaks backward into it. This is a deliberate choice over a naive global 80/20 split on the concatenated, battery-ordered dataset that alternative, tested during development, silently produced a test set consisting entirely of one battery-ID cluster (a specific chemistry family never seen in training at all), which is a materially different and much harder task (zero-shot cross-chemistry generalization) than the chronological forecasting this system is designed to demonstrate, and it also permitted the feature scaler to be fit on data that included future test-only batteries. Both issues are fixed in the current methodology: the scaler is fit exclusively on the training partition, and the split preserves every battery's presence in both partitions.
 
 The trade-off of the per-battery approach: a battery whose 20% test slice contains fewer than the 50-cycle window length produces zero windowed test samples for that battery (it is still fully used in training). Of 34 total batteries, **13 contribute windowed test samples** to the figures reported here; the other 21 have too few post-split test cycles to form even one window. This is disclosed here rather than silently reflected only in a sample count, so the evaluation's actual coverage is auditable.
 
-Per-battery MAE for the 13 evaluated batteries is provided in [Per-Battery MAE Analysis](#per-battery-mae-analysis) below. Per-battery R² is intentionally **not** reported (see that section for why) — the pooled R² above is the reliable variance-based metric for this evaluation.
+Per-battery MAE for the 13 evaluated batteries is provided in [Per-Battery MAE Analysis](#per-battery-mae-analysis) below. Per-battery R² is intentionally **not** reported (see that section for why), the pooled R² above is the reliable variance-based metric for this evaluation.
 
 ### Predicted vs Actual Capacity
 
 The scatter plots below compare each model's predictions against actual capacity across the full pooled test set (both models plotted against the same 45° reference line for perfect prediction).
 
-![Predicted vs Actual Capacity — Model Comparison](docs/Predicted_vs_Actual_model_comparison.png)
+![Predicted vs Actual Capacity — Model Comparison](docs/scatter_predicted_vs_actual.png)
 
 ### Prediction Residuals
 
@@ -390,7 +390,7 @@ Residual distributions (actual − predicted) for both models across the pooled 
 
 ### Per-Battery MAE Analysis
 
-The table below reports MAE for each battery with at least 5 windowed test samples, along with the sample count `n` for each. Of the 13 batteries that contribute windowed test samples to the pooled aggregate metrics above, 3 (with fewer than 5 test samples each) are omitted from this table — their error at that sample size would be as statistically unreliable as the per-battery R² values discussed below, so they are excluded from the per-battery breakdown while remaining included in the pooled MAE/R² figures.
+The table below reports MAE for each battery with at least 5 windowed test samples, along with the sample count `n` for each. Of the 13 batteries that contribute windowed test samples to the pooled aggregate metrics above, 3 (with fewer than 5 test samples each) are omitted from this table. Their error at that sample size would be as statistically unreliable as the per-battery R² values discussed below, so they are excluded from the per-battery breakdown while remaining included in the pooled MAE/R² figures.
 
 | Battery | n | LSTM MAE (Ah) | TCN MAE (Ah) |
 |---------|---|----------------|---------------|
@@ -405,9 +405,9 @@ The table below reports MAE for each battery with at least 5 windowed test sampl
 | 43 | 5 | 0.0358 | 0.0773 |
 | 44 | 5 | 0.0373 | 0.0737 |
 
-Performance is uneven across batteries in both directions — LSTM is markedly better on Batteries 5, 18, 33, and 34, while TCN is markedly better on Battery 6 and 36 — indicating the two architectures are picking up on different aspects of degradation behavior rather than one uniformly dominating. Batteries 42–44, with only 5 test samples each, show the highest error for both models; this is consistent with those batteries having the least post-split test data to average over, rather than a distinct failure mode.
+Performance is uneven across batteries in both directions: LSTM is markedly better on Batteries 5, 18, 33, and 34, while TCN is markedly better on Battery 6 and 36, indicating the two architectures are picking up on different aspects of degradation behavior rather than one uniformly dominating. Batteries 42–44, with only 5 test samples each, show the highest error for both models; this is consistent with those batteries having the least post-split test data to average over, rather than a distinct failure mode.
 
-**Per-battery R² is intentionally not reported here.** Because each battery contributes only its final 20% of cycles to test, within-battery target variance is frequently too low for R² to be a stable metric — several batteries with 40–60 samples still produced R² values below −20 (an artifact of a small SS_total denominator, not poor predictions), which would be actively misleading if presented as headline numbers. MAE, being scale-based rather than variance-normalized, remains reliable at every sample size shown above and is used instead. Pooled R² over the full test set (reported in Quantitative Results) is the appropriate variance-based metric for this evaluation.
+**Per-battery R² is intentionally not reported here.** Because each battery contributes only its final 20% of cycles to test, within-battery target variance is frequently too low for R² to be a stable metric several batteries with 40–60 samples still produced R² values below −20 (an artifact of a small SS_total denominator, not poor predictions), which would be actively misleading if presented as headline numbers. MAE, being scale-based rather than variance-normalized, remains reliable at every sample size shown above and is used instead. Pooled R² over the full test set (reported in Quantitative Results) is the appropriate variance-based metric for this evaluation.
 
 ![Per-Battery MAE — LSTM vs TCN](docs/per_battery_mae.png)
 
@@ -415,7 +415,7 @@ Performance is uneven across batteries in both directions — LSTM is markedly b
 
 Training and validation MAE curves for both models, with EarlyStopping restoring the best-validation-loss weights in each case.
 
-![Phase 3 Training Loss Curves](docs/phase3_loss_curves.png)
+![Phase 3 Training Loss Curves](docs/loss_curves.png)
 
 ---
 
@@ -794,22 +794,22 @@ Starts:
 ### Architecture (Dockerized)
 
 ```
-┌─────────────────────────────────────────────────┐
-│                  ev_network (bridge)             │
-│                                                  │
-│  ┌──────────────┐     ┌──────────────────────┐  │
-│  │   ev_redis   │◄────│      ev_api           │  │
-│  │  port: 6379  │     │  port: 8000           │  │
-│  └──────────────┘     │  FastAPI + TCN model  │  │
-│                        └──────────────────────┘  │
-│  ┌───────────────┐    ┌──────────────────────┐   │
-│  │ ev_zookeeper  │───►│     ev_kafka          │   │
-│  │  port: 2181   │    │  port: 9092 / 29092   │   │
-│  └───────────────┘    └──────────────────────┘   │
-│                                                   │
-│  [Optional --profile kafka]                       │
-│  ev_kafka_streamer ──► ev_kafka ◄── ev_kafka_consumer │
-└─────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                  ev_network (bridge)                   │
+│                                                        │
+│     ┌──────────────┐     ┌───────────────────────┐     │
+│     │   ev_redis   │◄────│      ev_api           │     │
+│     │  port: 6379  │     │  port: 8000           │     │
+│     └──────────────┘     │  FastAPI + TCN model  │     │
+│                          └───────────────────────┘     │
+│     ┌───────────────┐    ┌───────────────────────┐     │
+│     │ ev_zookeeper  │───►│     ev_kafka          │     │
+│     │  port: 2181   │    │  port: 9092 / 29092   │     │ 
+│     └───────────────┘    └───────────────────────┘     │
+│                                                        │
+│  [Optional --profile kafka]                            │
+│  ev_kafka_streamer ──► ev_kafka ◄── ev_kafka_consumer  │
+└────────────────────────────────────────────────────────┘
 ```
 
 ---
