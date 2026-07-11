@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1783741020.61067 "d:/COURSES/EV Battery/report/report.tex" "report.pdf" "report" 1783741024.37684 0
+["pdflatex"] 1783767095.00251 "d:/COURSES/EV Battery/report/report.tex" "report.pdf" "report" 1783767100.04598 0
   "C:/Users/hassa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1777712583 84158 d77284a6843bde1e4b9764f09fb2e89e ""
   "C:/Users/hassa/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778054894 13333486 5a96c4613aadd79e66191edb578d26bb ""
   "C:/Users/hassa/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -112,12 +112,12 @@
   "actual_vs_predicted.png" 1783688597 118041 8abbf16ec5d4708177bb853ad11d82f9 ""
   "architecture_kafka.png" 1777872145 656460 1f7600a8fcef5d97ddd18a71efcde2b9 ""
   "architecture_overall.png" 1777872178 682862 756e9d658478e72987da4e99689b6510 ""
-  "d:/COURSES/EV Battery/report/report.tex" 1783741019 38248 591e0065473fffe879c37e69603868da ""
+  "d:/COURSES/EV Battery/report/report.tex" 1783767093 39191 7f2d9cf48794094959f933f1da9aa0c0 ""
   "langgraph_workflow.png" 1778072415 364554 6a0d72d7bd617e1311a3458a09c33002 ""
   "locust_test_results.png" 1778083885 146556 63b357caec4cc814bf27290aa352eeff ""
-  "report.aux" 1783741024 5270 4a384eab8926c1288b5eec1d8633fa36 "pdflatex"
-  "report.out" 1783741024 3484 de64e57caeb1e48068bb328d18c7e2e5 "pdflatex"
-  "report.tex" 1783741019 38248 591e0065473fffe879c37e69603868da ""
+  "report.aux" 1783767099 5322 5282e458b66766c50d6b15f4c515582a "pdflatex"
+  "report.out" 1783767099 3484 de64e57caeb1e48068bb328d18c7e2e5 "pdflatex"
+  "report.tex" 1783767093 39191 7f2d9cf48794094959f933f1da9aa0c0 ""
   "tcn_architecture.png" 1778070776 77098 bcd6cef5e86f6d48b96f9ebfb3595588 ""
   (generated)
   "report.aux"

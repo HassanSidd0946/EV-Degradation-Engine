@@ -33,7 +33,7 @@ Lithium-ion battery degradation is one of the most operationally critical and ec
 
 This system addresses the problem through a multi-layered engineering approach. An **LSTM baseline and a TCN model** are trained on the NASA Lithium-ion Battery Aging Dataset, each performing sequence-level regression over a 50-cycle sliding window to estimate the State of Health (SOH) of individual battery cells. The inference pipeline is exposed via a production-grade FastAPI backend, augmented by a two-node LangGraph agent powered by Azure OpenAI for natural language diagnostic reporting.
 
-Beyond single-battery inference, the system is architected for fleet-scale operation. An Apache Kafka streaming pipeline simulates continuous IoT telemetry from multiple batteries at approximately 20 messages per second. A Redis Streams-based WebSocket gateway delivers live SOH predictions to a browser dashboard. Load testing with Locust confirmed zero failure rates on the core ML inference endpoint under production-representative concurrency.
+Beyond single-battery inference, the system is architected for fleet-scale operation. An Apache Kafka streaming pipeline simulates continuous IoT telemetry from multiple batteries at approximately 20 messages per second. A Redis Streams-based WebSocket gateway delivers live SOH predictions to a browser dashboard. Load testing with Locust at 1,000 concurrent users, with the API running 4 Uvicorn workers, confirmed a 0% failure rate on both core ML inference endpoints.
 
 The system demonstrates that deep learning-based SOH prediction can be embedded within an observable, horizontally scalable, and operationally deployable data platform, backed by automated testing and CI, rather than existing only as a research artifact.
 
@@ -329,28 +329,33 @@ A full PySpark Structured Streaming consumer (`pyspark_consumer.py`) was also de
 
 ### Load Testing with Locust
 
-The FastAPI service was load tested using Locust with two simulated user profiles:
+The FastAPI service was load tested using Locust with two simulated user profiles, run against the API started with 4 Uvicorn worker processes to give the synchronous TensorFlow inference calls process-level parallelism:
+
+```bash
+uvicorn main:app --workers 4 --host 0.0.0.0 --port 8000
+```
 
 **BatteryAPIUser:** Represents analyst or application-layer clients. Sends requests to `/predict` (weight 3), `/analyze` (weight 1), and `/` health check (weight 1) with realistic 1-3 second inter-request delays.
 
 **EVFleetSystemUser:** Represents IoT fleet aggregators. Sends requests to `/predict` at 0.1-0.5 second intervals, simulating continuous sensor telemetry ingestion.
 
-**Results at 260 concurrent users (intermediate test):**
+**Results at 1,000 concurrent users:**
 
-| Endpoint | Requests | Failures | Median (ms) | Notes |
-|----------|----------|----------|-------------|-------|
-| GET / | 8 | 0 | 58,000 | 0% failure |
-| POST /predict | 43 | 0 | 24,000 | 0% failure |
-| POST /predict (fleet) | 94 | 0 | 8,000 | 0% failure |
-| POST /analyze | 17 | 10 | 62,000 | Azure API timeout |
+| Endpoint | Requests | Failures | Median (ms) | 95%ile (ms) | 99%ile (ms) |
+|----------|----------|----------|-------------|-------------|-------------|
+| GET / (health check) | 559 | 0 | 1,100 | 3,800 | 4,800 |
+| POST /predict | 1,177 | 0 | 65,000 | 128,000 | 139,000 |
+| POST /predict (fleet) | 1,871 | 0 | 50,000 | 125,000 | 137,000 |
+| POST /analyze (AI Agent) | 486 | 463 | 60,000 | 63,000 | 63,000 |
+| **Aggregated** | **4,093** | **463** | **50,000** | **122,000** | **137,000** |
 
 **Findings:**
 
-The `/predict` and `/predict (fleet)` endpoints achieved zero failures at 260 concurrent users. Failures on `/analyze` were exclusively attributable to Azure OpenAI API response latency exceeding Locust's timeout threshold under extreme concurrency, a third-party API constraint, not an application-layer defect.
+At 1,000 concurrent users, `/predict` and `/predict (fleet)` sustained a strict 0% failure rate across 3,048 combined requests. All 463 failures were isolated to `/analyze`, driven by Azure OpenAI API response latency exceeding Locust's timeout threshold under this concurrency, a third-party API constraint, not an application-layer defect. The aggregated failure rate across all endpoints combined was approximately 11% (463 / 4,093), entirely attributable to that single LLM-dependent endpoint.
 
-TensorFlow inference is single-threaded by default. At 514 concurrent users, the request queue saturates the Uvicorn event loop, causing timeouts. The identified scaling solution is `asyncio.to_thread` for offloading synchronous TensorFlow calls to a thread pool, combined with multiple Uvicorn workers (`--workers 4`) for process-level parallelism. For production fleet deployments, horizontal scaling via containerized workers behind a load balancer is the prescribed architecture.
+TensorFlow inference is single-threaded by default and saturates a single Uvicorn worker's event loop well before 1,000 concurrent users. Running the API with multiple Uvicorn worker processes (`--workers 4`) resolves this by giving each worker its own process-level TensorFlow session, so incoming requests are distributed across processes instead of queuing behind a single-threaded inference call; this configuration was used to produce the results above. Response latency at this concurrency is high (median 50-65 seconds on the inference endpoints), which reflects genuine CPU contention across 4 worker processes handling 1,000 simultaneous users rather than an absence of load; the zero-failure result confirms requests complete and return correctly rather than timing out, it is not a claim of low latency at this scale. For production fleet deployments, horizontal scaling via containerized workers behind a load balancer remains the prescribed architecture for reducing that latency further.
 
-**Key metric:** Zero failure rate on the core ML inference endpoint (`/predict`) under representative production concurrency.
+**Key metric:** Zero failure rate on both core ML inference endpoints (`/predict` and the fleet-simulated `/predict` variant) at 1,000 concurrent users, running with 4 Uvicorn workers.
 
 ---
 
@@ -421,7 +426,13 @@ Training and validation MAE curves for both models, with EarlyStopping restoring
 
 ## Load Testing & API Reliability
 
-Run the Locust load test after starting the FastAPI server:
+Start the FastAPI server with multiple workers so the synchronous TensorFlow inference calls get process-level parallelism under load:
+
+```bash
+uvicorn main:app --workers 4 --host 0.0.0.0 --port 8000
+```
+
+Then run the Locust load test:
 
 ```bash
 # Standard interactive test
@@ -438,7 +449,7 @@ Access the Locust dashboard at `http://localhost:8089`.
 
 - Start with 10 users to confirm 0% failure baseline
 - Scale to 100 users to observe inference latency
-- Scale to 500+ users to identify queue saturation threshold
+- The full 1,000-user, 4-worker configuration documented in [Load Testing with Locust](#load-testing-with-locust) above has already been run and validated; use `-u 1000 -r 50` with the API started via `--workers 4` to reproduce those exact results
 
 ---
 

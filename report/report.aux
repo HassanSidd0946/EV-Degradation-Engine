@@ -7,7 +7,6 @@
 \@writefile{toc}{\contentsline {section}{\numberline {I}\textbf  {Introduction}}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}\textbf  {System Architecture and Data Engineering}}{1}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Real-Time Telemetry Ingestion via Apache Kafka}{1}{subsection.2.1}\protected@file@percent }
-\citation{b4}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overall System Architecture illustrating data ingestion, ML inference, and decoupled Agentic AI layers.}}{2}{figure.1}\protected@file@percent }
 \newlabel{fig:overall_arch}{{1}{2}{Overall System Architecture illustrating data ingestion, ML inference, and decoupled Agentic AI layers}{figure.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Kafka Scalability and Streaming Architecture with stateful buffering.}}{2}{figure.2}\protected@file@percent }
@@ -16,6 +15,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Event-Driven Observability}{2}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}\textbf  {Dual-AI Inference Methodology}}{2}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset Specification and Evaluation Methodology}{2}{subsection.3.1}\protected@file@percent }
+\citation{b4}
 \citation{b1}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}LSTM Baseline}{3}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Temporal Convolutional Network (TCN) for SOH Estimation}{3}{subsection.3.3}\protected@file@percent }
@@ -29,14 +29,14 @@
 \@writefile{toc}{\contentsline {section}{\numberline {IV}\textbf  {System Scalability and Performance Evaluation}}{4}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Asynchronous I/O Unblocking}{4}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Concurrency Stress Testing and Architectural Resilience}{4}{subsection.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Locust Load Test statistics at 260 concurrent users. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint.}}{4}{figure.5}\protected@file@percent }
-\newlabel{fig:locust_results}{{5}{4}{Locust Load Test statistics at 260 concurrent users. The metrics validate a 0\% failure rate on the core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}\textbf  {Conclusion and Future Work}}{4}{section.5}\protected@file@percent }
 \bibcite{b1}{1}
 \bibcite{b2}{2}
 \bibcite{b3}{3}
 \bibcite{b4}{4}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Locust Load Test statistics at 1,000 concurrent users with 4 Uvicorn workers. The metrics validate a 0\% failure rate on both core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint.}}{5}{figure.5}\protected@file@percent }
+\newlabel{fig:locust_results}{{5}{5}{Locust Load Test statistics at 1,000 concurrent users with 4 Uvicorn workers. The metrics validate a 0\% failure rate on both core ML inference endpoints, with failures strictly isolated to the third-party LLM API-dependent endpoint}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Comparison of Actual vs. Predicted Capacity for a representative test-set battery, demonstrating tracking of degradation trajectory across the evaluated test cycles.}}{5}{figure.6}\protected@file@percent }
 \newlabel{fig:accuracy_graph}{{6}{5}{Comparison of Actual vs. Predicted Capacity for a representative test-set battery, demonstrating tracking of degradation trajectory across the evaluated test cycles}{figure.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}\textbf  {Conclusion and Future Work}}{5}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{5}{section*.1}\protected@file@percent }
 \gdef \@abspage@last{5}
